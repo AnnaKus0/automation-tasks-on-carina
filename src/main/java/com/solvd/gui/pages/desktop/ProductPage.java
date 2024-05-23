@@ -1,5 +1,6 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
@@ -24,6 +25,11 @@ public class ProductPage extends ProductPageBase {
 
     protected ProductPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public Header getHeader() {
+        return new Header(driver);
     }
 
     @Override

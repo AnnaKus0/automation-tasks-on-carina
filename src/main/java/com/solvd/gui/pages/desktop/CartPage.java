@@ -1,5 +1,6 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

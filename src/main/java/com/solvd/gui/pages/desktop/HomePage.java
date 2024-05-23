@@ -46,7 +46,7 @@ public class HomePage extends HomePageBase {
         return sideMenu;
     }
 
-
+    @Override
     public ExtendedWebElement chooseRandomProduct() {
         Random rand = new Random();
         int lengthOfProductList = productList.size();
@@ -63,16 +63,17 @@ public class HomePage extends HomePageBase {
         return randomProduct;
     }
 
+    @Override
     public ProductPage clickSelectedProduct() {
-        WebElement product = chooseRandomProduct();
+        ExtendedWebElement product = chooseRandomProduct();
         product.click();
         return new ProductPage(driver);
     }
 
+    @Override
     public String getSelectedProductName() {
-        WebElement product = chooseRandomProduct();
+        ExtendedWebElement product = chooseRandomProduct();
         return product.getText();
     }
-
 
 }
