@@ -1,6 +1,7 @@
 package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.pages.common.CartPageBase;
+import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.Keys;
@@ -35,37 +36,47 @@ public class CartPage extends CartPageBase {
         super(driver);
     }
 
+    @Override
     public boolean isProductImageDisplayed() {
         return productImage.isVisible();
     }
 
+    @Override
     public String getProductName() {
         return productName.getText();
     }
 
+    @Override
     public String getProductPrice() {
         return productPrice.getText().trim();
     }
 
+    @Override
     public void setInputQuantity(String quantity) {
         quantityInput.type(quantity);
         quantityInput.sendKeys(Keys.ENTER);
     }
 
+    @Override
     public String getInputQuantity() {
         return quantityInput.getAttribute("value");
     }
 
+    @Override
     public String getTotalPrice() {
         return totalPrice.getText().trim();
     }
 
+    @Override
     public void clickRemoveProductButton() {
         removeProductButton.click();
     }
 
-    public CheckOutPage clickCheckoutButton() {
+    @Override
+    public CheckOutPageBase clickCheckoutButton() {
         checkOutButton.click();
         return new CheckOutPage(driver);
     }
+
+
 }

@@ -26,6 +26,7 @@ public class SignUpPage extends SignUpPageBase {
         super(driver);
     }
 
+    @Override
     public void fillSignUpForm(String firstName, String lastName, String email, String password) {
         firstNameInput.type(firstName);
         lastNameInput.type(lastName);
@@ -33,7 +34,9 @@ public class SignUpPage extends SignUpPageBase {
         passwordInput.type(password);
     }
 
+    @Override
     public void clickCreateButton() {
         createButton.click();
     }
+
 }

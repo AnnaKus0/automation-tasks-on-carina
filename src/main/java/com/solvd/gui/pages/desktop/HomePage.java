@@ -34,15 +34,18 @@ public class HomePage extends HomePageBase {
         setPageAbsoluteURL(Configuration.getRequired("base"));
     }
 
+    @Override
     public Header getHeader() {
         return header;
     }
 
-
+    @Override
     public SideMenu getSideMenu() {
         return sideMenu;
     }
 
+    //TODO: get random product
+    @Override
     public ProductPage clickOnProductByName(String productName) {
         Random rand = new Random();
 
@@ -57,12 +60,13 @@ public class HomePage extends HomePageBase {
                 .findFirst();
 
         if (productElement.isPresent()) {
-           productElement.get().click();
+            productElement.get().click();
             return new ProductPage(driver);
         } else {
             logger.error("Product with name: " + productName + " not found");
             return null;
         }
     }
+
 
 }

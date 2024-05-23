@@ -26,19 +26,24 @@ public class ProductPage extends ProductPageBase {
         super(driver);
     }
 
+    @Override
     public boolean isProductImageDisplayed() {
         return productImage.isVisible();
     }
 
+    @Override
     public String getProductTitle() {
         return productTitle.getText();
     }
 
+    @Override
     public String getProductPrice() {
         return productPrice.getText();
     }
 
+    @Override
     public void clickAddToCartButton() {
         addToCartButton.click();
     }
+
 }

@@ -48,6 +48,7 @@ public class CheckOutPage extends CheckOutPageBase {
         super(driver);
     }
 
+    @Override
     public void fillCheckOutForm(Client client) {
         firstNameInput.type(client.getFirstName());
         lastNameInput.type(client.getLastName());
@@ -62,8 +63,11 @@ public class CheckOutPage extends CheckOutPageBase {
         nameCardInput.type(client.getNameOnCard());
     }
 
-    public HomePage clickPayNowButton(){
+    @Override
+    public HomePage clickPayNowButton() {
         payNowButton.click();
         return new HomePage(driver);
     }
+
+
 }

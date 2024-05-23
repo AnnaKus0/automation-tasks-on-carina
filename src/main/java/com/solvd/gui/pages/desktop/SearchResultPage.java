@@ -20,6 +20,7 @@ public class SearchResultPage extends SearchResultPageBase {
         super(driver);
     }
 
+    @Override
     public boolean isProductWithNamePresent(String productName) {
         List<String> actualProductNames = productNamesList.stream()
                 .map(ExtendedWebElement::getText)

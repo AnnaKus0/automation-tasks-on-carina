@@ -1,12 +1,10 @@
 package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.pages.common.LoginPageBase;
+import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends LoginPageBase {
 
@@ -26,19 +24,23 @@ public class LoginPage extends LoginPageBase {
         super(driver);
     }
 
+    @Override
     public void typeEmail(String email) {
         emailInput.type(email);
     }
 
+    @Override
     public void typePassword(String password) {
         passwordInput.type(password);
     }
 
-    public ResetPasswordPage clickForgotPasswordLink() {
+    @Override
+    public ResetPasswordPageBase clickForgotPasswordLink() {
         forgotPasswordLink.click();
         return new ResetPasswordPage(driver);
     }
 
+    @Override
     public void clickSignInButton() {
         signInButton.click();
     }
