@@ -47,7 +47,7 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public ExtendedWebElement chooseRandomProduct() {
+    public ExtendedWebElement selectRandomProduct() {
         Random rand = new Random();
         int lengthOfProductList = productList.size();
         int randomIndex = rand.nextInt(lengthOfProductList);
@@ -65,14 +65,14 @@ public class HomePage extends HomePageBase {
 
     @Override
     public ProductPage clickSelectedProduct() {
-        ExtendedWebElement product = chooseRandomProduct();
+        ExtendedWebElement product = selectRandomProduct();
         product.click();
         return new ProductPage(driver);
     }
 
     @Override
     public String getSelectedProductName() {
-        ExtendedWebElement product = chooseRandomProduct();
+        ExtendedWebElement product = selectRandomProduct();
         return product.getText();
     }
 

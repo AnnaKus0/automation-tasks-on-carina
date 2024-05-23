@@ -18,7 +18,7 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract  SideMenu getSideMenu();
 
-    public abstract ExtendedWebElement chooseRandomProduct();
+    public abstract ExtendedWebElement selectRandomProduct();
 
     public abstract ProductPage clickSelectedProduct();
 
