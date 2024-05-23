@@ -25,7 +25,7 @@ public class SearchResultPageTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC004", dataProvider = "useTestProductData", threadPoolSize = 2, invocationCount = 2)
-    public void test_SearchProduct_CheckPresence(String productName) {
+    public void verifySearchFunctionality(String productName) {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");

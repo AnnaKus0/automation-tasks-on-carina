@@ -7,12 +7,14 @@ import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Random;
 
@@ -44,28 +46,32 @@ public class HomePage extends HomePageBase {
         return sideMenu;
     }
 
-    //TODO: get random product
-    @Override
-    public ProductPage clickOnProductByName(String productName) {
+
+    public ExtendedWebElement chooseRandomProduct() {
         Random rand = new Random();
-
         int lengthOfProductList = productList.size();
-        int indexOfProduct = rand.nextInt(lengthOfProductList);
+        int randomIndex = rand.nextInt(lengthOfProductList);
 
-        Optional<ExtendedWebElement> productElement = productList.stream()
-                .filter(product -> {
-                    String textContent = product.getText();
-                    return textContent != null && textContent.toLowerCase().contains(productName.toLowerCase());
-                })
-                .findFirst();
+        ExtendedWebElement randomProduct = productList.stream()
+                .skip(randomIndex)
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("Product list is empty"));
 
-        if (productElement.isPresent()) {
-            productElement.get().click();
-            return new ProductPage(driver);
-        } else {
-            logger.error("Product with name: " + productName + " not found");
-            return null;
-        }
+        String selectedProductName = randomProduct.getText();
+        logger.info(selectedProductName);
+
+        return randomProduct;
+    }
+
+    public ProductPage clickSelectedProduct() {
+        WebElement product = chooseRandomProduct();
+        product.click();
+        return new ProductPage(driver);
+    }
+
+    public String getSelectedProductName() {
+        WebElement product = chooseRandomProduct();
+        return product.getText();
     }
 
 

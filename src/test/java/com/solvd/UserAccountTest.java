@@ -28,7 +28,7 @@ public class UserAccountTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
-    public void test_UserRegistration_AccountCreation(String firstName, String lastName, String email, String password) {
+    public void verifyAccountCreation(String firstName, String lastName, String email, String password) {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");
@@ -44,7 +44,7 @@ public class UserAccountTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
-    public void test_UserLogin_ValidCredentials_SuccessfulLogin() {
+    public void verifyUserLogin() {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");
@@ -62,7 +62,7 @@ public class UserAccountTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC003", threadPoolSize = 2, invocationCount = 2)
-    public void test_ResetPassword_LinkNavigation() {
+    public void verifyResetPassword() {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");

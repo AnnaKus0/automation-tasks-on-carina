@@ -25,7 +25,7 @@ public class ProductTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC005", dataProvider = "useTestDataProduct", threadPoolSize = 2, invocationCount = 2)
-    public void test_ClickProduct_AddToCart_CheckDetails(String expectedTitle, String expectedPrice) {
+    public void verifyAddProductToCart(String expectedTitle, String expectedPrice) {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");
@@ -44,7 +44,7 @@ public class ProductTest implements IAbstractTest {
     }
 
     @Test(testName= "#TC007", dataProvider = "useTestDataProduct", threadPoolSize = 2, invocationCount = 2)
-    public void test_ClickCatalog_CheckDetails(String expectedTitle, String expectedPrice) {
+    public void verifyProductsInCatalogAndDetailsOnProductPage(String expectedTitle, String expectedPrice) {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");
@@ -58,7 +58,7 @@ public class ProductTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC008", dataProvider = "useTestDataProduct", threadPoolSize = 2, invocationCount = 2)
-    public void test_ClickProduct_AddToCart_CheckQuantityInput(String expectedTitle, String expectedPrice) {
+    public void verifyQuantityFieldInCartPage(String expectedTitle, String expectedPrice) {
         HomePageBase homePage = new HomePage(getDriver());
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Home page doesn't open");
@@ -73,7 +73,7 @@ public class ProductTest implements IAbstractTest {
     }
 
     @Test(testName = "#TC006", dataProvider = "useTestDataProduct", threadPoolSize = 2, invocationCount = 2)
-    public void test_AddToCart_CheckOut(String expectedTitle, String expectedPrice) {
+    public void verifyCheckOutProcess(String expectedTitle, String expectedPrice) {
         ClientService clientService = new ClientService();
 
         HomePageBase homePage = new HomePage(getDriver());
