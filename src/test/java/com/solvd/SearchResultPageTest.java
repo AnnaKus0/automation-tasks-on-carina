@@ -4,15 +4,14 @@ import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.solvd.gui.pages.desktop.HomePage;
-import com.solvd.util.ScreenshotListener;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-@Listeners(ScreenshotListener.class)
-public class SearchResultPageTest extends BaseTest{
+//@Listeners()
+public class SearchResultPageTest extends BaseTest {
 
     @DataProvider(name = "useTestProductData", parallel=true)
     public Object[][] userRegisterDataProvider() {
