@@ -1,5 +1,6 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.components.ProductCard;
 import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
@@ -14,7 +15,7 @@ import java.util.List;
 public class SearchResultPage extends SearchResultPageBase {
 
     @FindBy(xpath = "//div[@id='page-content']//section[contains(@class, 'product-grid')]")
-    private List<ExtendedWebElement> productNamesList;
+    private List<ProductCard> productList;
 
     public SearchResultPage(WebDriver driver) {
         super(driver);
@@ -22,8 +23,8 @@ public class SearchResultPage extends SearchResultPageBase {
 
     @Override
     public boolean isProductWithNamePresent(String productName) {
-        List<String> actualProductNames = productNamesList.stream()
-                .map(ExtendedWebElement::getText)
+        List<String> actualProductNames = productList.stream()
+                .map(ProductCard::getTitle)
                 .toList();
 
         return actualProductNames.stream()

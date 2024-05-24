@@ -1,21 +1,18 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.components.ProductCard;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.Random;
 
 public class HomePage extends HomePageBase {
@@ -29,7 +26,7 @@ public class HomePage extends HomePageBase {
     private SideMenu sideMenu;
 
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]//div[contains(@class, 'columns')]")
-    private List<ExtendedWebElement> productList;
+    private List<ProductCard> productList;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -47,17 +44,17 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public ExtendedWebElement selectRandomProduct() {
+    public ProductCard selectRandomProduct() {
         Random rand = new Random();
         int lengthOfProductList = productList.size();
         int randomIndex = rand.nextInt(lengthOfProductList);
 
-        ExtendedWebElement randomProduct = productList.stream()
+        ProductCard randomProduct = productList.stream()
                 .skip(randomIndex)
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("Product list is empty"));
 
-        String selectedProductName = randomProduct.getText();
+        String selectedProductName = randomProduct.getTitle();
         logger.info(selectedProductName);
 
         return randomProduct;
@@ -65,15 +62,15 @@ public class HomePage extends HomePageBase {
 
     @Override
     public ProductPage clickSelectedProduct() {
-        ExtendedWebElement product = selectRandomProduct();
-        product.click();
+        ProductCard product = selectRandomProduct();
+        product.clickOnProduct();
         return new ProductPage(driver);
     }
 
     @Override
     public String getSelectedProductName() {
-        ExtendedWebElement product = selectRandomProduct();
-        return product.getText();
+        ProductCard product = selectRandomProduct();
+        return product.getTitle();
     }
 
 }

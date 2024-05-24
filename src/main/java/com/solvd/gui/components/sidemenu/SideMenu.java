@@ -23,11 +23,6 @@ public class SideMenu extends SideMenuBase {
         super(driver, searchContext);
     }
 
-    protected SideMenu(WebDriver driver) {
-        super(driver);
-    }
-
-
     public CatalogPage clickMenuButtonByName(String buttonName) {
         Optional<ExtendedWebElement> buttonOptional = sidebarButtons.stream()
                 .filter(button -> button.getText().equalsIgnoreCase(buttonName))

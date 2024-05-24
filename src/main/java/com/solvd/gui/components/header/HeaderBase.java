@@ -10,12 +10,12 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class HeaderBase extends AbstractUIObject {
 
-    protected HeaderBase(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
-    }
-
     protected HeaderBase(WebDriver driver) {
         super(driver);
+    }
+
+    protected HeaderBase(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
     public abstract SearchResultPage searchProduct(String productName);

@@ -32,13 +32,14 @@ public class Header extends HeaderBase {
     @FindBy(xpath = "//a[@class='checkout' and @href='/cart']")
     private ExtendedWebElement checkOutLink;
 
+    public Header(WebDriver driver) {
+        super(driver);
+    }
+
     protected Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public Header(WebDriver driver) {
-        super(driver);
-    }
 
     public SearchResultPage searchProduct(String productName){
         searchInput.click();
