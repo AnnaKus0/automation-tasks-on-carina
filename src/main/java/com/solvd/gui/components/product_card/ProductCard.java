@@ -1,30 +1,24 @@
-package com.solvd.gui.components;
+package com.solvd.gui.components.product_card;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductCard extends AbstractUIObject {
 
-    @FindBy(id = "product-1")
-    private ExtendedWebElement productLink;
-
-    @FindBy(xpath = "//div[@class='product-card']//img")
+    @FindBy(xpath = "//div[contains(@class, 'product-card')]//img")
     private ExtendedWebElement productImage;
 
-    @FindBy(xpath = "//div[@class='product-card']//h3")
+    @FindBy(xpath = "//div[contains(@class, 'product-card')]//h3")
     private ExtendedWebElement productName;
 
-    @FindBy(xpath = "//div[@class='product-card']//h4")
+    @FindBy(xpath = "//div[contains(@class, 'product-card')]//h4")
     private ExtendedWebElement productPrice;
 
-    protected ProductCard(WebDriver driver) {
-        super(driver);
-    }
-
-    public void clickOnProduct() {
-        productLink.click();
+    protected ProductCard(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
     public String getProductName() {
@@ -37,5 +31,9 @@ public class ProductCard extends AbstractUIObject {
 
     public boolean isProductImageDisplayed() {
         return productImage.isVisible();
+    }
+
+    public void clickOnProduct() {
+        productName.click();
     }
 }

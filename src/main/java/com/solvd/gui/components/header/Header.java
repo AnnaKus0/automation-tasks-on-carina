@@ -36,11 +36,6 @@ public class Header extends HeaderBase {
         super(driver);
     }
 
-    protected Header(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
-    }
-
-
     public SearchResultPage searchProduct(String productName){
         searchInput.click();
         searchInput.type(productName);

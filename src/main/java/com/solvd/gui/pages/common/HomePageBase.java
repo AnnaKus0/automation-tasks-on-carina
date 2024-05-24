@@ -1,6 +1,7 @@
 package com.solvd.gui.pages.common;
 
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.desktop.ProductPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -18,7 +19,7 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract  SideMenu getSideMenu();
 
-    public abstract ExtendedWebElement selectRandomProduct();
+    public abstract ProductCard selectRandomProduct();
 
     public abstract ProductPage clickSelectedProduct();
 

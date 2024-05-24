@@ -14,10 +14,6 @@ public abstract class HeaderBase extends AbstractUIObject {
         super(driver);
     }
 
-    protected HeaderBase(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
-    }
-
     public abstract SearchResultPage searchProduct(String productName);
 
     public abstract LoginPage clickLoginLink();

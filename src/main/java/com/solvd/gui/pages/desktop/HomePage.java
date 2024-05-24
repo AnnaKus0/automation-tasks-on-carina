@@ -1,11 +1,10 @@
 package com.solvd.gui.pages.desktop;
 
-import com.solvd.gui.components.ProductCard;
+import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.zebrunner.carina.utils.config.Configuration;
-import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
