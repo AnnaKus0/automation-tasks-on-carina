@@ -5,9 +5,15 @@ import com.solvd.gui.pages.desktop.LoginPage;
 import com.solvd.gui.pages.desktop.SearchResultPage;
 import com.solvd.gui.pages.desktop.SignUpPage;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 
 public abstract class HeaderBase extends AbstractUIObject {
+
+    protected HeaderBase(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
+    }
+
     protected HeaderBase(WebDriver driver) {
         super(driver);
     }

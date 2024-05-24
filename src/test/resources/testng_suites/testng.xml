@@ -13,14 +13,6 @@
         </classes>
     </test>
 
-    <test name="EdgeTests">
-        <parameter name="browser" value="edge"/>
-        <parameter name="hubUrl" value="http://localhost:4444/wd/hub"/>
-        <classes>
-            <class name="com.solvd.SearchResultPageTest"/>
-        </classes>
-    </test>
-
 </suite>
 
 

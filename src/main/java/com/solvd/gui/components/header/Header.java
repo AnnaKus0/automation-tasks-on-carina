@@ -6,14 +6,11 @@ import com.solvd.gui.pages.desktop.SearchResultPage;
 import com.solvd.gui.pages.desktop.SignUpPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 
 public class Header extends HeaderBase {
 
@@ -34,6 +31,10 @@ public class Header extends HeaderBase {
 
     @FindBy(xpath = "//a[@class='checkout' and @href='/cart']")
     private ExtendedWebElement checkOutLink;
+
+    protected Header(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
+    }
 
     public Header(WebDriver driver) {
         super(driver);
