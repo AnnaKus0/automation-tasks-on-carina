@@ -24,12 +24,12 @@ public class HomePage extends HomePageBase {
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
-    @FindBy(xpath = "//section[contains(@class, 'product-grid')]//div[contains(@class, 'columns')]")
+    @FindBy(xpath = "//section[@class='product-grid']//div[contains(@class, 'columns')]")
     private List<ProductCard> productList;
 
     public HomePage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(Configuration.getRequired("URL.base"));
+        setPageURL(Configuration.getRequired("URL.base"));
     }
 
     @Override
@@ -44,6 +44,10 @@ public class HomePage extends HomePageBase {
 
     @Override
     public ProductCard selectRandomProduct() {
+        if (productList.isEmpty()) {
+            logger.error("Product list is empty");
+            return null;
+        }
         Random rand = new Random();
         int lengthOfProductList = productList.size();
         int randomIndex = rand.nextInt(lengthOfProductList);

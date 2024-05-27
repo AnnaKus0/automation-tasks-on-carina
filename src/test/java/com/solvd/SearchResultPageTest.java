@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-//@Listeners()
 public class SearchResultPageTest extends BaseTest {
 
     @DataProvider(name = "useTestProductData", parallel=true)
@@ -22,11 +21,7 @@ public class SearchResultPageTest extends BaseTest {
 
     @Test(testName = "#TC004", dataProvider = "useTestProductData", threadPoolSize = 2, invocationCount = 2)
     public void verifySearchFunctionality(String productName) {
-        HomePageBase homePage = new HomePage(getDriver());
-        homePage.open();
-        assertTrue(homePage.isPageOpened(), "Home page doesn't open");
-
-        HeaderBase header = homePage.getHeader();
+        HeaderBase header = getHeader();
 
         SearchResultPageBase searchResultPage = header.searchProduct(productName);
         boolean isProductFound = searchResultPage.isProductWithNamePresent(productName);

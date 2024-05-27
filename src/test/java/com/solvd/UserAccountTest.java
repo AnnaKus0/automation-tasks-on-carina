@@ -21,7 +21,7 @@ public class UserAccountTest extends BaseTest {
         };
     }
 
-    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp")
     public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password) {
         HeaderBase header = getHeader();
 
@@ -35,7 +35,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC002")
     public void verifyLoginProcess() {
         HeaderBase header = getHeader();
 
@@ -49,7 +49,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible");
     }
 
-    @Test(testName = "#TC003", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC003")
     public void verifyResetPassword() {
         HeaderBase header = getHeader();
 
