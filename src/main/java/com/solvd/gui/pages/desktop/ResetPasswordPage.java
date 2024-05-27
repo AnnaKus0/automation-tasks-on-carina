@@ -1,11 +1,14 @@
 package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.pages.common.LoginPageBase;
+import com.solvd.gui.pages.common.ProductPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ResetPasswordPageBase.class)
 public class ResetPasswordPage extends ResetPasswordPageBase {
 
     @FindBy(id = "recover-email")
@@ -26,7 +29,7 @@ public class ResetPasswordPage extends ResetPasswordPageBase {
     @Override
     public LoginPageBase clickSubmitButton() {
         submitButton.click();
-        return new LoginPage(driver);
+        return initPage(driver, LoginPageBase.class);
     }
 
 }

@@ -10,6 +10,6 @@ public abstract class CatalogPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract ProductPage clickOnProductByName(String productName);
+    public abstract ProductPageBase clickOnProductByName(String productName);
 
 }

@@ -3,6 +3,8 @@ package com.solvd.gui.pages.desktop;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CheckOutPageBase;
+import com.solvd.gui.pages.common.HomePageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.Keys;
@@ -10,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
     @FindBy(xpath = "//div[contains(@class, 'description')]//img")
@@ -76,7 +79,7 @@ public class CartPage extends CartPageBase {
     @Override
     public CheckOutPageBase clickCheckoutButton() {
         checkOutButton.click();
-        return new CheckOutPage(driver);
+        return initPage(driver, CheckOutPageBase.class);
     }
 
 

@@ -20,7 +20,6 @@ public abstract class BaseTest implements IAbstractTest {
 
     protected String password;
 
-    @BeforeMethod
     public void setup() {
         email = Configuration.getRequired("USER.email");
         password = Configuration.getRequired("USER.password");

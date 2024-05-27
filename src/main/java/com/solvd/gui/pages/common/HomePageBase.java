@@ -20,7 +20,7 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract ProductCard selectRandomProduct();
 
-    public abstract ProductPage clickSelectedProduct();
+    public abstract ProductPageBase clickSelectedProduct();
 
     public abstract String getSelectedProductName();
 

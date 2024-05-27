@@ -1,13 +1,16 @@
 package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.components.product_card.ProductCard;
+import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SearchResultPageBase;
 
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SearchResultPageBase.class)
 public class SearchResultPage extends SearchResultPageBase {
 
     @FindBy(xpath = "//div[@id='page-content']//section[contains(@class, 'product-grid')]")

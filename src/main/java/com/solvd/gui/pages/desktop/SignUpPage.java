@@ -1,10 +1,13 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SignUpPageBase.class)
 public class SignUpPage extends SignUpPageBase {
 
     @FindBy(id = "first_name")

@@ -1,7 +1,9 @@
 package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.SearchContext;
@@ -10,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
 public class ProductPage extends ProductPageBase {
 
     @FindBy(xpath = "//header")

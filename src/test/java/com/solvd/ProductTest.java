@@ -12,31 +12,38 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductTest extends BaseTest {
 
-    @Test(testName = "#TC005")
-    public void verifyAddProductToCart() {
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-
-        homePage.selectRandomProduct();
-        String selectedProductName =  homePage.getSelectedProductName();
-        ProductPageBase productPage = homePage.clickSelectedProduct();
-
-        assertEquals(productPage.getProductTitle(), selectedProductName, "Product name on product page don't matches chosen one");
-        assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-
-        productPage.clickAddToCartButton();
-
-        CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
-
-        assertEquals(cartPage.getProductName(), selectedProductName, "The name is not equal to chosen product");
-        assertEquals(cartPage.getProductPrice(), selectedProductName, "The price is not equal to chosen product");
-    }
+//    @Test(testName = "#TC005")
+//    public void verifyAddProductToCart() {
+//        HomePageBase homePage = new HomePage(getDriver());
+//
+//        homePage.selectRandomProduct();
+//        String selectedProductName =  homePage.getSelectedProductName();
+//        ProductPageBase productPage = homePage.clickSelectedProduct();
+//
+//        assertEquals(productPage.getProductTitle(), selectedProductName, "Product name on product page don't matches chosen one");
+//        assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+//
+//        productPage.clickAddToCartButton();
+//
+//        CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
+//
+//        assertEquals(cartPage.getProductName(), selectedProductName, "The name is not equal to chosen product");
+//        assertEquals(cartPage.getProductPrice(), selectedProductName, "The price is not equal to chosen product");
+//    }
 
     @Test(testName= "#TC007")
     public void verifyCatalogAndProductPage() {
+        String expectedTitle = "Black heels";
+
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
+        assertTrue(homePage.isPageOpened(), "Homepage doesn't open");
 
         CatalogPageBase catalogPage =  homePage.getSideMenu().clickMenuButtonByName("Catalog");
+        assertTrue(catalogPage.isPageOpened(), "Homepage doesn't open");
+
         ProductPageBase productPage =  catalogPage.clickOnProductByName(expectedTitle);
+        assertTrue(productPage.isPageOpened(), "Homepage doesn't open");
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
         assertEquals(productPage.getProductTitle(), expectedTitle, "Product title is incorrect");

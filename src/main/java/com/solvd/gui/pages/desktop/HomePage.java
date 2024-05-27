@@ -4,7 +4,9 @@ import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.HomePageBase;
+import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.utils.config.Configuration;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HomePageBase.class)
 public class HomePage extends HomePageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
@@ -21,7 +24,7 @@ public class HomePage extends HomePageBase {
     @FindBy(xpath = "//header")
     private Header header;
 
-    @FindBy(xpath = "//sidebar")
+    @FindBy(id = "sidebar")
     private SideMenu sideMenu;
 
     @FindBy(xpath = "//section[@class='product-grid']//div[contains(@class, 'columns')]")
@@ -29,7 +32,8 @@ public class HomePage extends HomePageBase {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        setPageURL(Configuration.getRequired("URL.base"));
+        logger.info(Configuration.getRequired("URL.base"));
+        setPageAbsoluteURL(Configuration.getRequired("URL.base"));
     }
 
     @Override
@@ -64,10 +68,10 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public ProductPage clickSelectedProduct() {
+    public ProductPageBase clickSelectedProduct() {
         ProductCard product = selectRandomProduct();
         product.clickOnProduct();
-        return new ProductPage(driver);
+        return initPage(driver, ProductPageBase.class);
     }
 
     @Override

@@ -1,11 +1,14 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
 
     @FindBy(xpath = "//div[contains(@id, 'login_email')]//input[@type='email']")
@@ -33,7 +36,7 @@ public class LoginPage extends LoginPageBase {
     @Override
     public ResetPasswordPageBase clickForgotPasswordLink() {
         forgotPasswordLink.click();
-        return new ResetPasswordPage(driver);
+        return initPage(driver, ResetPasswordPageBase.class);
     }
 
     @Override

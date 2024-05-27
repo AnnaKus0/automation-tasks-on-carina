@@ -1,11 +1,14 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.common.CheckOutPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.model.Client;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CheckOutPageBase.class)
 public class CheckOutPage extends CheckOutPageBase {
 
     @FindBy(id = "TextField0")

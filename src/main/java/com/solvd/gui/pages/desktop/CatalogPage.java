@@ -1,6 +1,9 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CatalogPageBase;
+import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Optional;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CatalogPageBase.class)
 public class CatalogPage extends CatalogPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(CatalogPage.class);
@@ -22,7 +26,7 @@ public class CatalogPage extends CatalogPageBase {
     }
 
     @Override
-    public ProductPage clickOnProductByName(String productName) {
+    public ProductPageBase clickOnProductByName(String productName) {
         Optional<ExtendedWebElement> productElement = productList.stream()
                 .filter(product -> {
                     String textContent = product.getText();
@@ -32,7 +36,7 @@ public class CatalogPage extends CatalogPageBase {
 
         if (productElement.isPresent()) {
             productElement.get().click();
-            return new ProductPage(driver);
+            return initPage(driver, ProductPageBase.class);
         } else {
             logger.error("Product with name: " + productName + " not found");
             return null;

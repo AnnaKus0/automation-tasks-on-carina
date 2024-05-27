@@ -1,5 +1,6 @@
 package com.solvd.gui.components.sidemenu;
 
+import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.desktop.CatalogPage;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
