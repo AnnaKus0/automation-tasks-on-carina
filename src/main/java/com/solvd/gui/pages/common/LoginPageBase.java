@@ -9,9 +9,7 @@ public abstract class LoginPageBase extends AbstractPage {
         super(driver);
     }
 
-    public abstract void typeEmail(String email);
-
-    public abstract void typePassword(String password);
+    public abstract void fillLogInForm(String email, String password);
 
     public abstract ResetPasswordPageBase clickForgotPasswordLink();
 

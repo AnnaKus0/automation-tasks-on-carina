@@ -4,12 +4,16 @@ import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage extends ProductPageBase {
+
+    @FindBy(xpath = "//header")
+    private Header header;
 
     @FindBy(xpath = "//section[@id='images']//img[@id='feature-image']")
     private ExtendedWebElement productImage;
@@ -29,7 +33,7 @@ public class ProductPage extends ProductPageBase {
 
     @Override
     public Header getHeader() {
-        return new Header(driver);
+        return header;
     }
 
     @Override

@@ -11,7 +11,6 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-
 public class Header extends HeaderBase {
 
     @FindBy(xpath = "//input[@id='search-field']")
@@ -34,6 +33,10 @@ public class Header extends HeaderBase {
 
     public Header(WebDriver driver) {
         super(driver);
+    }
+
+    public Header(WebDriver driver, SearchContext searchContext) {
+        super(driver, searchContext);
     }
 
     public SearchResultPage searchProduct(String productName){

@@ -6,7 +6,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductCard extends AbstractUIObject {
+public class ProductCard extends ProductCardBase{
 
     @FindBy(xpath = "//div[contains(@class, 'product-card')]//img")
     private ExtendedWebElement productImage;
@@ -17,7 +17,11 @@ public class ProductCard extends AbstractUIObject {
     @FindBy(xpath = "//div[contains(@class, 'product-card')]//h4")
     private ExtendedWebElement productPrice;
 
-    protected ProductCard(WebDriver driver, SearchContext searchContext) {
+    public ProductCard(WebDriver driver) {
+        super(driver);
+    }
+
+    public ProductCard(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 

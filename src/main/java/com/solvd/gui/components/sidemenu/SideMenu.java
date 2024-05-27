@@ -19,7 +19,7 @@ public class SideMenu extends SideMenuBase {
     @FindBy(xpath = "//ul[@id='main-menu']/li")
     private List<ExtendedWebElement> sidebarButtons;
 
-    protected SideMenu(WebDriver driver, SearchContext searchContext) {
+    public SideMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 

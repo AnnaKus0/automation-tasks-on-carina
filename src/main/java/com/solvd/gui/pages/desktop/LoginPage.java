@@ -25,12 +25,8 @@ public class LoginPage extends LoginPageBase {
     }
 
     @Override
-    public void typeEmail(String email) {
+    public void fillLogInForm(String email, String password) {
         emailInput.type(email);
-    }
-
-    @Override
-    public void typePassword(String password) {
         passwordInput.type(password);
     }
 
