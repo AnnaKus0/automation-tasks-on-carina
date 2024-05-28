@@ -21,7 +21,7 @@ public class SearchResultPageTest extends BaseTest {
 
     @Test(testName = "#TC004", dataProvider = "useTestProductData", threadPoolSize = 2, invocationCount = 2)
     public void verifySearchFunctionality(String productName) {
-        HeaderBase header = getHeader();
+        HeaderBase header = getHomePage().getHeader();
 
         SearchResultPageBase searchResultPage = header.searchProduct(productName);
         boolean isProductFound = searchResultPage.isProductWithNamePresent(productName);

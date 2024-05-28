@@ -2,6 +2,8 @@ package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.common.CheckOutPageBase;
+import com.solvd.gui.pages.common.HomePageBase;
+import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.model.Client;
@@ -67,10 +69,9 @@ public class CheckOutPage extends CheckOutPageBase {
     }
 
     @Override
-    public HomePage clickPayNowButton() {
+    public HomePageBase clickPayNowButton() {
         payNowButton.click();
-        return new HomePage(driver);
+        return initPage(getDriver(), HomePageBase.class);
     }
-
 
 }

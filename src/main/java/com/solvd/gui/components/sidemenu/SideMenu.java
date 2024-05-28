@@ -20,9 +20,14 @@ public class SideMenu extends SideMenuBase {
     @FindBy(xpath = "//ul[@id='main-menu']//li")
     private List<ExtendedWebElement> sidebarButtons;
 
+    public SideMenu(WebDriver driver) {
+        super(driver);
+    }
+
     public SideMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
+
 
     public CatalogPage clickMenuButtonByName(String buttonName) {
         sidebarButtons.stream()

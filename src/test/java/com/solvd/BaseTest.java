@@ -37,10 +37,7 @@ public abstract class BaseTest implements IAbstractTest {
         email = Configuration.getRequired("USER.email");
         password = Configuration.getRequired("USER.password");
 
-        logger.info(email);
-        logger.info(password);
-        logger.info(browser);
-
+        logger.info("Browser: " + browser);
         R.CONFIG.put("capabilities.browserName", browser);
     }
 
@@ -48,7 +45,6 @@ public abstract class BaseTest implements IAbstractTest {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isPageOpened(), "Homepage doesn't open");
-
         return homePage;
     }
 }

@@ -12,13 +12,12 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CatalogPageBase.class)
 public class CatalogPage extends CatalogPageBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(CatalogPage.class);
-
-    @FindBy(xpath = "//section[contains(@class, 'product-grid')]//div[contains(@class, 'columns')]/a")
+    @FindBy(xpath = "//section[@class='product-grid twelve columns alpha omega']/div[contains(@class, 'four columns')]")
     private List<ExtendedWebElement> productList;
 
     public CatalogPage(WebDriver driver) {
@@ -26,22 +25,26 @@ public class CatalogPage extends CatalogPageBase {
     }
 
     @Override
-    public ProductPageBase clickOnProductByName(String productName) {
-        Optional<ExtendedWebElement> productElement = productList.stream()
-                .filter(product -> {
-                    String textContent = product.getText();
-                    return textContent != null && textContent.toLowerCase().contains(productName.toLowerCase());
-                })
-                .findFirst();
-
-        if (productElement.isPresent()) {
-            productElement.get().click();
-            return initPage(driver, ProductPageBase.class);
-        } else {
-            logger.error("Product with name: " + productName + " not found");
-            return null;
-        }
+    public boolean isProductListPresent() {
+        return !productList.isEmpty();
     }
 
+    @Override
+    public ProductPageBase clickRandomProduct() {
+        if (isProductListPresent()) {
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(productList.size());
+
+            ExtendedWebElement randomProduct = productList.stream()
+                    .skip(randomIndex)
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException("Unable to find a random product"));
+
+            randomProduct.click();
+            return initPage(getDriver(), ProductPageBase.class);
+        } else {
+            throw new IllegalStateException("Product list is empty");
+        }
+    }
 
 }

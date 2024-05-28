@@ -16,6 +16,6 @@ public abstract class CheckOutPageBase extends AbstractPage {
 
     public abstract void fillCheckOutForm(Client client);
 
-    public abstract HomePage clickPayNowButton();
+    public abstract HomePageBase clickPayNowButton();
 
 }

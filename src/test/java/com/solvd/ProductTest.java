@@ -1,5 +1,6 @@
 package com.solvd;
 
+import com.solvd.constans.SidebarTitle;
 import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.pages.common.*;
 import com.solvd.gui.pages.desktop.HomePage;
@@ -12,48 +13,44 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductTest extends BaseTest {
 
-//    @Test(testName = "#TC005")
-//    public void verifyAddProductToCart() {
-//        HomePageBase homePage = new HomePage(getDriver());
-//
-//        homePage.selectRandomProduct();
-//        String selectedProductName =  homePage.getSelectedProductName();
-//        ProductPageBase productPage = homePage.clickSelectedProduct();
-//
-//        assertEquals(productPage.getProductTitle(), selectedProductName, "Product name on product page don't matches chosen one");
-//        assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-//
-//        productPage.clickAddToCartButton();
-//
-//        CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
-//
-//        assertEquals(cartPage.getProductName(), selectedProductName, "The name is not equal to chosen product");
-//        assertEquals(cartPage.getProductPrice(), selectedProductName, "The price is not equal to chosen product");
-//    }
+    @Test(testName = "#TC005", threadPoolSize = 2, invocationCount = 2)
+    public void verifyAddProductToCart() {
+        HomePageBase homePage = getHomePage();
+        assertTrue(homePage.isProductListPresent(), "Product section is empty");
 
-    @Test(testName= "#TC007")
+        ProductPageBase productPage =  homePage.clickRandomProduct();
+        assertTrue(productPage.isPageOpened(), "Catalog page doesn't open");
+        assertEquals(productPage.getProductTitle(), "Product name on product page don't matches chosen one");
+        assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+
+        productPage.clickAddToCartButton();
+
+        CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
+
+        assertEquals(cartPage.getProductName(), "The name is not equal to chosen product");
+        assertEquals(cartPage.getProductPrice(), "The price is not equal to chosen product");
+    }
+
+    @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
     public void verifyCatalogAndProductPage() {
-        String expectedTitle = "Black heels";
+        HomePageBase homePage = getHomePage();
 
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.open();
-        assertTrue(homePage.isPageOpened(), "Homepage doesn't open");
+        CatalogPageBase catalogPage =  homePage.getSideMenu().clickMenuButtonByName(String.valueOf(SidebarTitle.CATALOG));
+        assertTrue(catalogPage.isPageOpened(), "Catalog page doesn't open");
+        assertTrue(catalogPage.isProductListPresent(), "Product section is empty");
 
-        CatalogPageBase catalogPage =  homePage.getSideMenu().clickMenuButtonByName("Catalog");
-        assertTrue(catalogPage.isPageOpened(), "Homepage doesn't open");
-
-        ProductPageBase productPage =  catalogPage.clickOnProductByName(expectedTitle);
+        ProductPageBase productPage =  catalogPage.clickRandomProduct();
         assertTrue(productPage.isPageOpened(), "Homepage doesn't open");
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-        assertEquals(productPage.getProductTitle(), expectedTitle, "Product title is incorrect");
+        assertEquals(productPage.getProductTitle(), "Product title is incorrect");
     }
 
-    @Test(testName = "#TC008", dataProvider = "useTestDataProduct", threadPoolSize = 2, invocationCount = 2)
-    public void test_ClickProduct_AddToCart_CheckQuantityInput(String expectedTitle, String expectedPrice) {
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+    @Test(testName = "#TC008", threadPoolSize = 2, invocationCount = 2)
+    public void verifyNegativeValuesNotAllowedInQuantityField() {
+        HomePageBase homePage = getHomePage();
 
-        ProductPageBase productPage = homePage.clickOnProductByName(expectedTitle);
+        ProductPageBase productPage = homePage.clickRandomProduct();
         productPage.clickAddToCartButton();
 
         CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
@@ -62,19 +59,22 @@ public class ProductTest extends BaseTest {
         assertEquals(cartPage.getInputQuantity(), "1", "The quantity input don't change from negative number to positive");
     }
 
-    @Test(testName = "#TC006", dataProvider = "useTestDataProduct", threadPoolSize = 2, invocationCount = 2)
-    public void test_AddToCart_CheckOut(String expectedTitle, String expectedPrice) {
+    @Test(testName = "#TC006", threadPoolSize = 2, invocationCount = 2)
+    public void verifyCheckoutProcess() {
         ClientService clientService = new ClientService();
 
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        ProductPageBase productPage = homePage.clickOnProductByName(expectedTitle);
+        HomePageBase homePage = getHomePage();
+        ProductPageBase productPage = homePage.clickRandomProduct();
         productPage.clickAddToCartButton();
 
         CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
         CheckOutPageBase checkOutPage = cartPage.clickCheckoutButton();
+
         checkOutPage.fillCheckOutForm(clientService.createClient());
         checkOutPage.clickPayNowButton();
+
         assertEquals(homePage.isPageOpened(), "User should be redirected to the homepage after payment");
+        assertEquals(homePage.isAnyElementPresent(), "Elements on HomePage should be visible");
     }
 
 }

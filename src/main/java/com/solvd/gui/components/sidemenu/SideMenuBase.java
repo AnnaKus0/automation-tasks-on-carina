@@ -8,6 +8,10 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class SideMenuBase extends AbstractUIObject {
 
+    protected SideMenuBase(WebDriver driver) {
+        super(driver);
+    }
+
     protected SideMenuBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
