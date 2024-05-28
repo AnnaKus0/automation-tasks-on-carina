@@ -40,7 +40,7 @@ public class SignUpPage extends SignUpPageBase {
     }
 
     @Override
-    public void fillSignUpForm(String firstName, String lastName, String email, String password) throws InterruptedException {
+    public void fillSignUpForm(String firstName, String lastName, String email, String password){
 //        METHOD BODY FROM SELENIUM TASK:
 //        waitForElementToBeVisible(element);
 //        logger.info("Sent keys to element: " + element.getText());
