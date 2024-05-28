@@ -29,8 +29,14 @@ public class LoginPage extends LoginPageBase {
 
     @Override
     public void fillLogInForm(String email, String password) {
-        emailInput.type(email);
-        passwordInput.type(password);
+//        METHOD BODY FROM SELENIUM TASK:
+//        waitForElementToBeVisible(element);
+//        logger.info("Sent keys to element: " + element.getText());
+//        element.click();
+//        element.sendKeys(keys);
+        emailInput.type(email, 100);
+        passwordInput.type(password, 100);
+
     }
 
     @Override

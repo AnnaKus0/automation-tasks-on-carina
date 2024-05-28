@@ -57,7 +57,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(loginPage.isPageOpened(), "Login page doesn't open");
 
         ResetPasswordPageBase resetPasswordPage =  loginPage.clickForgotPasswordLink();
-        assertTrue(resetPasswordPage.isPageOpened(), "Login page doesn't open");
+        assertTrue(resetPasswordPage.isPageOpened(), " Reset password page doesn't open");
 
         resetPasswordPage.typeEmail(email);
         resetPasswordPage.clickSubmitButton();
