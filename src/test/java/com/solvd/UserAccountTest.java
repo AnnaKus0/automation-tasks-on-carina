@@ -4,6 +4,8 @@ import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.solvd.gui.pages.desktop.LoginPage;
+import com.solvd.gui.pages.desktop.ResetPasswordPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -54,6 +56,7 @@ public class UserAccountTest extends BaseTest {
         HeaderBase header = getHomePage().getHeader();
 
         LoginPageBase loginPage = header.clickLoginLink();
+        assertTrue(loginPage.allElementsPresent());
         assertTrue(loginPage.isPageOpened(), "Login page doesn't open");
 
         ResetPasswordPageBase resetPasswordPage =  loginPage.clickForgotPasswordLink();

@@ -1,5 +1,9 @@
 package com.solvd.gui.components.header;
 
+import com.solvd.gui.pages.common.CartPageBase;
+import com.solvd.gui.pages.common.LoginPageBase;
+import com.solvd.gui.pages.common.SearchResultPageBase;
+import com.solvd.gui.pages.common.SignUpPageBase;
 import com.solvd.gui.pages.desktop.CartPage;
 import com.solvd.gui.pages.desktop.LoginPage;
 import com.solvd.gui.pages.desktop.SearchResultPage;
@@ -18,13 +22,13 @@ public abstract class HeaderBase extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public abstract SearchResultPage searchProduct(String productName);
+    public abstract SearchResultPageBase searchProduct(String productName);
 
-    public abstract LoginPage clickLoginLink();
+    public abstract LoginPageBase clickLoginLink();
 
-    public abstract SignUpPage clickSignUpLink();
+    public abstract SignUpPageBase clickSignUpLink();
 
-    public abstract CartPage clickCheckOutLink();
+    public abstract CartPageBase clickCheckOutLink();
 
     public abstract boolean isMyAccountLinkVisible();
 

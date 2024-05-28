@@ -1,9 +1,14 @@
 package com.solvd.gui.components.header;
 
+import com.solvd.gui.pages.common.CartPageBase;
+import com.solvd.gui.pages.common.LoginPageBase;
+import com.solvd.gui.pages.common.ResetPasswordPageBase;
+import com.solvd.gui.pages.common.SignUpPageBase;
 import com.solvd.gui.pages.desktop.CartPage;
 import com.solvd.gui.pages.desktop.LoginPage;
 import com.solvd.gui.pages.desktop.SearchResultPage;
 import com.solvd.gui.pages.desktop.SignUpPage;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.Keys;
@@ -11,7 +16,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class Header extends HeaderBase {
+public class Header extends HeaderBase implements ICustomTypePageFactory {
 
     @FindBy(xpath = "//input[@id='search-field']")
     private ExtendedWebElement searchInput;
@@ -46,19 +51,19 @@ public class Header extends HeaderBase {
         return new SearchResultPage(driver);
     }
 
-    public LoginPage clickLoginLink() {
+    public LoginPageBase clickLoginLink() {
         logInLink.click();
-        return new LoginPage(driver);
+        return initPage(driver, LoginPageBase.class);
     }
 
-    public SignUpPage clickSignUpLink() {
+    public SignUpPageBase clickSignUpLink() {
         signupLink.click();
-        return new SignUpPage(driver);
+        return initPage(driver, SignUpPageBase.class);
     }
 
-    public CartPage clickCheckOutLink() {
+    public CartPageBase clickCheckOutLink() {
         checkOutLink.click();
-        return new CartPage(driver);
+        return initPage(driver, CartPageBase.class);
     }
 
     public boolean isMyAccountLinkVisible() {

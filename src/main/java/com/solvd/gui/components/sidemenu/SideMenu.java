@@ -1,7 +1,9 @@
 package com.solvd.gui.components.sidemenu;
 
+import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.desktop.CatalogPage;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
@@ -13,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Optional;
 
-public class SideMenu extends SideMenuBase {
+public class SideMenu extends SideMenuBase implements ICustomTypePageFactory {
 
     private static final Logger logger = LoggerFactory.getLogger(SideMenu.class);
 
@@ -28,13 +30,12 @@ public class SideMenu extends SideMenuBase {
         super(driver, searchContext);
     }
 
-
-    public CatalogPage clickMenuButtonByName(String buttonName) {
+    public CatalogPageBase clickMenuButtonByName(String buttonName) {
         sidebarButtons.stream()
                 .filter(button -> button.getText().equalsIgnoreCase(buttonName))
                 .findFirst()
                 .ifPresent(ExtendedWebElement::click);
 
-        return new CatalogPage(driver);
+        return initPage(driver, CatalogPageBase.class);
     }
 }

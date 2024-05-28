@@ -46,17 +46,9 @@ public class SignUpPage extends SignUpPageBase {
 //        logger.info("Sent keys to element: " + element.getText());
 //        element.click();
 //        element.sendKeys(keys);
-
-        firstNameInput.clickIfPresent();
         firstNameInput.type(firstName);
-
-        lastNameInput.clickIfPresent();
         lastNameInput.type(lastName);
-
-        emailAddressInput.clickIfPresent();
         emailAddressInput.type(email);
-
-        passwordInput.clickIfPresent();
         passwordInput.type(password);
     }
 

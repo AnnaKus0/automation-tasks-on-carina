@@ -16,5 +16,5 @@ public abstract class SideMenuBase extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public abstract CatalogPage clickMenuButtonByName(String buttonName);
+    public abstract CatalogPageBase clickMenuButtonByName(String buttonName);
 }
