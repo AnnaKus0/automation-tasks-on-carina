@@ -49,7 +49,7 @@ public class CheckOutPage extends CheckOutPageBase {
     @FindBy(id  = "checkout-pay-button")
     private ExtendedWebElement payNowButton;
 
-    protected CheckOutPage(WebDriver driver) {
+    public CheckOutPage(WebDriver driver) {
         super(driver);
     }
 

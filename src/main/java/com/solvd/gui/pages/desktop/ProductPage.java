@@ -30,7 +30,7 @@ public class ProductPage extends ProductPageBase {
     @FindBy(xpath = "//section[@id='buy']//input[@id='add' and @type='submit']")
     private ExtendedWebElement addToCartButton;
 
-    protected ProductPage(WebDriver driver) {
+    public ProductPage(WebDriver driver) {
         super(driver);
     }
 

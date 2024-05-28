@@ -17,7 +17,7 @@ public class ResetPasswordPage extends ResetPasswordPageBase {
     @FindBy(xpath = "//input[@type='submit']")
     private ExtendedWebElement submitButton;
 
-    protected ResetPasswordPage(WebDriver driver) {
+    public ResetPasswordPage(WebDriver driver) {
         super(driver);
     }
 
