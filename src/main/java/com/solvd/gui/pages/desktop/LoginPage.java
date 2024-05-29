@@ -30,22 +30,14 @@ public class LoginPage extends LoginPageBase {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(emailInput);
         logger.info("LoginPage loaded");
     }
 
     @Override
     public void fillLogInForm(String email, String password) {
-//        METHOD BODY FROM SELENIUM TASK:
-//        waitForElementToBeVisible(element);
-//        logger.info("Sent keys to element: " + element.getText());
-//        element.click();
-//        element.sendKeys(keys);
-
-        waitUntil(ExpectedConditions.visibilityOfElementLocated(emailInput.getBy()), 30);
-
         emailInput.type(email);
         passwordInput.type(password);
-
     }
 
     @Override

@@ -44,24 +44,33 @@ public class SignUpPage extends SignUpPageBase {
 
     @Override
     public void fillSignUpForm(String firstName, String lastName, String email, String password){
-        //::before or ::after pseudo-elements
+        //::before ::after pseudo-elements
 
-        waitUntil(ExpectedConditions.visibilityOfElementLocated(firstNameInput.getBy()), 30);
+        waitForElementToAppear(firstNameInput.getBy(), 10);
         firstNameInput.click();
         firstNameInput.type(firstName);
 
-        waitUntil(ExpectedConditions.visibilityOfElementLocated(lastNameInput.getBy()), 30);
+        waitForElementToAppear(lastNameInput.getBy(), 10);
         lastNameInput.click();
         lastNameInput.type(lastName);
 
-        waitUntil(ExpectedConditions.visibilityOfElementLocated(emailAddressInput.getBy()), 30);
+        waitForElementToAppear(emailAddressInput.getBy(), 10);
         emailAddressInput.click();
         emailAddressInput.type(email);
 
-        waitUntil(ExpectedConditions.visibilityOfElementLocated(passwordInput.getBy()), 30);
+        waitForElementToAppear(passwordInput.getBy(), 10);
         passwordInput.click();
         passwordInput.type(password);
     }
+
+    public void waitForElementToAppear(By locator, int timeout) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until((WebDriver driver) -> {
+            WebElement element = driver.findElement(locator);
+            return element != null && element.isDisplayed();
+        });
+    }
+
 
     @Override
     public void clickCreateButton() {
