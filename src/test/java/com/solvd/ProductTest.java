@@ -21,7 +21,7 @@ public class ProductTest extends BaseTest {
 
         homePage.selectRandomProduct();
         String productName = homePage.getSelectedProductName();
-        ProductPageBase productPage =  homePage.clickSelectedProduct();
+        ProductPageBase productPage = homePage.clickSelectedProduct();
 
         assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
         assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches chosen one");
@@ -46,7 +46,8 @@ public class ProductTest extends BaseTest {
         assertTrue(catalogPage.isProductListPresent(), "Product section is empty");
 
         catalogPage.selectRandomProduct();
-        ProductPageBase productPage =  catalogPage.clickSelectedProduct();
+//        String productName = catalogPage.getSelectedProductName();
+        ProductPageBase productPage = catalogPage.clickSelectedProduct();
         assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
@@ -59,7 +60,7 @@ public class ProductTest extends BaseTest {
 
         homePage.selectRandomProduct();
 //        String productName = homePage.getSelectedProductName();
-        ProductPageBase productPage =  homePage.clickSelectedProduct();
+        ProductPageBase productPage = homePage.clickSelectedProduct();
 
         assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
         productPage.clickAddToCartButton();
@@ -79,7 +80,7 @@ public class ProductTest extends BaseTest {
 
         homePage.selectRandomProduct();
 //        String productName = homePage.getSelectedProductName();
-        ProductPageBase productPage =  homePage.clickSelectedProduct();
+        ProductPageBase productPage = homePage.clickSelectedProduct();
         assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
 
         productPage.clickAddToCartButton();

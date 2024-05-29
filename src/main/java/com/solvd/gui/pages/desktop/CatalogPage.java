@@ -20,6 +20,8 @@ public class CatalogPage extends CatalogPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(CatalogPage.class);
 
+    private ExtendedWebElement selectedProduct;
+
     @FindBy(xpath = "//section[@class='product-grid twelve columns alpha omega']/div[contains(@class, 'four columns')]")
     private List<ExtendedWebElement> productList;
 
@@ -45,6 +47,7 @@ public class CatalogPage extends CatalogPageBase {
                     .findFirst()
                     .orElseThrow(() -> new IllegalStateException("Unable to find a random product"));
 
+            this.selectedProduct = randomProduct;
             return randomProduct;
         } else {
             throw new IllegalStateException("Product list is empty");
@@ -53,14 +56,12 @@ public class CatalogPage extends CatalogPageBase {
 
     @Override
     public String getSelectedProductName() {
-        ExtendedWebElement product = selectRandomProduct();
-        return product.getName();
+        return selectedProduct.getName();
     }
 
     @Override
     public ProductPageBase clickSelectedProduct() {
-        ExtendedWebElement product = selectRandomProduct();
-        product.click();
+        selectedProduct.click();
         return initPage(getDriver(), ProductPageBase.class);
     }
 

@@ -24,6 +24,8 @@ public class HomePage extends HomePageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
+    private ExtendedWebElement selectedProduct;
+
     @FindBy(xpath = "//header")
     private Header header;
 
@@ -66,6 +68,7 @@ public class HomePage extends HomePageBase {
                     .findFirst()
                     .orElseThrow(() -> new IllegalStateException("Unable to find a random product"));
 
+            this.selectedProduct = randomProduct;
             return randomProduct;
         } else {
             throw new IllegalStateException("Product list is empty");
@@ -74,14 +77,12 @@ public class HomePage extends HomePageBase {
 
     @Override
     public String getSelectedProductName() {
-        ExtendedWebElement product = selectRandomProduct();
-        return product.getName();
+        return selectedProduct.getName();
     }
 
     @Override
     public ProductPageBase clickSelectedProduct() {
-        ExtendedWebElement product = selectRandomProduct();
-        product.click();
+        selectedProduct.click();
         return initPage(getDriver(), ProductPageBase.class);
     }
 
