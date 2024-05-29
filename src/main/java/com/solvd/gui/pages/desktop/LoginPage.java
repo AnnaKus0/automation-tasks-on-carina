@@ -7,6 +7,7 @@ import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,6 +30,7 @@ public class LoginPage extends LoginPageBase {
 
     public LoginPage(WebDriver driver) {
         super(driver);
+        logger.info("LoginPage loaded");
     }
 
     @Override
@@ -38,6 +40,9 @@ public class LoginPage extends LoginPageBase {
 //        logger.info("Sent keys to element: " + element.getText());
 //        element.click();
 //        element.sendKeys(keys);
+
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(emailInput.getBy()), 30);
+
         emailInput.type(email);
         passwordInput.type(password);
 

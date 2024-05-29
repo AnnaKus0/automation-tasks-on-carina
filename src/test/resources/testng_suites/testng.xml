@@ -3,7 +3,7 @@
     <test name="TestsChrome" parallel="classes" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.solvd.ProductTest"/>
+            <class name="com.solvd.SearchResultPageTest"/>
         </classes>
     </test>
     <test name="TestsFirefox" parallel="classes" thread-count="2">
@@ -13,7 +13,6 @@
         </classes>
     </test>
 </suite>
-
 
 
 

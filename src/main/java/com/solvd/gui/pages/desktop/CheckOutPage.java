@@ -9,9 +9,13 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.model.Client;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CheckOutPageBase.class)
 public class CheckOutPage extends CheckOutPageBase {
+
+    private static final Logger logger = LoggerFactory.getLogger(CheckOutPage.class);
 
     @FindBy(id = "TextField0")
     private ExtendedWebElement firstNameInput;
@@ -51,6 +55,7 @@ public class CheckOutPage extends CheckOutPageBase {
 
     public CheckOutPage(WebDriver driver) {
         super(driver);
+        logger.info("CheckOutPage loaded");
     }
 
     @Override

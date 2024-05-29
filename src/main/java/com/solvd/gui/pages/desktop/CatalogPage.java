@@ -17,11 +17,14 @@ import java.util.Random;
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CatalogPageBase.class)
 public class CatalogPage extends CatalogPageBase {
 
+    private static final Logger logger = LoggerFactory.getLogger(CatalogPage.class);
+
     @FindBy(xpath = "//section[@class='product-grid twelve columns alpha omega']/div[contains(@class, 'four columns')]")
     private List<ExtendedWebElement> productList;
 
     public CatalogPage(WebDriver driver) {
         super(driver);
+        logger.info("CatalogPage loaded");
     }
 
     @Override

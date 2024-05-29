@@ -16,7 +16,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class Header extends HeaderBase implements ICustomTypePageFactory {
+public class Header extends HeaderBase {
 
     @FindBy(xpath = "//input[@id='search-field']")
     private ExtendedWebElement searchInput;

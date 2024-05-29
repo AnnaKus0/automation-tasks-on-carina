@@ -4,6 +4,7 @@ import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,18 +38,28 @@ public class SignUpPage extends SignUpPageBase {
 
     public SignUpPage(WebDriver driver) {
         super(driver);
+        setUiLoadedMarker(firstNameInput);
+        logger.info("SignUpPage loaded");
     }
 
     @Override
     public void fillSignUpForm(String firstName, String lastName, String email, String password){
-//        METHOD BODY FROM SELENIUM TASK:
-//        waitForElementToBeVisible(element);
-//        logger.info("Sent keys to element: " + element.getText());
-//        element.click();
-//        element.sendKeys(keys);
+        //::before or ::after pseudo-elements
+
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(firstNameInput.getBy()), 30);
+        firstNameInput.click();
         firstNameInput.type(firstName);
+
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(lastNameInput.getBy()), 30);
+        lastNameInput.click();
         lastNameInput.type(lastName);
+
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(emailAddressInput.getBy()), 30);
+        emailAddressInput.click();
         emailAddressInput.type(email);
+
+        waitUntil(ExpectedConditions.visibilityOfElementLocated(passwordInput.getBy()), 30);
+        passwordInput.click();
         passwordInput.type(password);
     }
 

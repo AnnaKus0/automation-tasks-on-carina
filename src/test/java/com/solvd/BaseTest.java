@@ -47,4 +47,11 @@ public abstract class BaseTest implements IAbstractTest {
         assertTrue(homePage.isPageOpened(), "Homepage doesn't open");
         return homePage;
     }
+
+    @AfterClass
+    public void tearDown() {
+        if (getDriver() != null) {
+            getDriver().quit();
+        }
+    }
 }

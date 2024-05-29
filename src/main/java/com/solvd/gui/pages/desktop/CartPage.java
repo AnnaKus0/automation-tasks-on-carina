@@ -11,9 +11,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
+
+    private static final Logger logger = LoggerFactory.getLogger(CartPage.class);
 
     @FindBy(xpath = "//div[contains(@class, 'description')]//img")
     private ExtendedWebElement productImage;
@@ -38,6 +42,7 @@ public class CartPage extends CartPageBase {
 
     public CartPage(WebDriver driver) {
         super(driver);
+        logger.info("CartPage loaded");
     }
 
     @Override

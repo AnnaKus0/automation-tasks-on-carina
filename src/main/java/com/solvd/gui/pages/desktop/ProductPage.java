@@ -11,9 +11,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
 public class ProductPage extends ProductPageBase {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProductPage.class);
 
     @FindBy(xpath = "//header")
     private Header header;
@@ -32,6 +36,7 @@ public class ProductPage extends ProductPageBase {
 
     public ProductPage(WebDriver driver) {
         super(driver);
+        logger.info("ProductPage loaded");
     }
 
     @Override
