@@ -35,6 +35,7 @@ public class HomePage extends HomePageBase {
 
     public HomePage(WebDriver driver) {
         super(driver);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(Configuration.getRequired("URL.base"));
         logger.info("HomePage loaded");
     }
@@ -55,7 +56,7 @@ public class HomePage extends HomePageBase {
     }
 
     @Override
-    public ProductPageBase clickRandomProduct() {
+    public ExtendedWebElement selectRandomProduct() {
         if (isProductListPresent()) {
             Random rand = new Random();
             int randomIndex = rand.nextInt(productList.size());
@@ -65,11 +66,23 @@ public class HomePage extends HomePageBase {
                     .findFirst()
                     .orElseThrow(() -> new IllegalStateException("Unable to find a random product"));
 
-            randomProduct.click();
-            return initPage(getDriver(), ProductPageBase.class);
+            return randomProduct;
         } else {
             throw new IllegalStateException("Product list is empty");
         }
+    }
+
+    @Override
+    public String getSelectedProductName() {
+        ExtendedWebElement product = selectRandomProduct();
+        return product.getName();
+    }
+
+    @Override
+    public ProductPageBase clickSelectedProduct() {
+        ExtendedWebElement product = selectRandomProduct();
+        product.click();
+        return initPage(getDriver(), ProductPageBase.class);
     }
 
 }

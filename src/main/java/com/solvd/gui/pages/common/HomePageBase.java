@@ -23,5 +23,9 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract boolean isProductListPresent();
 
-    public abstract ProductPageBase clickRandomProduct();
+    public abstract ExtendedWebElement selectRandomProduct();
+
+    public abstract String getSelectedProductName();
+
+    public abstract ProductPageBase clickSelectedProduct();
 }
