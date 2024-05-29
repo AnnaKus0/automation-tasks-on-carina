@@ -36,7 +36,7 @@ public class ProductTest extends BaseTest {
 //        assertEquals(cartPage.getProductPrice(), "The price is not equal to chosen product");
     }
 
-/*    @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
     public void verifyCatalogAndProductPage() {
         HomePageBase homePage = getHomePage();
 
@@ -49,9 +49,9 @@ public class ProductTest extends BaseTest {
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
 //        assertEquals(productPage.getProductTitle(), "Product title is incorrect");
-    }*/
+    }
 
-   /* @Test(testName = "#TC008", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC008", threadPoolSize = 2, invocationCount = 2)
     public void verifyNegativeValuesNotAllowedInQuantityField() {
         HomePageBase homePage = getHomePage();
 
@@ -62,9 +62,9 @@ public class ProductTest extends BaseTest {
         cartPage.setInputQuantity("-1");
 
         assertEquals(cartPage.getInputQuantity(), "1", "The quantity input don't change from negative number to positive");
-    }*/
+    }
 
-    /*@Test(testName = "#TC006", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC006", threadPoolSize = 2, invocationCount = 2)
     public void verifyCheckoutProcess() {
         ClientService clientService = new ClientService();
 
@@ -83,6 +83,6 @@ public class ProductTest extends BaseTest {
 
         assertEquals(homePage.isPageOpened(), "User should be redirected to the homepage after payment");
         assertEquals(homePage.isAnyElementPresent(), "Elements on HomePage should be visible");
-    }*/
+    }
 
 }
