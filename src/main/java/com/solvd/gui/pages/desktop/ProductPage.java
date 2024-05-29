@@ -3,6 +3,7 @@ package com.solvd.gui.pages.desktop;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
@@ -36,6 +37,7 @@ public class ProductPage extends ProductPageBase {
 
     public ProductPage(WebDriver driver) {
         super(driver);
+        setPageURL(Configuration.getRequired("URL.product"));
         logger.info("ProductPage loaded");
     }
 

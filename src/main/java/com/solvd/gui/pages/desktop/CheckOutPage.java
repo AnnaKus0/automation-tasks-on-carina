@@ -4,6 +4,7 @@ import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.solvd.model.Client;
@@ -55,6 +56,7 @@ public class CheckOutPage extends CheckOutPageBase {
 
     public CheckOutPage(WebDriver driver) {
         super(driver);
+        setPageURL(Configuration.getRequired("URL.checkout"));
         logger.info("CheckOutPage loaded");
     }
 

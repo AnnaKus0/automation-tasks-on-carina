@@ -3,6 +3,7 @@ package com.solvd.gui.pages.desktop;
 import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,7 @@ public class CatalogPage extends CatalogPageBase {
 
     public CatalogPage(WebDriver driver) {
         super(driver);
+        setPageAbsoluteURL(Configuration.getRequired("URL.catalog"));
         logger.info("CatalogPage loaded");
     }
 

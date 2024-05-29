@@ -2,6 +2,7 @@ package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.By;
@@ -38,14 +39,15 @@ public class SignUpPage extends SignUpPageBase {
 
     public SignUpPage(WebDriver driver) {
         super(driver);
-        setUiLoadedMarker(firstNameInput);
+        setPageAbsoluteURL(Configuration.getRequired("URL.register"));
         logger.info("SignUpPage loaded");
     }
 
     @Override
-    public void fillSignUpForm(String firstName, String lastName, String email, String password){
+    public void fillSignUpForm(String firstName, String lastName, String email, String password) throws InterruptedException {
         //::before ::after pseudo-elements
 
+        Thread.sleep(200);
         waitForElementToAppear(firstNameInput.getBy(), 10);
         firstNameInput.click();
         firstNameInput.type(firstName);

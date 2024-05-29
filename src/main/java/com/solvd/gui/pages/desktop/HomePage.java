@@ -31,11 +31,10 @@ public class HomePage extends HomePageBase {
     private SideMenu sideMenu;
 
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
-    private List<ProductCard> productList;
+    private List<ExtendedWebElement> productList;
 
     public HomePage(WebDriver driver) {
         super(driver);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_URL_AND_ELEMENT);
         setPageAbsoluteURL(Configuration.getRequired("URL.base"));
         logger.info("HomePage loaded");
     }
@@ -61,12 +60,12 @@ public class HomePage extends HomePageBase {
             Random rand = new Random();
             int randomIndex = rand.nextInt(productList.size());
 
-            ProductCard randomProduct = productList.stream()
+            ExtendedWebElement randomProduct = productList.stream()
                     .skip(randomIndex)
                     .findFirst()
                     .orElseThrow(() -> new IllegalStateException("Unable to find a random product"));
 
-            randomProduct.clickOnProduct();
+            randomProduct.click();
             return initPage(getDriver(), ProductPageBase.class);
         } else {
             throw new IllegalStateException("Product list is empty");

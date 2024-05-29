@@ -21,6 +21,7 @@ import java.io.File;
 import java.util.Map;
 import java.util.Objects;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public abstract class BaseTest implements IAbstractTest {
@@ -34,8 +35,8 @@ public abstract class BaseTest implements IAbstractTest {
     @BeforeClass
     @Parameters({"browser"})
     public void setUp(String browser) {
-        email = Configuration.getRequired("USER.email");
-        password = Configuration.getRequired("USER.password");
+        email = R.CONFIG.get("USER.email");
+        password = R.CONFIG.get("USER.password");
 
         logger.info("Browser: " + browser);
         R.CONFIG.put("capabilities.browserName", browser);
@@ -44,7 +45,7 @@ public abstract class BaseTest implements IAbstractTest {
     public HomePageBase getHomePage() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
-        assertTrue(homePage.isPageOpened(), "Homepage doesn't open");
+        assertEquals(homePage.getCurrentUrl(), R.TESTDATA.get("URL.base"), "HomePage doesn't open");
         return homePage;
     }
 

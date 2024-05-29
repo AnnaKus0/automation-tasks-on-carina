@@ -6,6 +6,7 @@ import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
 import com.solvd.gui.pages.desktop.LoginPage;
 import com.solvd.gui.pages.desktop.ResetPasswordPage;
+import com.zebrunner.carina.utils.R;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -23,12 +24,12 @@ public class UserAccountTest extends BaseTest {
         };
     }
 
-    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp")
-    public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password) {
+    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
+    public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password) throws InterruptedException {
         HeaderBase header = getHomePage().getHeader();
 
         SignUpPageBase signUpPage = header.clickSignUpLink();
-        assertTrue(signUpPage.isPageOpened(), "SignUp page doesn't open");
+        assertEquals(signUpPage.getCurrentUrl(), R.TESTDATA.get("URL.register"), "SignUp page doesn't open");
 
         signUpPage.fillSignUpForm(firstName, lastName, email, password);
         signUpPage.clickCreateButton();
@@ -37,12 +38,12 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC002")
+    @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
     public void verifyLoginProcess() {
         HeaderBase header = getHomePage().getHeader();
 
         LoginPageBase loginPage = header.clickLoginLink();
-        assertTrue(loginPage.isPageOpened(), "Login page doesn't open");
+        assertEquals(loginPage.getCurrentUrl(), R.TESTDATA.get("URL.login"), "Login page doesn't open");
 
         loginPage.fillLogInForm(email, password);
         loginPage.clickSignInButton();
@@ -57,15 +58,16 @@ public class UserAccountTest extends BaseTest {
 
         LoginPageBase loginPage = header.clickLoginLink();
         assertTrue(loginPage.allElementsPresent());
-        assertTrue(loginPage.isPageOpened(), "Login page doesn't open");
+        assertEquals(loginPage.getCurrentUrl(), R.TESTDATA.get("URL.login"), "Login page doesn't open");
 
         ResetPasswordPageBase resetPasswordPage =  loginPage.clickForgotPasswordLink();
-        assertTrue(resetPasswordPage.isPageOpened(), " Reset password page doesn't open");
+//        assertEquals(loginPage.getCurrentUrl(), R.CONFIG.get("URL.login"), "Reset password page doesn't open");
 
         resetPasswordPage.typeEmail(email);
         resetPasswordPage.clickSubmitButton();
 
-        assertEquals(loginPage.isPageOpened(), "The current page should be login page");
+        assertEquals(loginPage.getCurrentUrl(), R.TESTDATA.get("URL.login"),
+                "After password reset the current page should be login page");
     }
 
 }

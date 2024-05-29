@@ -4,6 +4,7 @@ import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SearchResultPageBase;
 
+import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +23,7 @@ public class SearchResultPage extends SearchResultPageBase {
 
     public SearchResultPage(WebDriver driver) {
         super(driver);
+        setPageURL(Configuration.getRequired("URL.login"));
         logger.info("SearchResultPage loaded");
     }
 

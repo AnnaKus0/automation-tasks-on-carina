@@ -3,6 +3,7 @@ package com.solvd.gui.pages.desktop;
 import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
+import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +31,7 @@ public class LoginPage extends LoginPageBase {
 
     public LoginPage(WebDriver driver) {
         super(driver);
-        setUiLoadedMarker(emailInput);
+        setPageAbsoluteURL(Configuration.getRequired("URL.login"));
         logger.info("LoginPage loaded");
     }
 
