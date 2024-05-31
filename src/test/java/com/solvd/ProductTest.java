@@ -3,6 +3,8 @@ package com.solvd;
 import com.solvd.constans.SidebarTitle;
 import com.solvd.constans.URLType;
 import com.solvd.gui.pages.common.*;
+import com.solvd.service.ClientService;
+import com.zebrunner.carina.utils.R;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -18,7 +20,7 @@ public class ProductTest extends BaseWebTest {
         homePage.selectRandomProduct();
         String productName = homePage.getSelectedProductName();
         String productNameUrl = productName.toLowerCase().replace(" ", "-");
-        ProductPageBase productPage = homePage.clickSelectedProduct(URLType.HOMEPAGE, productNameUrl);
+        ProductPageBase productPage = homePage.clickSelectedProduct("homepage", productNameUrl);
 
         //assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
         assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches chosen one");
@@ -33,7 +35,7 @@ public class ProductTest extends BaseWebTest {
         assertEquals(cartPage.getProductPrice(), productName,"The price is not equal to chosen product");
     }
 
- /*   @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
     public void verifyCatalogAndProductPage() {
         HomePageBase homePage = getHomePage();
 
@@ -56,7 +58,7 @@ public class ProductTest extends BaseWebTest {
         HomePageBase homePage = getHomePage();
 
         homePage.selectRandomProduct();
-//        String productName = homePage.getSelectedProductName();
+        String productName = homePage.getSelectedProductName();
         ProductPageBase productPage = homePage.clickSelectedProduct();
 
         assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
@@ -93,6 +95,6 @@ public class ProductTest extends BaseWebTest {
         assertEquals(homePage.getCurrentUrl(), R.TESTDATA.get("URL.base"),
                 "User should be redirected to the homepage after payment");
         assertEquals(homePage.isAnyElementPresent(), "Elements on HomePage should be visible");
-    }*/
+    }
 
 }
