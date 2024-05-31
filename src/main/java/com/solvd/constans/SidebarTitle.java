@@ -6,7 +6,9 @@ public enum SidebarTitle {
     BLOG("Blog"),
     ABOUT_US("About Us"),
     WISH_LIST("Wish list"),
-    REFER_A_FRIEND("Refer a friend");
+    REFER_A_FRIEND("Refer a friend"),
+    LOGIN("Login"),
+    CREATE_ACCOUNT("Create account");
 
     private String title;
 

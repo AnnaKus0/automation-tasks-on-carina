@@ -1,6 +1,8 @@
 package com.solvd.gui.pages.common;
 
+import com.solvd.constans.URLType;
 import com.solvd.gui.components.header.Header;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,8 @@ public abstract class ProductPageBase extends AbstractPage {
     protected ProductPageBase(WebDriver driver) {
         super(driver);
     }
+
+    protected abstract String getBaseUrl(URLType urlType);
 
     public abstract Header getHeader();
 

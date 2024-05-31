@@ -3,6 +3,7 @@ package com.solvd.gui.pages.desktop;
 import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CatalogPageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -22,12 +23,12 @@ public class CatalogPage extends CatalogPageBase {
 
     private ExtendedWebElement selectedProduct;
 
-    @FindBy(xpath = "//section[@class='product-grid twelve columns alpha omega']/div[contains(@class, 'four columns')]")
+    @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
     private List<ExtendedWebElement> productList;
 
     public CatalogPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(Configuration.getRequired("URL.catalog"));
+        setPageAbsoluteURL(R.TESTDATA.get("URL.catalog"));
         logger.info("CatalogPage loaded");
     }
 
@@ -56,7 +57,8 @@ public class CatalogPage extends CatalogPageBase {
 
     @Override
     public String getSelectedProductName() {
-        return selectedProduct.getName();
+        //TODO: remove getText().split("£")[0].strip();
+        return selectedProduct.getText().split("£")[0].strip();
     }
 
     @Override

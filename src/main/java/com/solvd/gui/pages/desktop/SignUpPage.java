@@ -2,6 +2,7 @@ package com.solvd.gui.pages.desktop;
 
 import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -39,7 +40,7 @@ public class SignUpPage extends SignUpPageBase {
 
     public SignUpPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(Configuration.getRequired("URL.register"));
+        setPageAbsoluteURL(R.TESTDATA.get("URL.register"));
         logger.info("SignUpPage loaded");
     }
 
@@ -47,31 +48,30 @@ public class SignUpPage extends SignUpPageBase {
     public void fillSignUpForm(String firstName, String lastName, String email, String password) throws InterruptedException {
         //::before ::after pseudo-elements
 
-        Thread.sleep(200);
-        waitForElementToAppear(firstNameInput.getBy(), 10);
+        //waitForElementToAppear(firstNameInput.getBy(), 10);
         firstNameInput.click();
         firstNameInput.type(firstName);
 
-        waitForElementToAppear(lastNameInput.getBy(), 10);
+        //waitForElementToAppear(lastNameInput.getBy(), 10);
         lastNameInput.click();
         lastNameInput.type(lastName);
 
-        waitForElementToAppear(emailAddressInput.getBy(), 10);
+        //waitForElementToAppear(emailAddressInput.getBy(), 10);
         emailAddressInput.click();
         emailAddressInput.type(email);
 
-        waitForElementToAppear(passwordInput.getBy(), 10);
+        //waitForElementToAppear(passwordInput.getBy(), 10);
         passwordInput.click();
         passwordInput.type(password);
     }
 
-    public void waitForElementToAppear(By locator, int timeout) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until((WebDriver driver) -> {
-            WebElement element = driver.findElement(locator);
-            return element != null && element.isDisplayed();
-        });
-    }
+//    public void waitForElementToAppear(By locator, int timeout) {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+//        wait.until((WebDriver driver) -> {
+//            WebElement element = driver.findElement(locator);
+//            return element != null && element.isDisplayed();
+//        });
+//    }
 
 
     @Override

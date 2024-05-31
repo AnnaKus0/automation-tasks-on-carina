@@ -1,8 +1,10 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.constans.URLType;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -35,10 +37,23 @@ public class ProductPage extends ProductPageBase {
     @FindBy(xpath = "//section[@id='buy']//input[@id='add' and @type='submit']")
     private ExtendedWebElement addToCartButton;
 
-    public ProductPage(WebDriver driver) {
+    public ProductPage(WebDriver driver, URLType urlType, String productIdentifier) {
         super(driver);
-        setPageURL(Configuration.getRequired("URL.product"));
-        logger.info("ProductPage loaded");
+        String baseUrl = getBaseUrl(urlType);
+        setPageURL(baseUrl + productIdentifier);
+        logger.info("ProductPage loaded with URL: " + baseUrl + productIdentifier);
+    }
+
+    @Override
+    protected String getBaseUrl(URLType urlType) {
+        switch (urlType) {
+            case HOMEPAGE:
+                return R.TESTDATA.get("URL.product.homepage");
+            case COLLECTION:
+                return R.TESTDATA.get("URL.product.collection");
+            default:
+                throw new IllegalArgumentException("Invalid URL type");
+        }
     }
 
     @Override

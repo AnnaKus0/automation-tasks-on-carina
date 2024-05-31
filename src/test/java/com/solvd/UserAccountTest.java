@@ -4,8 +4,6 @@ import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
-import com.solvd.gui.pages.desktop.LoginPage;
-import com.solvd.gui.pages.desktop.ResetPasswordPage;
 import com.zebrunner.carina.utils.R;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +13,7 @@ import static com.solvd.util.TestDataGenerator.generateRandomString;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class UserAccountTest extends BaseTest {
+public class UserAccountTest extends BaseWebTest {
 
     @DataProvider(name = "useTestDataSignUp", parallel=true)
     public Object[][] userSignUpDataProvider() {

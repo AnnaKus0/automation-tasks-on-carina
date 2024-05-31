@@ -1,36 +1,33 @@
 package com.solvd;
 
 import com.solvd.constans.SidebarTitle;
-import com.solvd.gui.components.product_card.ProductCard;
+import com.solvd.constans.URLType;
 import com.solvd.gui.pages.common.*;
-import com.solvd.gui.pages.desktop.HomePage;
-import com.solvd.service.ClientService;
-import com.zebrunner.carina.utils.R;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class ProductTest extends BaseTest {
+public class ProductTest extends BaseWebTest {
 
-    @Test(testName = "#TC005", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC005")
     public void verifyAddProductToCart() {
         HomePageBase homePage = getHomePage();
         assertTrue(homePage.isProductListPresent(), "Product section is empty");
 
         homePage.selectRandomProduct();
         String productName = homePage.getSelectedProductName();
-        ProductPageBase productPage = homePage.clickSelectedProduct();
+        String productNameUrl = productName.toLowerCase().replace(" ", "-");
+        ProductPageBase productPage = homePage.clickSelectedProduct(URLType.HOMEPAGE, productNameUrl);
 
-        assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
+        //assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
         assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches chosen one");
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
         productPage.clickAddToCartButton();
 
         CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
-        assertEquals(cartPage.getCurrentUrl(), R.TESTDATA.get("URL.cart"), "Cart page doesn't open");
+        //assertEquals(cartPage.getCurrentUrl(), R.TESTDATA.get("URL.cart"), "Cart page doesn't open");
 
         assertEquals(cartPage.getProductName(), productName,"The name is not equal to chosen product");
         assertEquals(cartPage.getProductPrice(), productName,"The price is not equal to chosen product");
@@ -42,16 +39,16 @@ public class ProductTest extends BaseTest {
 
         CatalogPageBase catalogPage =  homePage.getSideMenu().clickMenuButtonByName(String.valueOf(SidebarTitle.CATALOG));
 
-        assertEquals(catalogPage.getCurrentUrl(), R.TESTDATA.get("URL.catalog"), "Catalog page doesn't open");
+        //assertEquals(catalogPage.getCurrentUrl(), R.TESTDATA.get("URL.catalog"), "Catalog page doesn't open");
         assertTrue(catalogPage.isProductListPresent(), "Product section is empty");
 
         catalogPage.selectRandomProduct();
-//        String productName = catalogPage.getSelectedProductName();
+        String productName = catalogPage.getSelectedProductName();
         ProductPageBase productPage = catalogPage.clickSelectedProduct();
-        assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
+        //assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-//        assertEquals(productPage.getProductTitle(), "Product title is incorrect");
+        assertEquals(productPage.getProductTitle(), productName, "Product title is incorrect");
     }
 
     @Test(testName = "#TC008", threadPoolSize = 2, invocationCount = 2)

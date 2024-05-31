@@ -3,6 +3,7 @@ package com.solvd.gui.pages.desktop;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -24,7 +25,7 @@ public class ResetPasswordPage extends ResetPasswordPageBase {
 
     public ResetPasswordPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(Configuration.getRequired("URL.login"));
+        setPageAbsoluteURL(R.TESTDATA.get("URL.login"));
         logger.info("ResetPasswordPage loaded");
     }
 

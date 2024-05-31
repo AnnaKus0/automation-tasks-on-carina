@@ -4,6 +4,7 @@ import com.solvd.gui.components.header.Header;
 import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.solvd.gui.pages.common.HomePageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -43,7 +44,7 @@ public class CartPage extends CartPageBase {
 
     public CartPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(Configuration.getRequired("URL.cart"));
+        setPageAbsoluteURL(R.TESTDATA.get("URL.cart"));
         logger.info("CartPage loaded");
     }
 

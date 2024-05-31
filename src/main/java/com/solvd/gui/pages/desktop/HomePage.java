@@ -1,10 +1,12 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.constans.URLType;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
+import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.config.Configuration;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -32,13 +34,14 @@ public class HomePage extends HomePageBase {
     @FindBy(id = "sidebar")
     private SideMenu sideMenu;
 
+    //TODO: change ExtendedWebElement to ProductCard
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
     private List<ExtendedWebElement> productList;
 
     public HomePage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
-        setPageAbsoluteURL(Configuration.getRequired("URL.base"));
+        setPageAbsoluteURL(R.TESTDATA.get("URL.base"));
         logger.info("HomePage loaded");
     }
 
@@ -77,13 +80,14 @@ public class HomePage extends HomePageBase {
 
     @Override
     public String getSelectedProductName() {
-        return selectedProduct.getName();
+        //TODO: remove getText().split("£")[0].strip();
+        return selectedProduct.getText().split("£")[0].strip();
     }
 
     @Override
-    public ProductPageBase clickSelectedProduct() {
+    public ProductPageBase clickSelectedProduct(URLType urlType, String productIdentifier) {
         selectedProduct.click();
-        return initPage(getDriver(), ProductPageBase.class);
+        return initPage(getDriver(), ProductPageBase.class, urlType, productIdentifier);
     }
 
 }

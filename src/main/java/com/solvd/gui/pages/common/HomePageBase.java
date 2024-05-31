@@ -1,5 +1,6 @@
 package com.solvd.gui.pages.common;
 
+import com.solvd.constans.URLType;
 import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
@@ -27,5 +28,5 @@ public abstract class HomePageBase extends AbstractPage {
 
     public abstract String getSelectedProductName();
 
-    public abstract ProductPageBase clickSelectedProduct();
+    public abstract ProductPageBase clickSelectedProduct(URLType urlType, String productIdentifier);
 }
