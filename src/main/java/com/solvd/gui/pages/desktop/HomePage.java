@@ -28,7 +28,7 @@ public class HomePage extends HomePageBase {
 
     private ExtendedWebElement selectedProduct;
 
-    @FindBy(xpath = "//header")
+    @FindBy(id = "//header")
     private Header header;
 
     @FindBy(id = "sidebar")
@@ -42,7 +42,7 @@ public class HomePage extends HomePageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.base"));
-        logger.info("HomePage loaded");
+        logger.info("HomePage loaded with url");
     }
 
     @Override
