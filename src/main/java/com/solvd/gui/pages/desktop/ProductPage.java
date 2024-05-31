@@ -20,8 +20,6 @@ import org.slf4j.LoggerFactory;
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
 public class ProductPage extends ProductPageBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProductPage.class);
-
     @FindBy(xpath = "//header")
     private Header header;
 
@@ -37,23 +35,12 @@ public class ProductPage extends ProductPageBase {
     @FindBy(xpath = "//section[@id='buy']//input[@id='add' and @type='submit']")
     private ExtendedWebElement addToCartButton;
 
-    public ProductPage(WebDriver driver, URLType urlType, String productIdentifier) {
+    public ProductPage(WebDriver driver) {
         super(driver);
-        String baseUrl = getBaseUrl(urlType);
-        setPageURL(baseUrl + productIdentifier);
-        logger.info("ProductPage loaded with URL: " + baseUrl + productIdentifier);
     }
 
-    @Override
-    protected String getBaseUrl(URLType urlType) {
-        switch (urlType) {
-            case HOMEPAGE:
-                return R.TESTDATA.get("URL.product.homepage");
-            case COLLECTION:
-                return R.TESTDATA.get("URL.product.collection");
-            default:
-                throw new IllegalArgumentException("Invalid URL type");
-        }
+    public ProductPage(WebDriver driver, URLType urlType, String productIdentifier) {
+        super(driver, urlType, productIdentifier);
     }
 
     @Override

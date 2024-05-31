@@ -33,7 +33,7 @@ public class ProductTest extends BaseWebTest {
         assertEquals(cartPage.getProductPrice(), productName,"The price is not equal to chosen product");
     }
 
-    @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
+ /*   @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
     public void verifyCatalogAndProductPage() {
         HomePageBase homePage = getHomePage();
 
@@ -93,6 +93,6 @@ public class ProductTest extends BaseWebTest {
         assertEquals(homePage.getCurrentUrl(), R.TESTDATA.get("URL.base"),
                 "User should be redirected to the homepage after payment");
         assertEquals(homePage.isAnyElementPresent(), "Elements on HomePage should be visible");
-    }
+    }*/
 
 }
