@@ -10,12 +10,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class Header extends HeaderBase {
 
-//    @FindBy(id = "customer_login_link")
-//    private ExtendedWebElement logInLink;
-//
-//    @FindBy(id = "customer_register_link")
-//    private ExtendedWebElement signupLink;
-
     @FindBy(xpath = "//a[contains(@href, '/account') and not(contains(@href, 'logout'))]")
     private ExtendedWebElement myAccountLink;
 
@@ -32,16 +26,6 @@ public class Header extends HeaderBase {
     public Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
-
-//    public LoginPageBase clickLoginLink() {
-//        logInLink.click();
-//        return initPage(driver, LoginPageBase.class);
-//    }
-//
-//    public SignUpPageBase clickSignUpLink() {
-//        signupLink.click();
-//        return initPage(driver, SignUpPageBase.class);
-//    }
 
     public CartPageBase clickCheckOutLink() {
         checkOutLink.click();

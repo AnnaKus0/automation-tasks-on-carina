@@ -14,8 +14,6 @@ import java.util.List;
 
 public class SideMenu extends AbstractUIObject implements ICustomTypePageFactory {
 
-    private static final Logger logger = LoggerFactory.getLogger(SideMenu.class);
-
     @FindBy(xpath = "//ul[@id='main-menu']//li")
     private List<ExtendedWebElement> sidebarButtons;
 

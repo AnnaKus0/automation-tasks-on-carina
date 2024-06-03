@@ -18,7 +18,7 @@ public abstract class LoginPageBase extends AbstractPage {
     @FindBy(xpath = "//div[contains(@id, 'login_password')]//input[@type='password']")
     private ExtendedWebElement passwordInput;
 
-    @FindBy(xpath = "//div[@class='parentClassName']//a[text()='Forgot your password?']")
+    @FindBy(xpath = "//a[text()='Forgot your password?']")
     private ExtendedWebElement forgotPasswordLink;
 
     @FindBy(xpath = "//input[@type='submit' and @value='Sign in']")

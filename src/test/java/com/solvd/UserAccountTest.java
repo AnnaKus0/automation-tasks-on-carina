@@ -27,8 +27,7 @@ public class UserAccountTest extends BaseWebTest {
         };
     }
 
-    //threadPoolSize = 2, invocationCount = 2
-    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp")
+    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
     public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password){
         SignUpPageBase signUpPage = initPage(getDriver(), SignUpPageBase.class);
         signUpPage.open();
@@ -42,9 +41,10 @@ public class UserAccountTest extends BaseWebTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC002")
+    @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
+        loginPage.open();
 
         loginPage.fillLogInForm(email, password);
         loginPage.clickSignInButton();
@@ -54,11 +54,12 @@ public class UserAccountTest extends BaseWebTest {
         assertTrue(header.isMyAccountLinkVisible(), "My Account link is not visible");
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible");
     }
-    @Test(testName = "#TC003")
+    @Test(testName = "#TC003", threadPoolSize = 2, invocationCount = 2)
     public void verifyResetPassword() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
-        ResetPasswordPageBase resetPasswordPage =  loginPage.clickForgotPasswordLink();
+        loginPage.open();
 
+        ResetPasswordPageBase resetPasswordPage =  loginPage.clickForgotPasswordLink();
         resetPasswordPage.typeEmail(email);
         resetPasswordPage.clickSubmitButton();
 
