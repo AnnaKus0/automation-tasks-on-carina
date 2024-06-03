@@ -14,6 +14,10 @@ This repository contains automation tasks implemented using Carina framework
 ```
 java -jar selenium-server-4.20.0.jar hub
 ```
+* Create node for Selenium using the following command: 
+```
+java -Dwebdriver.chrome.driver=*path to your chromedriver.exe* -jar selenium-server-4.20.0.jar node --port 5555 --detect-drivers true --hub http://localhost:4444
+```
 * Execute the tests by running the testng.xml file
 
 
