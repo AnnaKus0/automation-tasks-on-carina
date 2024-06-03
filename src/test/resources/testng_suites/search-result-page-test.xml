@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cross Browser Suite">
+    <test name="TestsChrome">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.solvd.SearchResultPageTest"/>
+        </classes>
+    </test>
+</suite>
+
+
+
+

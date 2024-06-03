@@ -3,6 +3,7 @@ package com.solvd.gui.pages.android;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +15,9 @@ public class MobileLoginPage extends LoginPageBase {
 
     public MobileLoginPage(WebDriver driver) {
         super(driver);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.login"));
-        logger.info("LoginPage loaded with url");
+        logger.info("LoginPage loaded with url: " + R.TESTDATA.get("URL.login"));
     }
 
 }

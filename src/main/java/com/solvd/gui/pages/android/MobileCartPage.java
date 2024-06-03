@@ -4,6 +4,7 @@ import com.solvd.gui.pages.common.CartPageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -23,8 +24,9 @@ public class MobileCartPage extends CartPageBase {
 
     public MobileCartPage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(R.TESTDATA.get("URL.cart"));
-        logger.info("CartPage loaded");
+        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setUiLoadedMarker(productPrice);
+        logger.info("CartPage loaded with element: " + productPrice);
     }
 
     //TODO: duplicate method
