@@ -1,31 +1,29 @@
-package com.solvd.gui.pages.desktop;
+package com.solvd.gui.pages.android;
 
 import com.solvd.gui.pages.common.CartPageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CartPageBase.class)
-public class CartPage extends CartPageBase {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CartPageBase.class)
+public class MobileCartPage extends CartPageBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(CartPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(MobileCartPage.class);
 
-    @FindBy(xpath = "//div[contains(@class, 'price')]")
+    @FindBy(xpath = "//div[contains(@class, 'quantity')]//p[contains(@class, 'mobile')]")
     private ExtendedWebElement productPrice;
 
-    @FindBy(xpath = "//div[contains(@class, 'quantity')]//input[@type='text']")
+    @FindBy(xpath = "//div[contains(@class, 'quantity')]//input[contains(@id, 'updates_')]")
     private ExtendedWebElement quantityInput;
 
-    public CartPage(WebDriver driver) {
+    public MobileCartPage(WebDriver driver) {
         super(driver);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        setUiLoadedMarker(productPrice);
+        setPageAbsoluteURL(R.TESTDATA.get("URL.cart"));
         logger.info("CartPage loaded");
     }
 

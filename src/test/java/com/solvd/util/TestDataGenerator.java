@@ -1,6 +1,5 @@
 package com.solvd.util;
 
-
 import java.util.Random;
 
 public class TestDataGenerator {

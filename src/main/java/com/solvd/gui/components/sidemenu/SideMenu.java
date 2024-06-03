@@ -1,7 +1,9 @@
 package com.solvd.gui.components.sidemenu;
 
 import com.solvd.gui.pages.common.CatalogPageBase;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-public class SideMenu extends SideMenuBase {
+public class SideMenu extends AbstractUIObject implements ICustomTypePageFactory {
 
     private static final Logger logger = LoggerFactory.getLogger(SideMenu.class);
 

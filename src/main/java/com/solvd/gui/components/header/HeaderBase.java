@@ -1,19 +1,18 @@
 package com.solvd.gui.components.header;
 
-import com.solvd.gui.pages.common.CartPageBase;
-import com.solvd.gui.pages.common.LoginPageBase;
-import com.solvd.gui.pages.common.SearchResultPageBase;
-import com.solvd.gui.pages.common.SignUpPageBase;
-import com.solvd.gui.pages.desktop.CartPage;
-import com.solvd.gui.pages.desktop.LoginPage;
 import com.solvd.gui.pages.desktop.SearchResultPage;
-import com.solvd.gui.pages.desktop.SignUpPage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
+import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 
 public abstract class HeaderBase extends AbstractUIObject implements ICustomTypePageFactory {
+
+    @FindBy(id = "search-field")
+    private ExtendedWebElement searchInput;
 
     protected HeaderBase(WebDriver driver) {
         super(driver);
@@ -23,15 +22,11 @@ public abstract class HeaderBase extends AbstractUIObject implements ICustomType
         super(driver, searchContext);
     }
 
-    public abstract SearchResultPageBase searchProduct(String productName);
+    public SearchResultPage searchProduct(String productName){
+        searchInput.click();
+        searchInput.type(productName);
+        searchInput.sendKeys(Keys.ENTER);
+        return new SearchResultPage(driver);
+    }
 
-    public abstract LoginPageBase clickLoginLink();
-
-    public abstract SignUpPageBase clickSignUpLink();
-
-    public abstract CartPageBase clickCheckOutLink();
-
-    public abstract boolean isMyAccountLinkVisible();
-
-    public abstract boolean isLogOutLinkVisible();
 }

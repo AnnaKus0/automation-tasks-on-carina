@@ -1,4 +1,4 @@
-package com.solvd.gui.pages.desktop;
+package com.solvd.gui.pages.android;
 
 import com.solvd.gui.pages.common.CheckOutPageBase;
 import com.zebrunner.carina.utils.R;
@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CheckOutPageBase.class)
-public class CheckOutPage extends CheckOutPageBase {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CheckOutPageBase.class)
+public class MobileCheckOutPage extends CheckOutPageBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(CheckOutPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(MobileCheckOutPage.class);
 
-    public CheckOutPage(WebDriver driver) {
+    public MobileCheckOutPage(WebDriver driver) {
         super(driver);
         setPageURL(R.TESTDATA.get("URL.checkout"));
         logger.info("CheckOutPage loaded");

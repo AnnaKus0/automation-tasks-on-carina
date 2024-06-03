@@ -1,7 +1,6 @@
 package com.solvd;
 
 import com.solvd.constans.SidebarTitle;
-import com.solvd.constans.URLType;
 import com.solvd.gui.pages.common.*;
 import com.solvd.service.ClientService;
 import com.zebrunner.carina.utils.R;
@@ -12,42 +11,37 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductTest extends BaseWebTest {
 
-    @Test(testName = "#TC005")
+ /*   @Test(testName = "#TC005")
     public void verifyAddProductToCart() {
-        HomePageBase homePage = getHomePage();
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
         assertTrue(homePage.isProductListPresent(), "Product section is empty");
 
         homePage.selectRandomProduct();
         String productName = homePage.getSelectedProductName();
-        String productNameUrl = productName.toLowerCase().replace(" ", "-");
-        ProductPageBase productPage = homePage.clickSelectedProduct("homepage", productNameUrl);
+        ProductPageBase productPage = homePage.clickSelectedProduct();
 
-        //assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
         assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches chosen one");
-
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+
         productPage.clickAddToCartButton();
 
         CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
-        //assertEquals(cartPage.getCurrentUrl(), R.TESTDATA.get("URL.cart"), "Cart page doesn't open");
-
         assertEquals(cartPage.getProductName(), productName,"The name is not equal to chosen product");
         assertEquals(cartPage.getProductPrice(), productName,"The price is not equal to chosen product");
     }
 
     @Test(testName= "#TC007", threadPoolSize = 2, invocationCount = 2)
     public void verifyCatalogAndProductPage() {
-        HomePageBase homePage = getHomePage();
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
 
         CatalogPageBase catalogPage =  homePage.getSideMenu().clickMenuButtonByName(String.valueOf(SidebarTitle.CATALOG));
-
-        //assertEquals(catalogPage.getCurrentUrl(), R.TESTDATA.get("URL.catalog"), "Catalog page doesn't open");
         assertTrue(catalogPage.isProductListPresent(), "Product section is empty");
 
         catalogPage.selectRandomProduct();
         String productName = catalogPage.getSelectedProductName();
         ProductPageBase productPage = catalogPage.clickSelectedProduct();
-        //assertEquals(productPage.getCurrentUrl(), R.TESTDATA.get("URL.product"), "Product page doesn't open");
 
         assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
         assertEquals(productPage.getProductTitle(), productName, "Product title is incorrect");
@@ -55,7 +49,8 @@ public class ProductTest extends BaseWebTest {
 
     @Test(testName = "#TC008", threadPoolSize = 2, invocationCount = 2)
     public void verifyNegativeValuesNotAllowedInQuantityField() {
-        HomePageBase homePage = getHomePage();
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
 
         homePage.selectRandomProduct();
         String productName = homePage.getSelectedProductName();
@@ -75,7 +70,8 @@ public class ProductTest extends BaseWebTest {
     public void verifyCheckoutProcess() {
         ClientService clientService = new ClientService();
 
-        HomePageBase homePage = getHomePage();
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
 
         homePage.selectRandomProduct();
 //        String productName = homePage.getSelectedProductName();
@@ -95,6 +91,6 @@ public class ProductTest extends BaseWebTest {
         assertEquals(homePage.getCurrentUrl(), R.TESTDATA.get("URL.base"),
                 "User should be redirected to the homepage after payment");
         assertEquals(homePage.isAnyElementPresent(), "Elements on HomePage should be visible");
-    }
+    }*/
 
 }

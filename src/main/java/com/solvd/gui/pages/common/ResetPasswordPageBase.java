@@ -8,12 +8,23 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class ResetPasswordPageBase extends AbstractPage {
 
+    @FindBy(id = "recover-email")
+    private ExtendedWebElement emailInput;
+
+    @FindBy(xpath = "//input[@type='submit']")
+    private ExtendedWebElement submitButton;
+
     protected ResetPasswordPageBase(WebDriver driver) {
         super(driver);
     }
 
-    public abstract void typeEmail(String email);
+    public void typeEmail(String email) {
+        emailInput.type(email);
+    }
 
-    public abstract LoginPageBase clickSubmitButton();
+    public LoginPageBase clickSubmitButton() {
+        submitButton.click();
+        return initPage(driver, LoginPageBase.class);
+    }
 
 }

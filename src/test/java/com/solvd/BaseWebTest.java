@@ -28,13 +28,6 @@ public abstract class BaseWebTest implements IAbstractTest {
         R.CONFIG.put("capabilities.browserName", browser);
     }
 
-    public HomePageBase getHomePage() {
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.open();
-        assertTrue(homePage.isPageOpened(), "HomePage doesn't open");
-        return homePage;
-    }
-
     @AfterClass
     public void tearDown() {
         if (getDriver() != null) {

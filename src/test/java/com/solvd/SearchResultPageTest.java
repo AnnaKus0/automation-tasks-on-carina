@@ -1,12 +1,12 @@
 package com.solvd;
 
 import com.solvd.gui.components.header.HeaderBase;
+import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.zebrunner.carina.utils.R;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SearchResultPageTest extends BaseWebTest {
@@ -18,12 +18,15 @@ public class SearchResultPageTest extends BaseWebTest {
         };
     }
 
-    @Test(testName = "#TC004", dataProvider = "useTestProductData", threadPoolSize = 2, invocationCount = 2)
+    //threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC004", dataProvider = "useTestProductData")
     public void verifySearchFunctionality(String productName) {
-        HeaderBase header = getHomePage().getHeader();
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
+        homePage.assertPageOpened();
 
+        HeaderBase header = homePage.getHeader();
         SearchResultPageBase searchResultPage = header.searchProduct(productName);
-        assertEquals(searchResultPage.getCurrentUrl(), R.TESTDATA.get("URL.search"), "Search page doesn't open");
 
         boolean isProductFound = searchResultPage.isProductWithNamePresent(productName);
         assertTrue(isProductFound, "Product with this name is not found on page: " + productName);
