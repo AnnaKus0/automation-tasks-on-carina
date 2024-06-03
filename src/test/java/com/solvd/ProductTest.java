@@ -62,7 +62,7 @@ public class ProductTest extends BaseWebTest {
     }
 
     @Test(testName = "#TC008", dataProvider = "useTestProductQuantityData", threadPoolSize = 2, invocationCount = 2)
-    public void verifyNegativeValuesNotAllowedInQuantityField(String quantity) {
+    public void verifyQuantityField(String quantity) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
