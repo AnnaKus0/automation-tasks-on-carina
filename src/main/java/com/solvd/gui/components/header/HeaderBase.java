@@ -11,7 +11,8 @@ import org.openqa.selenium.support.FindBy;
 
 public abstract class HeaderBase extends AbstractUIObject implements ICustomTypePageFactory {
 
-    @FindBy(id = "search-field")
+    //TODO: id = "search-field" don't work
+    @FindBy(xpath = "//input[@id='search-field']")
     private ExtendedWebElement searchInput;
 
     protected HeaderBase(WebDriver driver) {

@@ -13,10 +13,10 @@ import java.util.Random;
 
 public abstract class HomePageBase extends AbstractPage {
 
-    @FindBy(id = "//header")
+    @FindBy(xpath = "//header")
     private Header header;
 
-    @FindBy(id = "sidebar")
+    @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")

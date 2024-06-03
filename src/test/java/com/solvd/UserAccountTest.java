@@ -6,7 +6,10 @@ import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.solvd.gui.pages.desktop.HomePage;
 import com.zebrunner.carina.utils.R;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -24,24 +27,24 @@ public class UserAccountTest extends BaseWebTest {
         };
     }
 
-    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
+    //threadPoolSize = 2, invocationCount = 2
+    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp")
     public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password){
         SignUpPageBase signUpPage = initPage(getDriver(), SignUpPageBase.class);
-        //assertEquals(signUpPage.isPageOpened(), "SignUp page doesn't open");
+        signUpPage.open();
+        signUpPage.assertPageOpened();
 
         signUpPage.fillSignUpForm(firstName, lastName, email, password);
         signUpPage.clickCreateButton();
 
         Header header = signUpPage.getHeader();
-
         assertTrue(header.isMyAccountLinkVisible(), "My Account link is not visible after account creation");
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC002")
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
-        //assertEquals(loginPage.isPageOpened(), "Login page doesn't open");
 
         loginPage.fillLogInForm(email, password);
         loginPage.clickSignInButton();
@@ -54,10 +57,7 @@ public class UserAccountTest extends BaseWebTest {
     @Test(testName = "#TC003")
     public void verifyResetPassword() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
-        //assertEquals(loginPage.isPageOpened(), "Login page doesn't open");
-
         ResetPasswordPageBase resetPasswordPage =  loginPage.clickForgotPasswordLink();
-        //assertEquals(resetPasswordPage.isPageOpened(), "Login page doesn't open");
 
         resetPasswordPage.typeEmail(email);
         resetPasswordPage.clickSubmitButton();

@@ -3,7 +3,10 @@ package com.solvd;
 import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.SearchResultPageBase;
+import com.solvd.gui.pages.desktop.HomePage;
 import com.zebrunner.carina.utils.R;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -14,7 +17,8 @@ public class SearchResultPageTest extends BaseWebTest {
     @DataProvider(name = "useTestProductData", parallel=true)
     public Object[][] userRegisterDataProvider() {
         return new Object[][]{
-                {R.TESTDATA.get("PRODUCT.name")},
+                {R.TESTDATA.get("PRODUCT.jacket")},
+                {R.TESTDATA.get("PRODUCT.sandals")},
         };
     }
 

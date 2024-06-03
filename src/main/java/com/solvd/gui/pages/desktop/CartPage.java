@@ -26,7 +26,7 @@ public class CartPage extends CartPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(productPrice);
-        logger.info("CartPage loaded");
+        logger.info("CartPage loaded with element: " + productPrice);
     }
 
     //TODO: duplicate method

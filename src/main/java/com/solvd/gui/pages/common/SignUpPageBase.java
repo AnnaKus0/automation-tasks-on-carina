@@ -8,19 +8,19 @@ import org.openqa.selenium.support.FindBy;
 
 public abstract class SignUpPageBase extends AbstractPage {
 
-    @FindBy(id = "//header")
+    @FindBy(xpath = "//header")
     private Header header;
 
-    @FindBy(id = "first_name")
+    @FindBy(xpath = "//input[contains(@id, 'first_name')]")
     private ExtendedWebElement firstNameInput;
 
-    @FindBy(id = "last_name")
+    @FindBy(xpath = "//input[contains(@id, 'last_name')]")
     private ExtendedWebElement lastNameInput;
 
-    @FindBy(id = "email")
+    @FindBy(xpath = "//input[contains(@id, 'email')]")
     private ExtendedWebElement emailAddressInput;
 
-    @FindBy(id = "password")
+    @FindBy(xpath = "//input[contains(@id, 'password')]")
     private ExtendedWebElement passwordInput;
 
     @FindBy(xpath = "//input[@type='submit' and @value='Create']")

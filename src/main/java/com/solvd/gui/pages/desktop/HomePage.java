@@ -17,7 +17,7 @@ public class HomePage extends HomePageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.base"));
-        logger.info("HomePage loaded");
+        logger.info("HomePage loaded with url: " + R.TESTDATA.get("URL.base"));
     }
 
 }

@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductTest extends BaseWebTest {
 
- /*   @Test(testName = "#TC005")
+    @Test(testName = "#TC005")
     public void verifyAddProductToCart() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -91,6 +91,6 @@ public class ProductTest extends BaseWebTest {
         assertEquals(homePage.getCurrentUrl(), R.TESTDATA.get("URL.base"),
                 "User should be redirected to the homepage after payment");
         assertEquals(homePage.isAnyElementPresent(), "Elements on HomePage should be visible");
-    }*/
+    }
 
 }
