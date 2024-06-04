@@ -54,7 +54,7 @@ public class MobileUserAccountTest extends BaseTest {
         boolean isLogInButtonPresent = homePageBase.clickToggleMenuLink()
                 .checkPresenceOfButton((String.valueOf(SidebarTitle.LOGOUT)));
 
-        assertTrue(isAccountButtonPresent, "My Account link in sidebar is not visible after account creation");
-        assertTrue(isLogInButtonPresent, "Logout link in sidebar is not visible after account creation");
+        assertTrue(isAccountButtonPresent, "My Account link in sidebar is not visible after login");
+        assertTrue(isLogInButtonPresent, "Logout link in sidebar is not visible after login");
     }
 }

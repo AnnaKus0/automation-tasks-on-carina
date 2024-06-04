@@ -50,4 +50,8 @@ public abstract class LoginPageBase extends AbstractPage {
         return initPage(driver, HomePageBase.class);
     }
 
+    public boolean isEmailInputPresent() {
+        return emailInput.isElementPresent();
+    }
+
 }

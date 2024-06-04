@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 
 import static com.solvd.util.TestDataGenerator.generateRandomEmail;
 import static com.solvd.util.TestDataGenerator.generateRandomString;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class UserAccountTest extends BaseTest {
@@ -21,7 +20,7 @@ public class UserAccountTest extends BaseTest {
         };
     }
 
-    @Test(testName = "#TC001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC-001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
     public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password){
         SignUpPageBase signUpPage = initPage(getDriver(), SignUpPageBase.class);
         signUpPage.open();
@@ -35,7 +34,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC-002", threadPoolSize = 2, invocationCount = 2)
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
@@ -45,11 +44,11 @@ public class UserAccountTest extends BaseTest {
         loginPage.clickSignInButton();
 
         Header header = loginPage.getHeader();
-        assertTrue(header.isMyAccountLinkVisible(), "My Account link is not visible");
-        assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible");
+        assertTrue(header.isMyAccountLinkVisible(), "My Account link is not visible after account creation");
+        assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC003", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC-003")
     public void verifyResetPassword() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
@@ -60,6 +59,7 @@ public class UserAccountTest extends BaseTest {
         resetPasswordPage.clickSubmitButton();
 
         assertTrue(loginPage.isPageOpened(), "After successful password reset the current page should be login page");
+        assertTrue(loginPage.isEmailInputPresent(), "Email input is not visible after successful password reset");
     }
 
 }

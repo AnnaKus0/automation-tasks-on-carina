@@ -21,7 +21,7 @@ public class HomePage extends HomePageBase {
         logger.info("HomePage loaded with url: " + R.TESTDATA.get("URL.base"));
     }
 
-    //TODO: can't remove it from here
+    //TODO: remove clickToggleMenuLink()
     @Override
     public SideMenu clickToggleMenuLink() {
         return null;

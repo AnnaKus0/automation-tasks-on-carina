@@ -10,6 +10,7 @@ public abstract class HomePageBase extends BasePage {
         super(driver);
     }
 
+    //TODO: remove clickToggleMenuLink()
     public abstract SideMenu clickToggleMenuLink();
 
 }
