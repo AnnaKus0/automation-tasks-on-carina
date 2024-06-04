@@ -1,7 +1,6 @@
 package com.solvd.gui.pages.android;
 
 import com.solvd.gui.pages.common.SearchResultPageBase;
-import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;

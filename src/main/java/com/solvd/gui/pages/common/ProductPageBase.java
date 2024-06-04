@@ -1,13 +1,10 @@
 package com.solvd.gui.pages.common;
 
 import com.solvd.gui.components.header.Header;
-import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public abstract class ProductPageBase extends AbstractPage {
 
