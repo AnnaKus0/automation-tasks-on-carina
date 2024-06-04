@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HeaderBase.class)
 public class MobileHeader extends HeaderBase {
 
-    @FindBy(id = "cart-target-mobile")
+    @FindBy(xpath = "//a[@class='cart-target-mobile' and contains(text(), 'My Cart)]")
     private ExtendedWebElement cartMobileLink;
 
     protected MobileHeader(WebDriver driver) {
