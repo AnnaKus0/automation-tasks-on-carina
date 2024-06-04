@@ -36,7 +36,7 @@ public class MobileUserAccountTest extends BaseTest {
 
     }
 
-    @Test(testName = "#TC002", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TCM-002", threadPoolSize = 2, invocationCount = 2)
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
