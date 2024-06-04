@@ -33,4 +33,10 @@ public class SideMenu extends AbstractUIObject implements ICustomTypePageFactory
 
         return initPage(driver, CatalogPageBase.class);
     }
+
+    public boolean checkPresenceOfButton(String buttonName) {
+        return sidebarButtons.stream()
+                .anyMatch(button -> button.getText().equalsIgnoreCase(buttonName));
+    }
+
 }

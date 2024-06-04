@@ -46,4 +46,9 @@ public abstract class LoginPageBase extends AbstractPage {
         signInButton.click();
     }
 
+    public HomePageBase mobileClickSignInButton() {
+        signInButton.click();
+        return initPage(driver, HomePageBase.class);
+    }
+
 }

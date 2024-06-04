@@ -1,15 +1,13 @@
 package com.solvd.gui.pages.common;
 
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.pages.BasePage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public abstract class SignUpPageBase extends AbstractPage {
-
-    @FindBy(xpath = "//header")
-    private Header header;
+public abstract class SignUpPageBase extends BasePage {
 
     @FindBy(xpath = "//input[contains(@id, 'first_name')]")
     private ExtendedWebElement firstNameInput;
@@ -30,10 +28,6 @@ public abstract class SignUpPageBase extends AbstractPage {
         super(driver);
     }
 
-    public Header getHeader() {
-        return header;
-    }
-
     public void fillSignUpForm(String firstName, String lastName, String email, String password){
         firstNameInput.click();
         firstNameInput.type(firstName);
@@ -50,5 +44,10 @@ public abstract class SignUpPageBase extends AbstractPage {
 
     public void clickCreateButton() {
         createButton.click();
+    }
+
+    public HomePageBase mobileClickCreateButton() {
+        createButton.click();
+        return initPage(driver, HomePageBase.class);
     }
 }

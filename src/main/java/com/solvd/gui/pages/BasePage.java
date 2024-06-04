@@ -1,5 +1,7 @@
 package com.solvd.gui.pages;
 
+import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
@@ -11,6 +13,13 @@ import java.util.Random;
 
 public abstract class BasePage extends AbstractPage  {
 
+    @FindBy(xpath = "//header")
+    private Header header;
+
+    @FindBy(xpath = "//sidebar")
+    private SideMenu sideMenu;
+
+
     private ExtendedWebElement selectedProduct;
 
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
@@ -18,6 +27,14 @@ public abstract class BasePage extends AbstractPage  {
 
     protected BasePage(WebDriver driver) {
         super(driver);
+    }
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public SideMenu getSideMenu() {
+        return sideMenu;
     }
 
     public boolean isProductListPresent() {

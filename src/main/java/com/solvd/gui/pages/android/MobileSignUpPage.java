@@ -1,5 +1,6 @@
 package com.solvd.gui.pages.android;
 
+import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;

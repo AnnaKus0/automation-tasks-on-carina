@@ -14,22 +14,8 @@ import java.util.Random;
 
 public abstract class HomePageBase extends BasePage {
 
-    @FindBy(xpath = "//header")
-    private Header header;
-
-    @FindBy(xpath = "//sidebar")
-    private SideMenu sideMenu;
-
     protected HomePageBase(WebDriver driver) {
         super(driver);
-    }
-
-    public Header getHeader() {
-        return header;
-    }
-
-    public SideMenu getSideMenu() {
-        return sideMenu;
     }
 
 }

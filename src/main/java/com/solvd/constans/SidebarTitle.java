@@ -8,7 +8,9 @@ public enum SidebarTitle {
     WISH_LIST("Wish list"),
     REFER_A_FRIEND("Refer a friend"),
     LOGIN("Login"),
-    CREATE_ACCOUNT("Create account");
+    CREATE_ACCOUNT("Create account"),
+    ACCOUNT("Account"),
+    LOGOUT("Logout");
 
     private String title;
 
