@@ -3,11 +3,13 @@ package com.solvd.gui.components.header;
 import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HeaderBase.class)
 public class Header extends HeaderBase {
 
     @FindBy(xpath = "//a[contains(@href, '/account') and not(contains(@href, 'logout'))]")
