@@ -14,13 +14,13 @@ public abstract class ProductPageBase extends AbstractPage {
     @FindBy(xpath = "//header")
     private Header header;
 
-    @FindBy(xpath = "//section[@id='buy']//h1[@itemprop='name']")
+    @FindBy(xpath = "//h1[@itemprop='name']")
     private ExtendedWebElement productTitle;
 
-    @FindBy(id = "product-price")
+    @FindBy(xpath = "//h2[@id='product-price']")
     private ExtendedWebElement productPrice;
 
-    @FindBy(id = "add")
+    @FindBy(xpath = "//input[@type='submit' and @value='Add to Cart']")
     private ExtendedWebElement addToCartButton;
 
     protected ProductPageBase(WebDriver driver) {

@@ -18,4 +18,7 @@ public abstract class HomePageBase extends BasePage {
         super(driver);
     }
 
+    //TODO: duplicate method is image visible
+    public abstract SideMenu clickToggleMenuLink();
+
 }

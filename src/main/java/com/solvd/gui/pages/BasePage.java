@@ -19,7 +19,6 @@ public abstract class BasePage extends AbstractPage  {
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
-
     private ExtendedWebElement selectedProduct;
 
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
@@ -58,8 +57,9 @@ public abstract class BasePage extends AbstractPage  {
         }
     }
 
+    //TODO: delete split("£")[0].trim()
     public String getSelectedProductName() {
-        return selectedProduct.getText();
+        return selectedProduct.getText().split("£")[0].trim();
     }
 
     public ProductPageBase clickSelectedProduct() {

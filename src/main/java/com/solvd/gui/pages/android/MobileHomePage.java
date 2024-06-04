@@ -17,7 +17,7 @@ public class MobileHomePage extends HomePageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileHomePage.class);
 
-    @FindBy(id = "toggle-menu")
+    @FindBy(xpath = "//a[@id='toggle-menu']")
     private ExtendedWebElement toggleMenuLink;
 
     public MobileHomePage(WebDriver driver) {
@@ -27,9 +27,9 @@ public class MobileHomePage extends HomePageBase {
         logger.info("HomePage loaded with url: " + R.TESTDATA.get("URL.base"));
     }
 
+    @Override
     public SideMenu clickToggleMenuLink() {
         toggleMenuLink.click();
         return new SideMenu(driver);
     }
-
 }
