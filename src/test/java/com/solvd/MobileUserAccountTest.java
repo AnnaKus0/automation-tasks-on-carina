@@ -12,7 +12,7 @@ import static org.testng.Assert.assertTrue;
 
 public class MobileUserAccountTest extends BaseTest {
 
-    @DataProvider(name = "useTestDataSignUp", parallel=true)
+    @DataProvider(name = "useTestDataSignUp")
     public Object[][] userSignUpDataProvider() {
         return new Object[][]{
                 {generateRandomString(), generateRandomString(), generateRandomEmail(), "Pass123"}
@@ -28,15 +28,18 @@ public class MobileUserAccountTest extends BaseTest {
         signUpPage.fillSignUpForm(firstName, lastName, email, password);
         HomePageBase homePageBase = signUpPage.mobileClickCreateButton();
 
-        assertTrue(homePageBase.clickToggleMenuLink().checkPresenceOfButton((String.valueOf(SidebarTitle.ACCOUNT))),
-                "My Account link in sidebar is not visible after account creation");
+        boolean isAccountButtonPresent = homePageBase.clickToggleMenuLink()
+                .checkPresenceOfButton((String.valueOf(SidebarTitle.ACCOUNT)));
 
-        assertTrue(homePageBase.clickToggleMenuLink().checkPresenceOfButton((String.valueOf(SidebarTitle.LOGOUT))),
-                "Logout link in sidebar is not visible after account creation");
+        boolean isLogInButtonPresent = homePageBase.clickToggleMenuLink()
+                .checkPresenceOfButton((String.valueOf(SidebarTitle.LOGOUT)));
+
+        assertTrue(isAccountButtonPresent, "My Account link in sidebar is not visible after account creation");
+        assertTrue(isLogInButtonPresent, "Logout link in sidebar is not visible after account creation");
 
     }
 
-    @Test(testName = "#TCM-002", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TCM-002")
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
@@ -45,10 +48,13 @@ public class MobileUserAccountTest extends BaseTest {
         loginPage.fillLogInForm(email, password);
         HomePageBase homePageBase = loginPage.mobileClickSignInButton();
 
-        assertTrue(homePageBase.clickToggleMenuLink().checkPresenceOfButton((String.valueOf(SidebarTitle.ACCOUNT))),
-                "My Account link in sidebar is not visible after account creation");
+        boolean isAccountButtonPresent = homePageBase.clickToggleMenuLink()
+                .checkPresenceOfButton((String.valueOf(SidebarTitle.ACCOUNT)));
 
-        assertTrue(homePageBase.clickToggleMenuLink().checkPresenceOfButton((String.valueOf(SidebarTitle.LOGOUT))),
-                "Logout link in sidebar is not visible after account creation");
+        boolean isLogInButtonPresent = homePageBase.clickToggleMenuLink()
+                .checkPresenceOfButton((String.valueOf(SidebarTitle.LOGOUT)));
+
+        assertTrue(isAccountButtonPresent, "My Account link in sidebar is not visible after account creation");
+        assertTrue(isLogInButtonPresent, "Logout link in sidebar is not visible after account creation");
     }
 }
