@@ -60,8 +60,7 @@ public abstract class BasePage extends AbstractPage  {
     //TODO: delete split("£")[0].trim()
     public String getSelectedProductName() {
         String fullProductName = selectedProduct.getText();
-        String productName = fullProductName.split("£")[0].trim();
-        return productName;
+        return fullProductName.split("£")[0].trim();
     }
 
     public ProductPageBase clickSelectedProduct() {
