@@ -6,8 +6,7 @@ import com.solvd.service.ClientService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class ProductTest extends BaseTest {
 
@@ -17,26 +16,6 @@ public class ProductTest extends BaseTest {
                 {"-1"},
                 {"abc"},
         };
-    }
-
-    @Test(testName = "#TC-005")
-    public void verifyAddProductToCart() {
-        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-        homePage.open();
-        assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
-
-        homePage.selectRandomProduct();
-        String productName = homePage.getSelectedProductName();
-        ProductPageBase productPage = homePage.clickSelectedProduct();
-
-        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches selected one");
-        //assertEquals(productPage.getPrice(), productPrice, "Product price on product page don't match selected one");
-        //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-
-        productPage.clickAddToCartButton();
-        CartPageBase cartPage = productPage.getHeader().clickCartLink();
-        assertEquals(cartPage.getProductName(), productName,"The name is not equal to selected product");
-        //assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
     }
 
     @Test(testName= "#TC-007")
@@ -51,11 +30,33 @@ public class ProductTest extends BaseTest {
 
         catalogPage.selectRandomProduct();
         String productName = catalogPage.getSelectedProductName();
+        String productPrice = catalogPage.getSelectedProductPrice();
         ProductPageBase productPage = catalogPage.clickSelectedProduct();
 
-        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches selected one");
-        //assertEquals(productPage.getPrice(), productPrice, "Product price on product page don't match selected one");
-        //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't match selected one");
+        assertEquals(productPage.getProductPrice(), productPrice, "Product price on product page don't match selected one");
+    }
+
+    @Test(testName = "#TC-005")
+    public void verifyAddProductToCart() {
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+        homePage.open();
+        assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
+
+        homePage.selectRandomProduct();
+        String productName = homePage.getSelectedProductName();
+        String productPrice = homePage.getSelectedProductPrice();
+        ProductPageBase productPage = homePage.clickSelectedProduct();
+
+        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't match selected one");
+        assertEquals(productPage.getProductPrice(), productPrice, "Product price on product page don't match selected one");
+
+        productPage.clickAddToCartButton();
+        CartPageBase cartPage = productPage.getHeader().clickCartLink();
+
+        assertFalse(cartPage.isEmptyCartMessagePresent(), "Message should not be visible after adding product to cart");
+        assertEquals(cartPage.getProductName(), productName, "The name is not equal to selected product");
+        assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
     }
 
     @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
@@ -70,7 +71,8 @@ public class ProductTest extends BaseTest {
 
         CartPageBase cartPage = productPage.getHeader().clickCartLink();
         cartPage.setInputQuantity(quantity);
-        assertEquals(cartPage.getInputQuantity(), "1", "The quantity input don't change to 1");
+        assertEquals(cartPage.getInputQuantity(), "1",
+                "The quantity input don't change after not numeric input or negative number");
     }
 
     @Test(testName = "#TC-006")
@@ -86,7 +88,6 @@ public class ProductTest extends BaseTest {
         productPage.clickAddToCartButton();
 
         CartPageBase cartPage = productPage.getHeader().clickCartLink();
-
         CheckOutPageBase checkOutPage = cartPage.clickCheckoutButton();
         checkOutPage.fillCheckOutForm(clientService.createClient());
         checkOutPage.clickPayNowButton();

@@ -10,7 +10,7 @@ import static org.testng.Assert.*;
 
 public class MobileProductTest extends BaseTest {
 
-    @DataProvider(name = "useTestProductQuantityData", parallel=true)
+    @DataProvider(name = "useTestProductQuantityData")
     public Object[][] userRegisterDataProvider() {
         return new Object[][]{
                 {"-1"},
@@ -26,18 +26,18 @@ public class MobileProductTest extends BaseTest {
 
         homePage.selectRandomProduct();
         String productName = homePage.getSelectedProductName();
+        String productPrice = homePage.getSelectedProductPrice();
         ProductPageBase productPage = homePage.clickSelectedProduct();
 
-        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches selected one");
-        //assertEquals(productPage.getPrice(), productPrice, "Product name on product page don't matches selected one");
-        //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't match selected one");
+        assertEquals(productPage.getProductPrice(), productPrice, "Product price on product page don't match selected one");
 
         productPage.clickAddToCartButton();
         CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
 
         assertFalse(cartPage.isEmptyCartMessagePresent(), "Message should not be visible after adding product to cart");
         assertEquals(cartPage.getProductName(), productName, "The name is not equal to selected product");
-        //assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
+        assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
     }
 
 //    @Test(testName= "#TC-007")

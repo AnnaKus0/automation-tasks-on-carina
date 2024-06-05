@@ -40,4 +40,9 @@ public class MobileCartPage extends CartPageBase {
         return quantityInput.getAttribute("value");
     }
 
+    @Override
+    public String getProductPrice() {
+        return productPrice.getText();
+    }
+
 }

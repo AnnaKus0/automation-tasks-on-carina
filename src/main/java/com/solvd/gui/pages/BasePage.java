@@ -69,6 +69,10 @@ public abstract class BasePage extends AbstractPage  {
         return selectedProduct.getProductTitle();
     }
 
+    public String getSelectedProductPrice() {
+        return selectedProduct.getProductPrice();
+    }
+
     public ProductPageBase clickSelectedProduct() {
         selectedProduct.clickOnProduct();
         return initPage(getDriver(), ProductPageBase.class);

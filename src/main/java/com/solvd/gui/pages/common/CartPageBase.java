@@ -21,9 +21,6 @@ public abstract class CartPageBase extends AbstractPage {
     @FindBy(xpath = "//div[contains(@class, 'description')]//h3/a")
     private ExtendedWebElement productName;
 
-    @FindBy(xpath = "//div[contains(@class, 'total')]/span")
-    private ExtendedWebElement totalPrice;
-
     @FindBy(xpath = "//div[contains(@class, 'remove')]/a")
     private ExtendedWebElement removeProductButton;
 
@@ -37,16 +34,8 @@ public abstract class CartPageBase extends AbstractPage {
         super(driver);
     }
 
-    public boolean isProductImageDisplayed() {
-        return productImage.isVisible();
-    }
-
     public String getProductName() {
         return productName.getText();
-    }
-
-    public String getTotalPrice() {
-        return totalPrice.getText().trim();
     }
 
     public void clickRemoveProductButton() {
@@ -65,6 +54,8 @@ public abstract class CartPageBase extends AbstractPage {
     public abstract void setInputQuantity(String quantity);
 
     public abstract String getInputQuantity();
+
+    public abstract String getProductPrice();
 
 
 }
