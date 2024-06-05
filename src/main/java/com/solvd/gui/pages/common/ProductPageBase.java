@@ -1,15 +1,13 @@
 package com.solvd.gui.pages.common;
 
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.pages.BasePage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public abstract class ProductPageBase extends AbstractPage {
-
-    @FindBy(xpath = "//header")
-    private Header header;
+public abstract class ProductPageBase extends BasePage {
 
     @FindBy(xpath = "//h1[@itemprop='name']")
     private ExtendedWebElement productTitle;
@@ -22,10 +20,6 @@ public abstract class ProductPageBase extends AbstractPage {
 
     protected ProductPageBase(WebDriver driver) {
         super(driver);
-    }
-
-    public Header getHeader() {
-        return header;
     }
 
     public String getProductTitle() {

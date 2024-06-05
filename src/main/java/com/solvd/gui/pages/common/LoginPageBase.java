@@ -1,15 +1,13 @@
 package com.solvd.gui.pages.common;
 
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.pages.BasePage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public abstract class LoginPageBase extends AbstractPage {
-
-    @FindBy(xpath = "//header")
-    private Header header;
+public abstract class LoginPageBase extends BasePage {
 
     @FindBy(xpath = "//div[contains(@id, 'login_email')]//input[@type='email']")
     private ExtendedWebElement emailInput;
@@ -25,10 +23,6 @@ public abstract class LoginPageBase extends AbstractPage {
 
     protected LoginPageBase(WebDriver driver) {
         super(driver);
-    }
-
-    public Header getHeader() {
-        return header;
     }
 
     public void fillLogInForm(String email, String password) {
