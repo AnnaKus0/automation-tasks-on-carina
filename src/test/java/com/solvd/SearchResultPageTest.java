@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 
 public class SearchResultPageTest extends BaseTest {
 
-    @DataProvider(name = "useTestProductData", parallel=true)
+    @DataProvider(name = "useTestProductData")
     public Object[][] userRegisterDataProvider() {
         return new Object[][]{
                 {R.TESTDATA.get("PRODUCT.jacket")},
@@ -19,7 +19,7 @@ public class SearchResultPageTest extends BaseTest {
         };
     }
 
-    //threadPoolSize = 2, invocationCount = 2
+    //threadPoolSize = 2, invocationCount = 2, parallel=true
     @Test(testName = "#TC-004", dataProvider = "useTestProductData")
     public void verifySearchFunctionality(String productName) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);

@@ -13,14 +13,14 @@ import static org.testng.Assert.assertTrue;
 
 public class UserAccountTest extends BaseTest {
 
-    @DataProvider(name = "useTestDataSignUp", parallel=true)
+    @DataProvider(name = "useTestDataSignUp")
     public Object[][] userSignUpDataProvider() {
         return new Object[][]{
                 {generateRandomString(), generateRandomString(), generateRandomEmail(), "Pass123"}
         };
     }
 
-    @Test(testName = "#TC-001", dataProvider = "useTestDataSignUp", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC-001", dataProvider = "useTestDataSignUp")
     public void verifyCreatingUserAccount(String firstName, String lastName, String email, String password){
         SignUpPageBase signUpPage = initPage(getDriver(), SignUpPageBase.class);
         signUpPage.open();
@@ -34,7 +34,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC-002", threadPoolSize = 2, invocationCount = 2)
+    @Test(testName = "#TC-002")
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();

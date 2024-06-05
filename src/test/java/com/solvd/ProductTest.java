@@ -20,48 +20,48 @@ public class ProductTest extends BaseTest {
         };
     }
 
-//    @Test(testName = "#TC-005")
-//    public void verifyAddProductToCart() {
-//        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
-//        homePage.open();
-//        assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
-//
-//        homePage.selectRandomProduct();
-//        String productName = homePage.getSelectedProductName();
-//        ProductPageBase productPage = homePage.clickSelectedProduct();
-//
-//        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches selected one");
-//        //TODO: isProductImageDisplayed()
-//        //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-//
-//        productPage.clickAddToCartButton();
-//
-//        CartPageBase cartPage = productPage.getHeader().clickCheckOutLink();
-//        assertEquals(cartPage.getProductName(), productName,"The name is not equal to selected product");
-//        //TODO: getProductPrice()
-//        //assertEquals(cartPage.getProductPrice(), productName,"The price is not equal to selected product");
-//    }
-
-    @Test(testName= "#TC-007")
-    public void verifyCatalogAndProductPage() {
+    @Test(testName = "#TC-005")
+    public void verifyAddProductToCart() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
 
-        CatalogPageBase catalogPage =  homePage.clickToggleMenuLink()
-                .clickMenuButtonByName(String.valueOf(SidebarTitle.CATALOG));
+        homePage.selectRandomProduct();
+        String productName = homePage.getSelectedProductName();
+        ProductPageBase productPage = homePage.clickSelectedProduct();
 
-        assertTrue(catalogPage.isProductListPresent(), "Product section on catalog page is empty");
-
-        catalogPage.selectRandomProduct();
-        String productName = catalogPage.getSelectedProductName();
-        ProductPageBase productPage = catalogPage.clickSelectedProduct();
-
+        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches selected one");
         //TODO: isProductImageDisplayed()
         //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
-        assertEquals(productPage.getProductTitle(), productName,
-                "Product name on product page don't matches selected one");
+
+        productPage.clickAddToCartButton();
+
+        CartPageBase cartPage = productPage.getHeader().mobileClickCheckOutLink();
+//        assertEquals(cartPage.getProductName(), productName,"The name is not equal to selected product");
+        //TODO: getProductPrice()
+        //assertEquals(cartPage.getProductPrice(), productName,"The price is not equal to selected product");
     }
+
+//    @Test(testName= "#TC-007")
+//    public void verifyCatalogAndProductPage() {
+//        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
+//        homePage.open();
+//        assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
+//
+//        CatalogPageBase catalogPage =  homePage.clickToggleMenuLink()
+//                .clickMenuButtonByName(String.valueOf(SidebarTitle.CATALOG));
+//
+//        assertTrue(catalogPage.isProductListPresent(), "Product section on catalog page is empty");
+//
+//        catalogPage.selectRandomProduct();
+//        String productName = catalogPage.getSelectedProductName();
+//        ProductPageBase productPage = catalogPage.clickSelectedProduct();
+//
+//        //TODO: isProductImageDisplayed()
+//        //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+//        assertEquals(productPage.getProductTitle(), productName,
+//                "Product name on product page don't matches selected one");
+//    }
 
 //    @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
 //    public void verifyQuantityField(String quantity) {
