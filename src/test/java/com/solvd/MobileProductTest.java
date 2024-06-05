@@ -6,8 +6,7 @@ import com.solvd.service.ClientService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 public class MobileProductTest extends BaseTest {
 
@@ -35,7 +34,9 @@ public class MobileProductTest extends BaseTest {
 
         productPage.clickAddToCartButton();
         CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
-        assertEquals(cartPage.getProductName(), productName,"The name is not equal to selected product");
+
+        assertFalse(cartPage.isEmptyCartMessagePresent(), "Message should not be visible after adding product to cart");
+        assertEquals(cartPage.getProductName(), productName, "The name is not equal to selected product");
         //assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
     }
 

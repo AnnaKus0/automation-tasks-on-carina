@@ -1,11 +1,14 @@
 package com.solvd.gui.pages;
 
+import com.solvd.exception.ProductNotFound;
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.solvd.gui.pages.desktop.SignUpPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import org.apache.commons.math3.stat.descriptive.summary.Product;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -24,10 +27,10 @@ public abstract class BasePage extends AbstractPage  {
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
-    private ExtendedWebElement selectedProduct;
+    private ProductCard selectedProduct;
 
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
-    private List<ExtendedWebElement> productList;
+    private List<ProductCard> productList;
 
     protected BasePage(WebDriver driver) {
         super(driver);
@@ -45,35 +48,29 @@ public abstract class BasePage extends AbstractPage  {
         return !productList.isEmpty();
     }
 
-    public ExtendedWebElement selectRandomProduct() {
+    public ProductCard selectRandomProduct() {
         if (isProductListPresent()) {
             Random rand = new Random();
             int randomIndex = rand.nextInt(productList.size());
 
-            ExtendedWebElement randomProduct = productList.stream()
+            ProductCard randomProduct = productList.stream()
                     .skip(randomIndex)
                     .findFirst()
-                    .orElseThrow(() -> new IllegalStateException("Unable to find a random product"));
+                    .orElseThrow(() -> new ProductNotFound("Unable to find product"));
 
             this.selectedProduct = randomProduct;
             return randomProduct;
         } else {
-            throw new IllegalStateException("Product list is empty");
+            throw new ProductNotFound("Product list is empty");
         }
     }
 
-    //TODO: delete split("£")[0].trim()
     public String getSelectedProductName() {
-        String fullProductName = selectedProduct.getText();
-        logger.info(fullProductName);
-
-        String productName = fullProductName.split("£")[0].trim();
-        logger.info(productName);
-        return productName;
+        return selectedProduct.getProductTitle();
     }
 
     public ProductPageBase clickSelectedProduct() {
-        selectedProduct.click();
+        selectedProduct.clickOnProduct();
         return initPage(getDriver(), ProductPageBase.class);
     }
 

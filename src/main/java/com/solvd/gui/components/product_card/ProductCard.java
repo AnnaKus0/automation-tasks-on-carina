@@ -8,13 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductCard extends AbstractUIObject {
 
-    @FindBy(xpath = "//div[contains(@class, 'product-card')]//img")
-    private ExtendedWebElement productImage;
+    @FindBy(xpath = ".//h3")
+    private ExtendedWebElement productTitle;
 
-    @FindBy(xpath = "//div[contains(@class, 'product-card')]//h3")
-    private ExtendedWebElement productName;
-
-    @FindBy(xpath = "//div[contains(@class, 'product-card')]//h4")
+    @FindBy(xpath = ".//h4")
     private ExtendedWebElement productPrice;
 
     public ProductCard(WebDriver driver) {
@@ -25,19 +22,15 @@ public class ProductCard extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public String getProductName() {
-        return productName.getText();
+    public String getProductTitle() {
+        return productTitle.getText();
     }
 
     public String getProductPrice() {
         return productPrice.getText();
     }
 
-    public boolean isProductImageDisplayed() {
-        return productImage.isVisible();
-    }
-
     public void clickOnProduct() {
-        productName.click();
+        productTitle.click();
     }
 }
