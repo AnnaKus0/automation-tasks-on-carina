@@ -17,7 +17,7 @@ public class MobileResetPasswordPage extends ResetPasswordPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.login"));
-        logger.info("ResetPasswordPage loaded with url: " + R.TESTDATA.get("URL.login"));
+        logger.info("MobileResetPasswordPage loaded with url: " + R.TESTDATA.get("URL.login"));
     }
 
 }

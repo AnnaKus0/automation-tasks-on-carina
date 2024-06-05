@@ -21,12 +21,7 @@ public class MobileProductPage extends ProductPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(productImage);
-        logger.info("ProductPage loaded with element: " + productImage);
-    }
-
-    //TODO: duplicate method
-    public boolean isProductImageDisplayed() {
-        return productImage.isVisible();
+        logger.info("MobileProductPage loaded with element: " + productImage);
     }
 
 }

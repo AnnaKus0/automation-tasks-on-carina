@@ -24,8 +24,8 @@ public class MobileCartPage extends CartPageBase {
     public MobileCartPage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        setUiLoadedMarker(productPrice);
-        logger.info("CartPage loaded with element: " + productPrice);
+        setUiLoadedMarker(quantityInput);
+        logger.info("MobileCartPage loaded with element: " + quantityInput);
     }
 
     //TODO: duplicate method

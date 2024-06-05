@@ -17,7 +17,7 @@ public class MobileLoginPage extends LoginPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.login"));
-        logger.info("LoginPage loaded with url: " + R.TESTDATA.get("URL.login"));
+        logger.info("MobileLoginPage loaded with url: " + R.TESTDATA.get("URL.login"));
     }
 
 }

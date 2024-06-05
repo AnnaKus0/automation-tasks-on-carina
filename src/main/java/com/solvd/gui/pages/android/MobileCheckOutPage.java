@@ -17,7 +17,7 @@ public class MobileCheckOutPage extends CheckOutPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.checkout"));
-        logger.info("CheckOutPage loaded with url: " + R.TESTDATA.get("URL.checkout"));
+        logger.info("MobileCheckOutPage loaded with url: " + R.TESTDATA.get("URL.checkout"));
     }
 
 }

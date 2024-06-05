@@ -21,7 +21,7 @@ public class MobileSearchResultPage extends SearchResultPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(searchResultText);
-        logger.info("SearchResultPage loaded with element: " + searchResultText.getText());
+        logger.info("MobileSearchResultPage loaded with element: " + searchResultText.getText());
     }
 
 }

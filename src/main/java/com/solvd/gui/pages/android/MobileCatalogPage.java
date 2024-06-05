@@ -17,7 +17,7 @@ public class MobileCatalogPage extends CatalogPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.catalog"));
-        logger.info("CatalogPage loaded with url: " + R.TESTDATA.get("URL.catalog"));
+        logger.info("MobileCatalogPage loaded with url: " + R.TESTDATA.get("URL.catalog"));
     }
 
 }

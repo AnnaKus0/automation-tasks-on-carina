@@ -23,10 +23,4 @@ public class ProductPage extends ProductPageBase {
         setUiLoadedMarker(productImage);
         logger.info("ProductPage loaded with element: " + productImage);
     }
-
-    //TODO: duplicate method is image visible
-    public boolean isProductImageDisplayed() {
-        return productImage.isVisible();
-    }
-
 }

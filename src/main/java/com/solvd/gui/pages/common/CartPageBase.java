@@ -23,6 +23,9 @@ public abstract class CartPageBase extends AbstractPage {
     @FindBy(xpath = "//input[contains(@id, 'checkout') and @value='Check Out']")
     private ExtendedWebElement checkOutButton;
 
+    @FindBy(xpath = "//section[@id='cart']//p")
+    private ExtendedWebElement emptyCartMessage;
+
     protected CartPageBase(WebDriver driver) {
         super(driver);
     }
@@ -51,5 +54,10 @@ public abstract class CartPageBase extends AbstractPage {
     public abstract void setInputQuantity(String quantity);
 
     public abstract String getInputQuantity();
+
+    @Override
+    public boolean isPageOpened() {
+        return productName.isElementPresent() || emptyCartMessage.isElementPresent();
+    }
 
 }

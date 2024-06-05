@@ -17,7 +17,7 @@ public class MobileSignUpPage extends SignUpPageBase {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.register"));
-        logger.info("SignUpPage loaded with url: " + R.TESTDATA.get("URL.register"));
+        logger.info("MobileSignUpPage loaded with url: " + R.TESTDATA.get("URL.register"));
     }
 
 }
