@@ -8,10 +8,14 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = HeaderBase.class)
+import static com.zebrunner.carina.utils.factory.DeviceType.Type.ANDROID_PHONE;
+import static com.zebrunner.carina.utils.factory.DeviceType.Type.DESKTOP;
+
+@DeviceType(pageType = DESKTOP, parentClass = HeaderBase.class)
 public class Header extends HeaderBase {
 
     private static final Logger logger = LoggerFactory.getLogger(Header.class);
@@ -22,11 +26,11 @@ public class Header extends HeaderBase {
     @FindBy(id = "customer_logout_link")
     private ExtendedWebElement logOutLink;
 
-    @FindBy(xpath = "//a[contains(@class, 'cart) and contains(@class, 'desktop')]")
+    @FindBy(xpath = "//a[contains(@class, 'toggle-drawer') and contains(@class, 'desktop')]")
     private ExtendedWebElement checkOutLink;
 
     //TODO: remove, mobile
-    @FindBy(xpath = "//a[contains(@class, 'cart) and contains(@class, 'mobile')]")
+    @FindBy(xpath = "//a[contains(@class, 'cart') and contains(@class, 'mobile')]")
     private ExtendedWebElement cartMobileLink;
 
     public Header(WebDriver driver) {
@@ -39,13 +43,28 @@ public class Header extends HeaderBase {
         logger.info("Get header with context");
     }
 
-    public CartPageBase clickCheckOutLink() {
+    //TODO: Cannot resolve method 'getType' in 'DeviceType'
+//    public CartPageBase clickCartLink() {
+//        switch (DeviceType.getType()) {
+//            case DESKTOP:
+//                checkOutLink.click();
+//                break;
+//            case ANDROID_PHONE:
+//                cartMobileLink.click();
+//                break;
+//            default:
+//                logger.error("Device type not supported");
+//        }
+//        return initPage(getDriver(), CartPageBase.class);
+//    }
+
+    public CartPageBase clickCartLink() {
         checkOutLink.click();
         return initPage(driver, CartPageBase.class);
     }
 
     //TODO: remove, mobile
-    public CartPageBase mobileClickCheckOutLink() {
+    public CartPageBase mobileClickCartOutLink(){
         cartMobileLink.click();
         return initPage(driver, CartPageBase.class);
     }

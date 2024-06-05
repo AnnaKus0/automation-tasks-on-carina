@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class ProductTest extends BaseTest {
+public class MobileProductTest extends BaseTest {
 
     @DataProvider(name = "useTestProductQuantityData", parallel=true)
     public Object[][] userRegisterDataProvider() {
@@ -30,17 +30,17 @@ public class ProductTest extends BaseTest {
         ProductPageBase productPage = homePage.clickSelectedProduct();
 
         assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't matches selected one");
-        //assertEquals(productPage.getPrice(), productPrice, "Product price on product page don't match selected one");
+        //assertEquals(productPage.getPrice(), productPrice, "Product name on product page don't matches selected one");
         //assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
 
         productPage.clickAddToCartButton();
-        CartPageBase cartPage = productPage.getHeader().clickCartLink();
+        CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
         assertEquals(cartPage.getProductName(), productName,"The name is not equal to selected product");
         //assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
     }
 
     @Test(testName= "#TC-007")
-    public void verifyCatalogToProductNavigation() {
+    public void verifyCatalogAndProductPage() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
@@ -68,7 +68,7 @@ public class ProductTest extends BaseTest {
         ProductPageBase productPage = homePage.clickSelectedProduct();
         productPage.clickAddToCartButton();
 
-        CartPageBase cartPage = productPage.getHeader().clickCartLink();
+        CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
         cartPage.setInputQuantity(quantity);
         assertEquals(cartPage.getInputQuantity(), "1", "The quantity input don't change to 1");
     }
@@ -85,13 +85,13 @@ public class ProductTest extends BaseTest {
         ProductPageBase productPage = homePage.clickSelectedProduct();
         productPage.clickAddToCartButton();
 
-        CartPageBase cartPage = productPage.getHeader().clickCartLink();
+        CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
 
         CheckOutPageBase checkOutPage = cartPage.clickCheckoutButton();
         checkOutPage.fillCheckOutForm(clientService.createClient());
         checkOutPage.clickPayNowButton();
 
         assertTrue(homePage.isPageOpened(), "User should be redirected to the homepage after payment");
-        assertTrue(homePage.isProductListPresent(), "Elements on homepage should be visible");
+        assertTrue(homePage.isAnyElementPresent(), "Elements on homepage should be visible");
     }
 }

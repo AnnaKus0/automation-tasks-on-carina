@@ -30,15 +30,13 @@ public class CartPage extends CartPageBase {
     }
 
     //TODO: duplicate method
-    public String getProductPrice() {
-        return productPrice.getText().trim();
-    }
-
+    @Override
     public void setInputQuantity(String quantity) {
         quantityInput.type(quantity);
         quantityInput.sendKeys(Keys.ENTER);
     }
 
+    @Override
     public String getInputQuantity() {
         return quantityInput.getAttribute("value");
     }

@@ -2,6 +2,7 @@ package com.solvd.gui.pages.common;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
@@ -46,5 +47,9 @@ public abstract class CartPageBase extends AbstractPage {
         checkOutButton.click();
         return initPage(driver, CheckOutPageBase.class);
     }
+
+    public abstract void setInputQuantity(String quantity);
+
+    public abstract String getInputQuantity();
 
 }
