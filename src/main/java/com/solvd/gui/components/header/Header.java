@@ -5,12 +5,16 @@ import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.Duration;
 
 import static com.zebrunner.carina.utils.factory.DeviceType.Type.ANDROID_PHONE;
 import static com.zebrunner.carina.utils.factory.DeviceType.Type.DESKTOP;
@@ -24,6 +28,9 @@ public class Header extends HeaderBase {
 
     @FindBy(id = "customer_logout_link")
     private ExtendedWebElement logOutLink;
+
+    @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
+    private ExtendedWebElement cartCount;
 
     @FindBy(xpath = "//a[contains(@class, 'toggle-drawer') and contains(@class, 'desktop')]")
     private ExtendedWebElement checkOutLink;
@@ -66,6 +73,11 @@ public class Header extends HeaderBase {
     public CartPageBase mobileClickCartOutLink(){
         cartMobileLink.click();
         return initPage(driver, CartPageBase.class);
+    }
+
+    public boolean checkCartQuantity() {
+        waitForElementToBeVisible(cartCount.getBy());
+        return cartCount.isVisible();
     }
 
     public boolean isMyAccountLinkVisible() {

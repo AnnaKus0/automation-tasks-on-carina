@@ -1,10 +1,9 @@
 package com.solvd;
 
-import com.solvd.constans.SidebarTitle;
 import com.solvd.gui.pages.common.*;
-import com.solvd.service.ClientService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.*;
 
@@ -20,6 +19,8 @@ public class MobileProductTest extends BaseTest {
 
     @Test(testName = "#TC-005")
     public void verifyAddProductToCart() {
+        SoftAssert softAssert = new SoftAssert();
+
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
@@ -29,15 +30,22 @@ public class MobileProductTest extends BaseTest {
         String productPrice = homePage.getSelectedProductPrice();
         ProductPageBase productPage = homePage.clickSelectedProduct();
 
-        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't match selected one");
-        assertEquals(productPage.getProductPrice(), productPrice, "Product price on product page don't match selected one");
+        softAssert.assertEquals(productPage.getProductTitle(), productName,
+                "Product name on product page doesn't match selected one");
+        softAssert.assertEquals(productPage.getProductPrice(), productPrice,
+                "Product price on product page doesn't match selected one");
 
         productPage.clickAddToCartButton();
+        assertTrue(productPage.getHeader().checkCartQuantity(),
+                "After adding a product to the cart user should see the number of selected products");
         CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
 
-        assertFalse(cartPage.isEmptyCartMessagePresent(), "Message should not be visible after adding product to cart");
-        assertEquals(cartPage.getProductName(), productName, "The name is not equal to selected product");
-        assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
+        assertFalse(cartPage.isEmptyCartMessagePresent(),
+                "Message should not be visible after adding product to cart");
+        softAssert.assertEquals(cartPage.getProductName(), productName,
+                "The name is not equal to the selected product");
+        softAssert.assertEquals(cartPage.getProductPrice(), productPrice,
+                "The price is not equal to the selected product");
     }
 
 //    @Test(testName= "#TC-007")
