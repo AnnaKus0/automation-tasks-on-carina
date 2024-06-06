@@ -37,15 +37,15 @@ public class MobileProductTest extends BaseTest {
 
         productPage.clickAddToCartButton();
         assertTrue(productPage.getHeader().checkCartQuantity(),
-                "After adding a product to the cart user should see the number of selected products");
+                "After adding product to the cart, user should see the number of selected products");
         CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
 
         assertFalse(cartPage.isEmptyCartMessagePresent(),
-                "Message should not be visible after adding product to cart");
+                "The empty cart message should not be visible after adding product to the cart");
         softAssert.assertEquals(cartPage.getProductName(), productName,
-                "The name is not equal to the selected product");
+                "Product name on cart page doesn't match selected one");
         softAssert.assertEquals(cartPage.getProductPrice(), productPrice,
-                "The price is not equal to the selected product");
+                "Product price on cart page doesn't match selected one");
     }
 
 //    @Test(testName= "#TC-007")
