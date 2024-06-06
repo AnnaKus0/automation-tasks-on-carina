@@ -25,7 +25,7 @@ public class MobileHeader extends HeaderBase {
         logger.info("Get mobile header with context");
     }
 
-    public CartPageBase clickCheckOutLink() {
+    public CartPageBase clickCartLink() {
         cartMobileLink.click();
         return initPage(driver, CartPageBase.class);
     }

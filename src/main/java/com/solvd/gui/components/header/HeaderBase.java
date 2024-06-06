@@ -1,5 +1,6 @@
 package com.solvd.gui.components.header;
 
+import com.solvd.gui.pages.common.CartPageBase;
 import com.solvd.gui.pages.desktop.SearchResultPage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -38,5 +39,9 @@ public abstract class HeaderBase extends AbstractUIObject implements ICustomType
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(200));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
+    public abstract boolean checkCartQuantity();
+
+    public abstract CartPageBase clickCartLink();
 
 }

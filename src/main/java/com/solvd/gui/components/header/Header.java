@@ -29,15 +29,11 @@ public class Header extends HeaderBase {
     @FindBy(id = "customer_logout_link")
     private ExtendedWebElement logOutLink;
 
-    @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
-    private ExtendedWebElement cartCount;
-
     @FindBy(xpath = "//a[contains(@class, 'toggle-drawer') and contains(@class, 'desktop')]")
     private ExtendedWebElement checkOutLink;
 
-    //TODO: remove, mobile
-    @FindBy(xpath = "//a[contains(@class, 'cart') and contains(@class, 'mobile')]")
-    private ExtendedWebElement cartMobileLink;
+    @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
+    private ExtendedWebElement cartCount;
 
     public Header(WebDriver driver) {
         super(driver);
@@ -49,29 +45,9 @@ public class Header extends HeaderBase {
         logger.info("Get header with context");
     }
 
-    //TODO: Cannot resolve method 'getType' in 'DeviceType'
-//    public CartPageBase clickCartLink() {
-//        switch (DeviceType.getType()) {
-//            case DESKTOP:
-//                checkOutLink.click();
-//                break;
-//            case ANDROID_PHONE:
-//                cartMobileLink.click();
-//                break;
-//            default:
-//                logger.error("Device type not supported");
-//        }
-//        return initPage(getDriver(), CartPageBase.class);
-//    }
-
+    @Override
     public CartPageBase clickCartLink() {
         checkOutLink.click();
-        return initPage(driver, CartPageBase.class);
-    }
-
-    //TODO: remove, mobile
-    public CartPageBase mobileClickCartOutLink(){
-        cartMobileLink.click();
         return initPage(driver, CartPageBase.class);
     }
 

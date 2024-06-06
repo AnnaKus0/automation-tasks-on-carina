@@ -1,5 +1,8 @@
 package com.solvd.gui.pages.android;
 
+import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.header.HeaderBase;
+import com.solvd.gui.components.header.MobileHeader;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.desktop.HomePage;
@@ -18,6 +21,9 @@ public class MobileHomePage extends HomePageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileHomePage.class);
 
+    @FindBy(xpath = "//header")
+    private MobileHeader header;
+
     @FindBy(xpath = "//a[@id='toggle-menu']")
     private ExtendedWebElement toggleMenuLink;
 
@@ -33,4 +39,10 @@ public class MobileHomePage extends HomePageBase {
         toggleMenuLink.click();
         return new SideMenu(driver);
     }
+
+    @Override
+    public HeaderBase getHeader() {
+        return header;
+    }
+
 }

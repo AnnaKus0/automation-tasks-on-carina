@@ -38,7 +38,7 @@ public class MobileProductTest extends BaseTest {
         productPage.clickAddToCartButton();
         assertTrue(productPage.getHeader().checkCartQuantity(),
                 "After adding product to the cart, user should see the number of selected products");
-        CartPageBase cartPage = productPage.getHeader().mobileClickCartOutLink();
+        CartPageBase cartPage = productPage.getHeader().clickCartLink();
 
         assertFalse(cartPage.isEmptyCartMessagePresent(),
                 "The empty cart message should not be visible after adding product to the cart");

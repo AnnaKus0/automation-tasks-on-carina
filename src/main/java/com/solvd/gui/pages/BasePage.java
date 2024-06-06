@@ -2,6 +2,7 @@ package com.solvd.gui.pages;
 
 import com.solvd.exception.ProductNotFound;
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.ProductPageBase;
@@ -15,7 +16,7 @@ import java.util.Random;
 public abstract class BasePage extends AbstractPage  {
 
     @FindBy(xpath = "//header")
-    private Header header;
+    private HeaderBase header;
 
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
@@ -29,7 +30,7 @@ public abstract class BasePage extends AbstractPage  {
         super(driver);
     }
 
-    public Header getHeader() {
+    public HeaderBase getHeader() {
         return header;
     }
 
