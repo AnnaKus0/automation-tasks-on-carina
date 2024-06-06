@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import static com.zebrunner.carina.utils.factory.DeviceType.Type.ANDROID_PHONE;
 import static com.zebrunner.carina.utils.factory.DeviceType.Type.DESKTOP;
 
-@DeviceType(pageType = DESKTOP, parentClass = HeaderBase.class)
 public class Header extends HeaderBase {
 
     private static final Logger logger = LoggerFactory.getLogger(Header.class);
