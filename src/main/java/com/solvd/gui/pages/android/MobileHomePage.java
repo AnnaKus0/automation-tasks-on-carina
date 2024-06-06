@@ -14,7 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = HomePageBase.class)
-public class MobileHomePage extends HomePageBase implements IMobileUtils {
+public class MobileHomePage extends HomePageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileHomePage.class);
 

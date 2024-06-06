@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SearchResultPageBase.class)
-public class MobileSearchResultPage extends SearchResultPageBase implements IMobileUtils {
+public class MobileSearchResultPage extends SearchResultPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileSearchResultPage.class);
 

@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ResetPasswordPageBase.class)
-public class MobileResetPasswordPage extends ResetPasswordPageBase implements IMobileUtils {
+public class MobileResetPasswordPage extends ResetPasswordPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileResetPasswordPage.class);
 

@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CartPageBase.class)
-public class MobileCartPage extends CartPageBase implements IMobileUtils {
+public class MobileCartPage extends CartPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileCartPage.class);
 

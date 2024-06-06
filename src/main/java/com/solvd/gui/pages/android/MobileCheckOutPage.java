@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = CheckOutPageBase.class)
-public class MobileCheckOutPage extends CheckOutPageBase implements IMobileUtils {
+public class MobileCheckOutPage extends CheckOutPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileCheckOutPage.class);
 
