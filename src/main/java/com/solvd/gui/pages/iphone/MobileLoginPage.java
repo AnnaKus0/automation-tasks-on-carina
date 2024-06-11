@@ -1,6 +1,5 @@
-package com.solvd.gui.pages.desktop;
+package com.solvd.gui.pages.iphone;
 
-import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.header.MobileHeader;
 import com.solvd.gui.pages.common.LoginPageBase;
@@ -12,19 +11,19 @@ import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = LoginPageBase.class)
-public class LoginPage extends LoginPageBase {
+@DeviceType(pageType = DeviceType.Type.IOS_PHONE, parentClass = LoginPageBase.class)
+public class MobileLoginPage extends LoginPageBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
+    private static final Logger logger = LoggerFactory.getLogger(MobileLoginPage.class);
 
     @FindBy(xpath = "//header")
-    private Header header;
+    private MobileHeader header;
 
-    public LoginPage(WebDriver driver) {
+    public MobileLoginPage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.login"));
-        logger.info("LoginPage loaded with url: " + R.TESTDATA.get("URL.login"));
+        logger.info("MobileLoginPage loaded with url: " + R.TESTDATA.get("URL.login"));
     }
 
     @Override

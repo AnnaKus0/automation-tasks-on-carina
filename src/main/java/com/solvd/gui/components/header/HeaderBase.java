@@ -44,4 +44,8 @@ public abstract class HeaderBase extends AbstractUIObject implements ICustomType
 
     public abstract CartPageBase clickCartLink();
 
+    public abstract boolean isMyAccountLinkVisible();
+
+    public abstract boolean isLogOutLinkVisible();
+
 }

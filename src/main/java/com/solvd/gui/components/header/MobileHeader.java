@@ -15,6 +15,9 @@ public class MobileHeader extends HeaderBase {
     @FindBy(xpath = "//a[@class='cart-target-mobile' and contains(text(), 'My Cart)]")
     private ExtendedWebElement cartMobileLink;
 
+    @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
+    private ExtendedWebElement cartCount;
+
     protected MobileHeader(WebDriver driver) {
         super(driver);
         logger.info("Get mobile header");
@@ -25,9 +28,26 @@ public class MobileHeader extends HeaderBase {
         logger.info("Get mobile header with context");
     }
 
+    @Override
+    public boolean checkCartQuantity() {
+        waitForElementToBeVisible(cartCount.getBy());
+        return cartCount.isVisible();
+    }
+
     public CartPageBase clickCartLink() {
         cartMobileLink.click();
         return initPage(driver, CartPageBase.class);
+    }
+
+    //TODO: remove
+    @Override
+    public boolean isMyAccountLinkVisible() {
+        return false;
+    }
+
+    @Override
+    public boolean isLogOutLinkVisible() {
+        return false;
     }
 
 }

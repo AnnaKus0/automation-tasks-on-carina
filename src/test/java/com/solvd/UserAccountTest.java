@@ -1,6 +1,7 @@
 package com.solvd;
 
 import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
@@ -29,7 +30,7 @@ public class UserAccountTest extends BaseTest {
         signUpPage.fillSignUpForm(firstName, lastName, email, password);
         signUpPage.clickCreateButton();
 
-        Header header = signUpPage.getHeader();
+        HeaderBase header = signUpPage.getHeader();
         assertTrue(header.isMyAccountLinkVisible(), "My Account link is not visible after account creation");
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
@@ -43,7 +44,7 @@ public class UserAccountTest extends BaseTest {
         loginPage.fillLogInForm(email, password);
         loginPage.clickSignInButton();
 
-        Header header = loginPage.getHeader();
+        HeaderBase header = loginPage.getHeader();
         assertTrue(header.isMyAccountLinkVisible(), "My Account link is not visible after account creation");
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }

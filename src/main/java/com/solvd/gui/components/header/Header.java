@@ -32,9 +32,6 @@ public class Header extends HeaderBase {
     @FindBy(xpath = "//a[contains(@class, 'toggle-drawer') and contains(@class, 'desktop')]")
     private ExtendedWebElement checkOutLink;
 
-    @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
-    private ExtendedWebElement cartCount;
-
     public Header(WebDriver driver) {
         super(driver);
         logger.info("Get header");
@@ -45,15 +42,16 @@ public class Header extends HeaderBase {
         logger.info("Get header with context");
     }
 
+    //TODO: add xpath
+    @Override
+    public boolean checkCartQuantity() {
+        return false;
+    }
+
     @Override
     public CartPageBase clickCartLink() {
         checkOutLink.click();
         return initPage(driver, CartPageBase.class);
-    }
-
-    public boolean checkCartQuantity() {
-        waitForElementToBeVisible(cartCount.getBy());
-        return cartCount.isVisible();
     }
 
     public boolean isMyAccountLinkVisible() {
