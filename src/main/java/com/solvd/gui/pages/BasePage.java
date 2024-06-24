@@ -18,9 +18,6 @@ public abstract class BasePage extends AbstractPage {
 
     private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
-    @FindBy(xpath = "//header")
-    protected HeaderBase header;
-
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
@@ -33,9 +30,7 @@ public abstract class BasePage extends AbstractPage {
         super(driver);
     }
 
-    public HeaderBase getHeader() {
-        return header;
-    }
+    public abstract HeaderBase getHeader();
 
     public SideMenu getSideMenu() {
         return sideMenu;

@@ -1,5 +1,7 @@
 package com.solvd.gui.pages.desktop;
 
+import com.solvd.gui.components.header.Header;
+import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -14,6 +16,9 @@ public class ProductPage extends ProductPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductPage.class);
 
+    @FindBy(xpath = "//header")
+    private Header header;
+
     @FindBy(id = "feature-image")
     private ExtendedWebElement productImage;
 
@@ -22,5 +27,10 @@ public class ProductPage extends ProductPageBase {
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(productImage);
         logger.info("ProductPage loaded with element: " + productImage);
+    }
+
+    @Override
+    public HeaderBase getHeader() {
+        return header;
     }
 }
