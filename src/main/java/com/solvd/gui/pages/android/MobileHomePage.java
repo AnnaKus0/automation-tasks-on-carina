@@ -26,6 +26,7 @@ public class MobileHomePage extends HomePageBase {
 
     public MobileHomePage(WebDriver driver) {
         super(driver);
+        setHeader(header);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.base"));
         logger.info("MobileHomePage loaded with url: " + R.TESTDATA.get("URL.base"));

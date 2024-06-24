@@ -30,10 +30,12 @@ public class Header extends HeaderBase {
         super(driver, searchContext);
     }
 
+    //TODO: remove
     @Override
     public boolean checkCartQuantity() {
         return false;
     }
+
 
     @Override
     public CartPageBase clickCartLink() {
