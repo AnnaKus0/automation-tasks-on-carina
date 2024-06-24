@@ -18,7 +18,7 @@ public abstract class ProductPageBase extends BasePage {
     @FindBy(xpath = "//input[@type='submit' and @value='Add to Cart']")
     private ExtendedWebElement addToCartButton;
 
-    protected ProductPageBase(WebDriver driver) {
+    public ProductPageBase(WebDriver driver) {
         super(driver);
     }
 

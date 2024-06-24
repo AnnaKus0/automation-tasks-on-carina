@@ -12,7 +12,7 @@ public abstract class SearchResultPageBase extends AbstractPage {
     @FindBy(xpath = "//div[@id='page-content']//section[contains(@class, 'product-grid')]")
     private List<ProductCard> productList;
 
-    protected SearchResultPageBase(WebDriver driver) {
+    public SearchResultPageBase(WebDriver driver) {
         super(driver);
     }
 

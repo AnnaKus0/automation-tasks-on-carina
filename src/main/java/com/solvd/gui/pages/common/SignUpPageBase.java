@@ -22,7 +22,7 @@ public abstract class SignUpPageBase extends BasePage {
     @FindBy(xpath = "//input[@type='submit' and @value='Create']")
     private ExtendedWebElement createButton;
 
-    protected SignUpPageBase(WebDriver driver) {
+    public SignUpPageBase(WebDriver driver) {
         super(driver);
     }
 

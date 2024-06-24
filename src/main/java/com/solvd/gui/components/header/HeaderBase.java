@@ -1,7 +1,7 @@
 package com.solvd.gui.components.header;
 
 import com.solvd.gui.pages.common.CartPageBase;
-import com.solvd.gui.pages.desktop.SearchResultPage;
+import com.solvd.gui.pages.iphone.MobileSearchResultPage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
@@ -20,19 +20,19 @@ public abstract class HeaderBase extends AbstractUIObject implements ICustomType
     @FindBy(xpath = "//input[@id='search-field']")
     private ExtendedWebElement searchInput;
 
-    protected HeaderBase(WebDriver driver) {
+    public HeaderBase(WebDriver driver) {
         super(driver);
     }
 
-    protected HeaderBase(WebDriver driver, SearchContext searchContext) {
+    public HeaderBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public SearchResultPage searchProduct(String productName){
+    public MobileSearchResultPage searchProduct(String productName){
         searchInput.click();
         searchInput.type(productName);
         searchInput.sendKeys(Keys.ENTER);
-        return new SearchResultPage(driver);
+        return new MobileSearchResultPage(driver);
     }
 
     public void waitForElementToBeVisible(By locator) {

@@ -21,7 +21,7 @@ public abstract class LoginPageBase extends BasePage {
     @FindBy(xpath = "//input[@type='submit' and @value='Sign in']")
     private ExtendedWebElement signInButton;
 
-    protected LoginPageBase(WebDriver driver) {
+    public LoginPageBase(WebDriver driver) {
         super(driver);
     }
 

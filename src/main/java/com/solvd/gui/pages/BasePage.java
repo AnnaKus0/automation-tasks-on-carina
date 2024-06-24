@@ -5,15 +5,20 @@ import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
+import com.solvd.gui.pages.common.HomePageBase;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 import java.util.Random;
 
 public abstract class BasePage extends AbstractPage  {
+
+    private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
     @FindBy(xpath = "//header")
     private HeaderBase header;
@@ -21,20 +26,23 @@ public abstract class BasePage extends AbstractPage  {
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
-    private ProductCard selectedProduct;
-
-    @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
+    @FindBy(xpath = "//div[@id='page-content']/div[contains(@class, 'four columns')]")
     private List<ProductCard> productList;
 
-    protected BasePage(WebDriver driver) {
+    private ProductCard selectedProduct;
+
+    public BasePage(WebDriver driver) {
         super(driver);
+        logger.info("PageBase loaded");
     }
 
     public HeaderBase getHeader() {
+        logger.info("Get header");
         return header;
     }
 
     public SideMenu getSideMenu() {
+        logger.info("Get sideMenu");
         return sideMenu;
     }
 
