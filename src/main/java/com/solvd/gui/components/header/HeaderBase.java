@@ -20,11 +20,11 @@ public abstract class HeaderBase extends AbstractUIObject implements ICustomType
     @FindBy(xpath = "//input[@id='search-field']")
     private ExtendedWebElement searchInput;
 
-    protected HeaderBase(WebDriver driver) {
+    public HeaderBase(WebDriver driver) {
         super(driver);
     }
 
-    protected HeaderBase(WebDriver driver, SearchContext searchContext) {
+    public HeaderBase(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 

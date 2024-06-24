@@ -1,14 +1,11 @@
 package com.solvd.gui.pages.android;
 
-import com.solvd.gui.components.header.Header;
 import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.header.MobileHeader;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.HomePageBase;
-import com.solvd.gui.pages.desktop.HomePage;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;

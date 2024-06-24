@@ -18,12 +18,12 @@ public class MobileHeader extends HeaderBase {
     @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
     private ExtendedWebElement cartCount;
 
-    protected MobileHeader(WebDriver driver) {
+    public MobileHeader(WebDriver driver) {
         super(driver);
         logger.info("Get mobile header");
     }
 
-    protected MobileHeader(WebDriver driver, SearchContext searchContext) {
+    public MobileHeader(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
         logger.info("Get mobile header with context");
     }
