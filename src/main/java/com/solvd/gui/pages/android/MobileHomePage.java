@@ -3,6 +3,7 @@ package com.solvd.gui.pages.android;
 import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.header.MobileHeader;
 import com.solvd.gui.components.sidemenu.SideMenu;
+import com.solvd.gui.pages.BasePage;
 import com.solvd.gui.pages.common.HomePageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -26,7 +27,6 @@ public class MobileHomePage extends HomePageBase {
 
     public MobileHomePage(WebDriver driver) {
         super(driver);
-        setHeader(header);
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.base"));
         logger.info("MobileHomePage loaded with url: " + R.TESTDATA.get("URL.base"));
