@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 public abstract class ProductPageBase extends BasePage {
 
     @FindBy(xpath = "//h1[@itemprop='name']")
-    private ExtendedWebElement productTitle;
+    private ExtendedWebElement productName;
 
     @FindBy(xpath = "//h2[@id='product-price']")
     private ExtendedWebElement productPrice;
@@ -22,8 +22,8 @@ public abstract class ProductPageBase extends BasePage {
         super(driver);
     }
 
-    public String getProductTitle() {
-        return productTitle.getText();
+    public String getProductName() {
+        return productName.getText();
     }
 
     public String getProductPrice() {
