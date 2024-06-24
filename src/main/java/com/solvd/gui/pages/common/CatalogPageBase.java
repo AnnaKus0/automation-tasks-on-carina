@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class CatalogPageBase extends BasePage {
 
-    protected CatalogPageBase(WebDriver driver) {
+    public CatalogPageBase(WebDriver driver) {
         super(driver);
     }
 

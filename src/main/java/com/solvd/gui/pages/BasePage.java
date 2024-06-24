@@ -26,7 +26,7 @@ public abstract class BasePage extends AbstractPage  {
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
     private List<ProductCard> productList;
 
-    protected BasePage(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         super(driver);
     }
 

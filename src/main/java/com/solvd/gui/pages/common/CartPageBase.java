@@ -30,7 +30,7 @@ public abstract class CartPageBase extends AbstractPage {
     @FindBy(xpath = "//section[@id='cart']//p")
     private ExtendedWebElement emptyCartMessage;
 
-    protected CartPageBase(WebDriver driver) {
+    public CartPageBase(WebDriver driver) {
         super(driver);
     }
 

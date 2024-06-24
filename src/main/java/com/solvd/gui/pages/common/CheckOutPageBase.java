@@ -44,7 +44,7 @@ public abstract class CheckOutPageBase extends AbstractPage {
     @FindBy(id  = "checkout-pay-button")
     private ExtendedWebElement payNowButton;
 
-    protected CheckOutPageBase(WebDriver driver) {
+    public CheckOutPageBase(WebDriver driver) {
         super(driver);
     }
 

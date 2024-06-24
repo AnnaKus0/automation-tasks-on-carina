@@ -2,7 +2,6 @@ package com.solvd.gui.pages.android;
 
 import com.solvd.gui.pages.common.CartPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.Keys;

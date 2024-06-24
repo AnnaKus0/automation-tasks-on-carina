@@ -13,7 +13,7 @@ public abstract class ResetPasswordPageBase extends AbstractPage {
     @FindBy(xpath = "//input[@type='submit']")
     private ExtendedWebElement submitButton;
 
-    protected ResetPasswordPageBase(WebDriver driver) {
+    public ResetPasswordPageBase(WebDriver driver) {
         super(driver);
     }
 
