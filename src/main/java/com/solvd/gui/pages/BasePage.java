@@ -21,10 +21,8 @@ public abstract class BasePage extends AbstractPage  {
 
     private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 
+    @FindBy(xpath = "//header")
     protected HeaderBase header;
-
-//    @FindBy(xpath = "//header")
-//    private HeaderBase header;
 
 //    @FindBy(xpath = "//header")
 //    private MobileHeader header;
