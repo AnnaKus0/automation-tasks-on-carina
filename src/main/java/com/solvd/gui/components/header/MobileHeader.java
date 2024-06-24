@@ -1,6 +1,7 @@
 package com.solvd.gui.components.header;
 
 import com.solvd.gui.pages.common.CartPageBase;
+import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +11,6 @@ import org.slf4j.LoggerFactory;
 
 public class MobileHeader extends HeaderBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(MobileHeader.class);
-
     @FindBy(xpath = "//a[@class='cart-target-mobile' and contains(text(), 'My Cart)]")
     private ExtendedWebElement cartMobileLink;
 
@@ -20,12 +19,10 @@ public class MobileHeader extends HeaderBase {
 
     public MobileHeader(WebDriver driver) {
         super(driver);
-        logger.info("Get mobile header");
     }
 
     public MobileHeader(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
-        logger.info("Get mobile header with context");
     }
 
     @Override
@@ -45,6 +42,7 @@ public class MobileHeader extends HeaderBase {
         return false;
     }
 
+    //TODO: remove
     @Override
     public boolean isLogOutLinkVisible() {
         return false;

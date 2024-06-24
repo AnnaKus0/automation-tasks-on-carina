@@ -24,19 +24,18 @@ public class Header extends HeaderBase {
 
     public Header(WebDriver driver) {
         super(driver);
-        logger.info("Get header");
     }
 
     public Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
-        logger.info("Get header with context");
     }
 
-    //TODO: add xpath
+    //TODO: remove
     @Override
     public boolean checkCartQuantity() {
         return false;
     }
+
 
     @Override
     public CartPageBase clickCartLink() {

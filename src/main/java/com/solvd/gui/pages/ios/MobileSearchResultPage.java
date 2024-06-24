@@ -1,4 +1,4 @@
-package com.solvd.gui.pages.iphone;
+package com.solvd.gui.pages.ios;
 
 import com.solvd.gui.pages.common.SearchResultPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;

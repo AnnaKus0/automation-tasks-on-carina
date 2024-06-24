@@ -1,5 +1,7 @@
-package com.solvd.gui.pages.iphone;
+package com.solvd.gui.pages.ios;
 
+import com.solvd.gui.components.header.HeaderBase;
+import com.solvd.gui.components.header.MobileHeader;
 import com.solvd.gui.pages.common.ProductPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -14,6 +16,9 @@ public class MobileProductPage extends ProductPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileProductPage.class);
 
+    @FindBy(xpath = "//header")
+    private MobileHeader header;
+
     @FindBy(id = " //section[@id='images']//img[@class='mobile']")
     private ExtendedWebElement productImage;
 
@@ -22,6 +27,11 @@ public class MobileProductPage extends ProductPageBase {
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(productImage);
         logger.info("MobileProductPage loaded with element: " + productImage);
+    }
+
+    @Override
+    public HeaderBase getHeader() {
+        return header;
     }
 
 }

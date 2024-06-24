@@ -1,5 +1,6 @@
-package com.solvd.gui.pages.iphone;
+package com.solvd.gui.pages.ios;
 
+import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.CatalogPageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
@@ -18,6 +19,11 @@ public class MobileCatalogPage extends CatalogPageBase {
         setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
         setPageAbsoluteURL(R.TESTDATA.get("URL.catalog"));
         logger.info("MobileCatalogPage loaded with url: " + R.TESTDATA.get("URL.catalog"));
+    }
+
+    @Override
+    public HeaderBase getHeader() {
+        return null;
     }
 
 }

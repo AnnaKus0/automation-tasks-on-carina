@@ -36,6 +36,7 @@ public class MobileUserAccountTest extends BaseTest {
 
         assertTrue(isAccountButtonPresent, "My Account link in sidebar is not visible after account creation");
         assertTrue(isLogInButtonPresent, "Logout link in sidebar is not visible after account creation");
+
     }
 
     @Test(testName = "#TCM-002")

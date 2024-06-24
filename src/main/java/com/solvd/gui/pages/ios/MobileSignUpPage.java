@@ -1,4 +1,4 @@
-package com.solvd.gui.pages.iphone;
+package com.solvd.gui.pages.ios;
 
 import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.header.MobileHeader;
