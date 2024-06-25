@@ -64,12 +64,13 @@ public class MobileProductTest extends BaseTest {
 
         catalogPage.selectRandomProduct();
         String productName = catalogPage.getSelectedProductName();
+        String productPrice = catalogPage.getSelectedProductPrice();
         ProductPageBase productPage = catalogPage.clickSelectedProduct();
 
         softAssert.assertEquals(productPage.getProductName(), productName,
                 "Product name on cart page doesn't match selected one");
-//        assertEquals(productPage.getPrice(), productPrice, "Product price on product page don't match selected one");
-//        assertTrue(productPage.isProductImageDisplayed(), "Product image is not displayed");
+        softAssert.assertEquals(productPage.getProductPrice(), productPrice,
+                "Product name on cart page doesn't match selected one");
     }
 
     @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
