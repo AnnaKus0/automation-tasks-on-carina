@@ -28,7 +28,6 @@ public class MobileCartPage extends CartPageBase {
         logger.info("MobileCartPage loaded with element: " + quantityInput);
     }
 
-    //TODO: duplicate method
     @Override
     public void setInputQuantity(String quantity) {
         quantityInput.type(quantity);

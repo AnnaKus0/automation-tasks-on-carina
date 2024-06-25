@@ -6,9 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 public abstract class BaseTest implements IAbstractTest {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
@@ -22,7 +19,6 @@ public abstract class BaseTest implements IAbstractTest {
     public void setUp(String browser) {
         email = R.CONFIG.get("USER.email");
         password = R.CONFIG.get("USER.password");
-
         logger.info("Browser: " + browser);
         R.CONFIG.put("capabilities.browserName", browser);
     }

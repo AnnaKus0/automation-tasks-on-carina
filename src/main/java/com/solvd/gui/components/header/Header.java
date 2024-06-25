@@ -36,7 +36,6 @@ public class Header extends HeaderBase {
         return false;
     }
 
-
     @Override
     public CartPageBase clickCartLink() {
         checkOutLink.click();

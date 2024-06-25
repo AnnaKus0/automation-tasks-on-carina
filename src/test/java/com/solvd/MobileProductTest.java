@@ -32,7 +32,7 @@ public class MobileProductTest extends BaseTest {
         String productPrice = homePage.getSelectedProductPrice();
         ProductPageBase productPage = homePage.clickSelectedProduct();
 
-        softAssert.assertEquals(productPage.getProductTitle(), productName,
+        softAssert.assertEquals(productPage.getProductName(), productName,
                 "Product name on product page doesn't match selected one");
         softAssert.assertEquals(productPage.getProductPrice(), productPrice,
                 "Product price on product page doesn't match selected one");
