@@ -22,6 +22,9 @@ public class Header extends HeaderBase {
     @FindBy(xpath = "//a[contains(@class, 'toggle-drawer') and contains(@class, 'desktop')]")
     private ExtendedWebElement checkOutLink;
 
+    @FindBy(xpath = "//span[@id='cart-target-desktop']")
+    private ExtendedWebElement productCartCount;
+
     public Header(WebDriver driver) {
         super(driver);
     }
@@ -30,12 +33,11 @@ public class Header extends HeaderBase {
         super(driver, searchContext);
     }
 
-    //TODO: remove
     @Override
     public boolean checkCartQuantity() {
-        return false;
+        waitForElementToBeVisible(productCartCount.getBy());
+        return productCartCount.isVisible();
     }
-
 
     @Override
     public CartPageBase clickCartLink() {

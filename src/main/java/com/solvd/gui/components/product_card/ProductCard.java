@@ -8,10 +8,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductCard extends AbstractUIObject {
 
-    @FindBy(xpath = ".//h3")
+    @FindBy(xpath = "//div[@class='info']/h3/a")
     private ExtendedWebElement productTitle;
 
-    @FindBy(xpath = ".//h4")
+    @FindBy(xpath = "//div[@class='price desktop']")
     private ExtendedWebElement productPrice;
 
     public ProductCard(WebDriver driver) {
