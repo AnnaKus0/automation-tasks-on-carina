@@ -5,9 +5,12 @@ import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.components.product_card.ProductCard;
 import com.solvd.gui.components.sidemenu.SideMenu;
 import com.solvd.gui.pages.common.ProductPageBase;
+
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,16 +24,14 @@ public abstract class BasePage extends AbstractPage {
     @FindBy(xpath = "//sidebar")
     private SideMenu sideMenu;
 
-    private ProductCard selectedProduct;
-
     @FindBy(xpath = "//section[contains(@class, 'product-grid')]/div[contains(@class, 'four columns')]")
     private List<ProductCard> productList;
+
+    private ProductCard selectedProduct;
 
     public BasePage(WebDriver driver) {
         super(driver);
     }
-
-    public abstract HeaderBase getHeader();
 
     public SideMenu getSideMenu() {
         return sideMenu;
@@ -69,5 +70,7 @@ public abstract class BasePage extends AbstractPage {
         selectedProduct.clickOnProduct();
         return initPage(getDriver(), ProductPageBase.class);
     }
+
+    public abstract HeaderBase getHeader();
 
 }

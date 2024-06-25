@@ -5,6 +5,7 @@ import com.solvd.gui.pages.common.*;
 import com.solvd.service.ClientService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.*;
 
@@ -33,12 +34,16 @@ public class ProductTest extends BaseTest {
         String productPrice = catalogPage.getSelectedProductPrice();
         ProductPageBase productPage = catalogPage.clickSelectedProduct();
 
-        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't match selected one");
-        assertEquals(productPage.getProductPrice(), productPrice, "Product price on product page don't match selected one");
+        assertEquals(productPage.getProductName(), productName,
+                "Product name on product page don't match selected one");
+        assertEquals(productPage.getProductPrice(), productPrice,
+                "Product price on product page don't match selected one");
     }
 
     @Test(testName = "#TC-005")
     public void verifyAddProductToCart() {
+        SoftAssert softAssert = new SoftAssert();
+
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
@@ -48,8 +53,10 @@ public class ProductTest extends BaseTest {
         String productPrice = homePage.getSelectedProductPrice();
         ProductPageBase productPage = homePage.clickSelectedProduct();
 
-        assertEquals(productPage.getProductTitle(), productName, "Product name on product page don't match selected one");
-        assertEquals(productPage.getProductPrice(), productPrice, "Product price on product page don't match selected one");
+        softAssert.assertEquals(productPage.getProductName(), productName,
+                "Product name on product page doesn't match selected one");
+        softAssert.assertEquals(productPage.getProductPrice(), productPrice,
+                "Product price on product page doesn't match selected one");
 
         productPage.clickAddToCartButton();
         CartPageBase cartPage = productPage.getHeader().clickCartLink();

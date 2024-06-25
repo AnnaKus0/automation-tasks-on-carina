@@ -1,12 +1,13 @@
 package com.solvd.gui.pages.android;
 
 import com.solvd.gui.components.header.HeaderBase;
+import com.solvd.gui.components.header.MobileHeader;
 import com.solvd.gui.pages.common.CatalogPageBase;
 import com.zebrunner.carina.utils.R;
 import com.zebrunner.carina.utils.factory.DeviceType;
-import com.zebrunner.carina.utils.mobile.IMobileUtils;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,9 @@ import org.slf4j.LoggerFactory;
 public class MobileCatalogPage extends CatalogPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileCatalogPage.class);
+
+    @FindBy(xpath = "//header")
+    private MobileHeader header;
 
     public MobileCatalogPage(WebDriver driver) {
         super(driver);
@@ -24,7 +28,7 @@ public class MobileCatalogPage extends CatalogPageBase {
 
     @Override
     public HeaderBase getHeader() {
-        return null;
+        return header;
     }
 
 }
