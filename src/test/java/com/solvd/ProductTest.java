@@ -64,6 +64,8 @@ public class ProductTest extends BaseTest {
         assertFalse(cartPage.isEmptyCartMessagePresent(), "Message should not be visible after adding product to cart");
         assertEquals(cartPage.getProductName(), productName, "The name is not equal to selected product");
         assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
+
+        softAssert.assertAll();
     }
 
     @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")

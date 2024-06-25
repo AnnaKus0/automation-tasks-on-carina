@@ -48,6 +48,8 @@ public class MobileProductTest extends BaseTest {
                 "Product name on cart page doesn't match selected one");
         softAssert.assertEquals(cartPage.getProductPrice(), productPrice,
                 "Product price on cart page doesn't match selected one");
+
+        softAssert.assertAll();
     }
 
     @Test(testName= "#TC-007")
@@ -71,6 +73,8 @@ public class MobileProductTest extends BaseTest {
                 "Product name on cart page doesn't match selected one");
         softAssert.assertEquals(productPage.getProductPrice(), productPrice,
                 "Product name on cart page doesn't match selected one");
+
+        softAssert.assertAll();
     }
 
     @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
