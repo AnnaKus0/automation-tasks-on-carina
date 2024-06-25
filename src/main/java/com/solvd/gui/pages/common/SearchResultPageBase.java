@@ -21,11 +21,8 @@ public abstract class SearchResultPageBase extends AbstractPage {
     }
 
     public boolean isProductWithNamePresent(String productName) {
-        List<String> actualProductNames = productList.stream()
+        return productList.stream()
                 .map(ProductCard::getTitle)
-                .toList();
-
-        return actualProductNames.stream()
                 .anyMatch(name -> name.contains(productName));
     }
 
