@@ -15,14 +15,11 @@ public class MobileSearchResultPage extends SearchResultPageBase {
 
     private static final Logger logger = LoggerFactory.getLogger(MobileSearchResultPage.class);
 
-    @FindBy(xpath = "//h1[text()='Search Results']")
-    private ExtendedWebElement searchResultText;
-
     public MobileSearchResultPage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        setUiLoadedMarker(searchResultText);
-        logger.info("MobileSearchResultPage loaded with element: " + searchResultText.getText());
+        setUiLoadedMarker(getSearchResultTextElement());
+        logger.info("MobileSearchResultPage loaded with element: " + getSearchResultTextElement().getText());
     }
 
 }

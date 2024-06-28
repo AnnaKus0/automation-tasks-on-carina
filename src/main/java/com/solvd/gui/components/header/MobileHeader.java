@@ -1,21 +1,18 @@
 package com.solvd.gui.components.header;
 
 import com.solvd.gui.pages.common.CartPageBase;
-import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MobileHeader extends HeaderBase {
 
-    @FindBy(xpath = "//a[@class='cart-target-mobile' and contains(text(), 'My Cart)]")
+    @FindBy(xpath = "//a[@class='cart-target-mobile'")
     private ExtendedWebElement cartMobileLink;
 
-    @FindBy(xpath = "//span[@id='cart-target-mobile']/span[@class='count']")
-    private ExtendedWebElement cartCount;
+    @FindBy(xpath = "//span[@id='cart-target-mobile']")
+    private ExtendedWebElement productCartCountMobile;
 
     public MobileHeader(WebDriver driver) {
         super(driver);
@@ -25,10 +22,12 @@ public class MobileHeader extends HeaderBase {
         super(driver, searchContext);
     }
 
+
+    //TODO: * change it to check if quantity od products matches added products
+    //      * duplication
     @Override
-    public boolean checkCartQuantity() {
-        waitForElementToBeVisible(cartCount.getBy());
-        return cartCount.isVisible();
+    public boolean isCardQuantityPresent() {
+        return productCartCountMobile.isVisible();
     }
 
     public CartPageBase clickCartLink() {
@@ -36,16 +35,17 @@ public class MobileHeader extends HeaderBase {
         return initPage(driver, CartPageBase.class);
     }
 
-    //TODO: remove
+    //TODO: add method body
     @Override
     public boolean isMyAccountLinkVisible() {
         return false;
     }
 
-    //TODO: remove
+    //TODO: add method body
     @Override
     public boolean isLogOutLinkVisible() {
         return false;
     }
+
 
 }

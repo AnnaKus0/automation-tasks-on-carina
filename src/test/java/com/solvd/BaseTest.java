@@ -16,7 +16,7 @@ public abstract class BaseTest implements IAbstractTest {
 
     @BeforeClass
     @Parameters({"browser"})
-    public void setUp(String browser) {
+    public void setUp(@Optional("") String browser) {
         email = R.CONFIG.get("USER.email");
         password = R.CONFIG.get("USER.password");
         logger.info("Browser: " + browser);

@@ -22,6 +22,9 @@ public class Header extends HeaderBase {
     @FindBy(xpath = "//a[contains(@class, 'toggle-drawer') and contains(@class, 'desktop')]")
     private ExtendedWebElement checkOutLink;
 
+    @FindBy(xpath = "//span[@id='cart-target-desktop']")
+    private ExtendedWebElement productCartCountDesktop;
+
     public Header(WebDriver driver) {
         super(driver);
     }
@@ -30,12 +33,12 @@ public class Header extends HeaderBase {
         super(driver, searchContext);
     }
 
-    //TODO: remove
+    //TODO: * change it to check if quantity od products matches added products
+    //      * duplication
     @Override
-    public boolean checkCartQuantity() {
-        return false;
+    public boolean isCardQuantityPresent() {
+        return productCartCountDesktop.isVisible();
     }
-
 
     @Override
     public CartPageBase clickCartLink() {

@@ -2,7 +2,7 @@ package com.solvd;
 
 import com.solvd.constans.SidebarTitle;
 import com.solvd.gui.pages.common.*;
-import com.solvd.service.ClientService;
+import com.solvd.service.UserService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -19,7 +19,7 @@ public class ProductTest extends BaseTest {
         };
     }
 
-    @Test(testName= "#TC-007")
+    @Test(description = "#TC-007")
     public void verifyCatalogToProductNavigation() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -40,7 +40,7 @@ public class ProductTest extends BaseTest {
                 "Product price on product page don't match selected one");
     }
 
-    @Test(testName = "#TC-005")
+    @Test(description = "#TC-005")
     public void verifyAddProductToCart() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -64,9 +64,11 @@ public class ProductTest extends BaseTest {
         assertFalse(cartPage.isEmptyCartMessagePresent(), "Message should not be visible after adding product to cart");
         assertEquals(cartPage.getProductName(), productName, "The name is not equal to selected product");
         assertEquals(cartPage.getProductPrice(), productPrice,"The price is not equal to selected product");
+
+        softAssert.assertAll();
     }
 
-    @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
+    @Test(description = "#TC-008", dataProvider = "useTestProductQuantityData")
     public void verifyQuantityField(String quantity) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -84,8 +86,6 @@ public class ProductTest extends BaseTest {
 
     @Test(testName = "#TC-006")
     public void verifyCheckoutProcess() {
-        ClientService clientService = new ClientService();
-
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
@@ -96,7 +96,8 @@ public class ProductTest extends BaseTest {
 
         CartPageBase cartPage = productPage.getHeader().clickCartLink();
         CheckOutPageBase checkOutPage = cartPage.clickCheckoutButton();
-        checkOutPage.fillCheckOutForm(clientService.createClient());
+
+        checkOutPage.fillCheckOutForm(UserService.createCheckOutUser());
         checkOutPage.clickPayNowButton();
 
         assertTrue(homePage.isPageOpened(), "User should be redirected to the homepage after payment");

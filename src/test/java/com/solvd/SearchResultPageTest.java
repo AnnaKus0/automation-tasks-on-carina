@@ -7,6 +7,7 @@ import com.zebrunner.carina.utils.R;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SearchResultPageTest extends BaseTest {
@@ -20,7 +21,7 @@ public class SearchResultPageTest extends BaseTest {
     }
 
     //threadPoolSize = 2, invocationCount = 2, parallel=true
-    @Test(testName = "#TC-004", dataProvider = "useTestProductData")
+    @Test(description = "#TC-004", dataProvider = "useTestProductData")
     public void verifySearchFunctionality(String productName) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -31,5 +32,9 @@ public class SearchResultPageTest extends BaseTest {
 
         boolean isProductFound = searchResultPage.isProductWithNamePresent(productName);
         assertTrue(isProductFound, "Product with this name is not found on page: " + productName);
+
+        String resultText = searchResultPage.getResultText();
+        assertEquals(resultText, productName,
+                "The product name in the message on the search page does not match the searched name");
     }
 }
