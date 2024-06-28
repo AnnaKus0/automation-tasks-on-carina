@@ -2,12 +2,11 @@ package com.solvd;
 
 import com.solvd.constans.SidebarTitle;
 import com.solvd.gui.pages.common.*;
-import com.solvd.service.ClientService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import static com.solvd.service.ClientService.createClient;
+import static com.solvd.service.UserService.createClient;
 import static org.testng.Assert.*;
 
 public class MobileProductTest extends BaseTest {

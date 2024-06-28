@@ -2,11 +2,11 @@ package com.solvd;
 
 import com.solvd.constans.SidebarTitle;
 import com.solvd.gui.pages.common.*;
-import com.solvd.service.ClientService;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import static com.solvd.service.UserService.createClient;
 import static org.testng.Assert.*;
 
 public class ProductTest extends BaseTest {
@@ -86,8 +86,6 @@ public class ProductTest extends BaseTest {
 
     @Test(testName = "#TC-006")
     public void verifyCheckoutProcess() {
-        ClientService clientService = new ClientService();
-
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
         assertTrue(homePage.isProductListPresent(), "Products section on homepage is empty");
@@ -98,7 +96,8 @@ public class ProductTest extends BaseTest {
 
         CartPageBase cartPage = productPage.getHeader().clickCartLink();
         CheckOutPageBase checkOutPage = cartPage.clickCheckoutButton();
-        checkOutPage.fillCheckOutForm(clientService.createClient());
+
+        checkOutPage.fillCheckOutForm(createClient());
         checkOutPage.clickPayNowButton();
 
         assertTrue(homePage.isPageOpened(), "User should be redirected to the homepage after payment");

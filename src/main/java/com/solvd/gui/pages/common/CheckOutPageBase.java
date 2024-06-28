@@ -1,6 +1,6 @@
 package com.solvd.gui.pages.common;
 
-import com.solvd.model.Client;
+import com.solvd.model.User;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +48,7 @@ public abstract class CheckOutPageBase extends AbstractPage {
         super(driver);
     }
 
-    public void fillCheckOutForm(Client client) {
+    public void fillCheckOutForm(User client) {
         firstNameInput.type(client.getFirstName());
         lastNameInput.type(client.getLastName());
         addressInput.type(client.getAddress());
