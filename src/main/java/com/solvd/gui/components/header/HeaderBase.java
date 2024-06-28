@@ -40,7 +40,8 @@ public abstract class HeaderBase extends AbstractUIObject implements ICustomType
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public abstract boolean checkCartQuantity();
+    //TODO: * duplication in child classes
+    public abstract boolean isCardQuantityPresent();
 
     public abstract CartPageBase clickCartLink();
 

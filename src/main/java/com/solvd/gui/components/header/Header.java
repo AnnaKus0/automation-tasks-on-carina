@@ -23,7 +23,7 @@ public class Header extends HeaderBase {
     private ExtendedWebElement checkOutLink;
 
     @FindBy(xpath = "//span[@id='cart-target-desktop']")
-    private ExtendedWebElement productCartCount;
+    private ExtendedWebElement productCartCountDesktop;
 
     public Header(WebDriver driver) {
         super(driver);
@@ -33,10 +33,11 @@ public class Header extends HeaderBase {
         super(driver, searchContext);
     }
 
+    //TODO: * change it to check if quantity od products matches added products
+    //      * duplication
     @Override
-    public boolean checkCartQuantity() {
-        waitForElementToBeVisible(productCartCount.getBy());
-        return productCartCount.isVisible();
+    public boolean isCardQuantityPresent() {
+        return productCartCountDesktop.isVisible();
     }
 
     @Override

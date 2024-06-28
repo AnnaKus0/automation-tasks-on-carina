@@ -8,11 +8,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class MobileHeader extends HeaderBase {
 
-    @FindBy(xpath = "//a[@class='cart-target-mobile' and contains(text(), 'My Cart)]")
+    @FindBy(xpath = "//a[@class='cart-target-mobile'")
     private ExtendedWebElement cartMobileLink;
 
     @FindBy(xpath = "//span[@id='cart-target-mobile']")
-    private ExtendedWebElement productCartCount;
+    private ExtendedWebElement productCartCountMobile;
 
     public MobileHeader(WebDriver driver) {
         super(driver);
@@ -22,10 +22,12 @@ public class MobileHeader extends HeaderBase {
         super(driver, searchContext);
     }
 
+
+    //TODO: * change it to check if quantity od products matches added products
+    //      * duplication
     @Override
-    public boolean checkCartQuantity() {
-        waitForElementToBeVisible(productCartCount.getBy());
-        return productCartCount.isVisible();
+    public boolean isCardQuantityPresent() {
+        return productCartCountMobile.isVisible();
     }
 
     public CartPageBase clickCartLink() {

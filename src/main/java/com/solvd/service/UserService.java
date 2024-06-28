@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class UserService {
 
-    public static User createClient() {
+    public static User createUser() {
         return new User("John", "Smith", "john.smith@email.com", "Street",
                 101, "12345", "City", "123456789", "1111111111111111",
                 "1225", "123", "John Smith");

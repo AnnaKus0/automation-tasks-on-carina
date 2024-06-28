@@ -21,8 +21,8 @@ public class SearchResultPage extends SearchResultPageBase {
     public SearchResultPage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
-        setUiLoadedMarker(getSearchResultText());
-        logger.info("SearchResultPage loaded with element: " + getSearchResultText().getText());
+        setUiLoadedMarker(getSearchResultTextElement());
+        logger.info("SearchResultPage loaded with element: " + getSearchResultTextElement().getText());
     }
 
 }

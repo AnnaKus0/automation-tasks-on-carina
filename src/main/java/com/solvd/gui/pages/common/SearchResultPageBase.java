@@ -26,7 +26,7 @@ public abstract class SearchResultPageBase extends AbstractPage {
                 .anyMatch(name -> name.contains(productName));
     }
 
-    public ExtendedWebElement getSearchResultText() {
+    public ExtendedWebElement getSearchResultTextElement() {
         return searchResultText;
     }
 

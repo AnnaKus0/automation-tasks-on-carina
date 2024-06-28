@@ -4,6 +4,7 @@ import com.solvd.gui.components.header.HeaderBase;
 import com.solvd.gui.pages.common.LoginPageBase;
 import com.solvd.gui.pages.common.ResetPasswordPageBase;
 import com.solvd.gui.pages.common.SignUpPageBase;
+import com.solvd.service.UserService;
 import org.testng.annotations.Test;
 
 import static com.solvd.service.UserService.*;
@@ -17,7 +18,8 @@ public class UserAccountTest extends BaseTest {
         signUpPage.open();
         signUpPage.assertPageOpened();
 
-        signUpPage.fillSignUpForm(generateRandomString(), generateRandomString(), generateRandomEmail(), generateRandomPassword());
+        signUpPage.fillSignUpForm(UserService.generateRandomString(), UserService.generateRandomString(),
+                UserService.generateRandomEmail(), UserService.generateRandomPassword());
         signUpPage.clickCreateButton();
 
         HeaderBase header = signUpPage.getHeader();

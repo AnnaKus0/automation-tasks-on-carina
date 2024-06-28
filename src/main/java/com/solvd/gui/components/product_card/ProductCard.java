@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductCard extends AbstractUIObject {
 
+    //TODO: change xpath of productTitle
     @FindBy(xpath = "//div[@class='info']/h3/a")
     private ExtendedWebElement productTitle;
 
