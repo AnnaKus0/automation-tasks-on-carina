@@ -21,7 +21,7 @@ public class SearchResultPageTest extends BaseTest {
     }
 
     //threadPoolSize = 2, invocationCount = 2, parallel=true
-    @Test(testName = "#TC-004", dataProvider = "useTestProductData")
+    @Test(description = "#TC-004", dataProvider = "useTestProductData")
     public void verifySearchFunctionality(String productName) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();

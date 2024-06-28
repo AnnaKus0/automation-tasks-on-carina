@@ -19,7 +19,7 @@ public class ProductTest extends BaseTest {
         };
     }
 
-    @Test(testName= "#TC-007")
+    @Test(description = "#TC-007")
     public void verifyCatalogToProductNavigation() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -40,7 +40,7 @@ public class ProductTest extends BaseTest {
                 "Product price on product page don't match selected one");
     }
 
-    @Test(testName = "#TC-005")
+    @Test(description = "#TC-005")
     public void verifyAddProductToCart() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -68,7 +68,7 @@ public class ProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
+    @Test(description = "#TC-008", dataProvider = "useTestProductQuantityData")
     public void verifyQuantityField(String quantity) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -84,7 +84,7 @@ public class ProductTest extends BaseTest {
                 "The quantity input don't change after not numeric input or negative number");
     }
 
-    @Test(testName = "#TC-006")
+    @Test(description = "#TC-006")
     public void verifyCheckoutProcess() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();

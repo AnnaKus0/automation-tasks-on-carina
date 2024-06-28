@@ -48,18 +48,18 @@ public abstract class CheckOutPageBase extends AbstractPage {
         super(driver);
     }
 
-    public void fillCheckOutForm(User client) {
-        firstNameInput.type(client.getFirstName());
-        lastNameInput.type(client.getLastName());
-        addressInput.type(client.getAddress());
-        apartmentInput.type(String.valueOf(client.getApartment()));
-        postalCodeInput.type(client.getPostalCode());
-        cityInput.type(client.getCity());
-        phoneInput.type(client.getPhone());
-        cardNumberInput.type(client.getCardNumber());
-        expirationDateInput.type(client.getExpirationDate());
-        securityCodeInput.type(client.getSecurityCode());
-        nameCardInput.type(client.getNameOnCard());
+    public void fillCheckOutForm(User user) {
+        firstNameInput.type(user.getFirstName());
+        lastNameInput.type(user.getLastName());
+        addressInput.type(user.getAddress());
+        apartmentInput.type(String.valueOf(user.getApartment()));
+        postalCodeInput.type(user.getPostalCode());
+        cityInput.type(user.getCity());
+        phoneInput.type(user.getPhone());
+        cardNumberInput.type(user.getCardNumber());
+        expirationDateInput.type(user.getExpirationDate());
+        securityCodeInput.type(user.getSecurityCode());
+        nameCardInput.type(user.getNameOnCard());
     }
 
     public HomePageBase clickPayNowButton() {

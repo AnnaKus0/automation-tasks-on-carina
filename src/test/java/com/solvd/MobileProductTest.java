@@ -19,7 +19,7 @@ public class MobileProductTest extends BaseTest {
         };
     }
 
-    @Test(testName = "#TC-005")
+    @Test(description = "#TC-005")
     public void verifyAddProductToCart() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -52,7 +52,7 @@ public class MobileProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName= "#TC-007")
+    @Test(description = "#TC-007")
     public void verifyCatalogAndProductPage() {
         SoftAssert softAssert = new SoftAssert();
 
@@ -77,7 +77,7 @@ public class MobileProductTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "#TC-008", dataProvider = "useTestProductQuantityData")
+    @Test(description = "#TC-008", dataProvider = "useTestProductQuantityData")
     public void verifyQuantityField(String quantity) {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
@@ -92,7 +92,7 @@ public class MobileProductTest extends BaseTest {
         assertEquals(cartPage.getInputQuantity(), "1", "The quantity input don't change to 1");
     }
 
-    @Test(testName = "#TC-006")
+    @Test(description = "#TC-006")
     public void verifyCheckoutProcess() {
         HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();

@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 
 public class MobileUserAccountTest extends BaseTest {
 
-    @Test(testName = "#TCM-001")
+    @Test(description = "#TCM-001")
     public void verifyCreatingUserAccount(){
         SignUpPageBase signUpPage = initPage(getDriver(), SignUpPageBase.class);
         signUpPage.open();
@@ -30,7 +30,7 @@ public class MobileUserAccountTest extends BaseTest {
         assertTrue(isLogInButtonPresent, "Logout link in sidebar is not visible after account creation");
     }
 
-    @Test(testName = "#TCM-002")
+    @Test(description = "#TCM-002")
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();

@@ -11,7 +11,7 @@ import static org.testng.Assert.assertTrue;
 
 public class UserAccountTest extends BaseTest {
 
-    @Test(testName = "#TC-001")
+    @Test(description = "#TC-001")
     public void verifyCreatingUserAccount(){
         SignUpPageBase signUpPage = initPage(getDriver(), SignUpPageBase.class);
         signUpPage.open();
@@ -25,7 +25,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC-002")
+    @Test(description = "#TC-002")
     public void verifyLoginProcess() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
@@ -39,7 +39,7 @@ public class UserAccountTest extends BaseTest {
         assertTrue(header.isLogOutLinkVisible(), "Log Out link is not visible after account creation");
     }
 
-    @Test(testName = "#TC-003")
+    @Test(description = "#TC-003")
     public void verifyResetPassword() {
         LoginPageBase loginPage = initPage(getDriver(), LoginPageBase.class);
         loginPage.open();
