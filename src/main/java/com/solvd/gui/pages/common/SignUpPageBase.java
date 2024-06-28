@@ -1,6 +1,7 @@
 package com.solvd.gui.pages.common;
 
 import com.solvd.gui.pages.BasePage;
+import com.solvd.model.User;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -26,18 +27,18 @@ public abstract class SignUpPageBase extends BasePage {
         super(driver);
     }
 
-    public void fillSignUpForm(String firstName, String lastName, String email, String password){
+    public void fillSignUpForm(User user){
         firstNameInput.click();
-        firstNameInput.type(firstName);
+        firstNameInput.type(user.getFirstName());
 
         lastNameInput.click();
-        lastNameInput.type(lastName);
+        lastNameInput.type(user.getLastName());
 
         emailAddressInput.click();
-        emailAddressInput.type(email);
+        emailAddressInput.type(user.getEmail());
 
         passwordInput.click();
-        passwordInput.type(password);
+        passwordInput.type(user.getPassword());
     }
 
     public void clickCreateButton() {

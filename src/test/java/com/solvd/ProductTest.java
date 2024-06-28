@@ -97,7 +97,7 @@ public class ProductTest extends BaseTest {
         CartPageBase cartPage = productPage.getHeader().clickCartLink();
         CheckOutPageBase checkOutPage = cartPage.clickCheckoutButton();
 
-        checkOutPage.fillCheckOutForm(UserService.createUser());
+        checkOutPage.fillCheckOutForm(UserService.createCheckOutUser());
         checkOutPage.clickPayNowButton();
 
         assertTrue(homePage.isPageOpened(), "User should be redirected to the homepage after payment");

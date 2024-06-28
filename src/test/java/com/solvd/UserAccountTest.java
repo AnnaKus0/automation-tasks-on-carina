@@ -18,8 +18,7 @@ public class UserAccountTest extends BaseTest {
         signUpPage.open();
         signUpPage.assertPageOpened();
 
-        signUpPage.fillSignUpForm(UserService.generateRandomString(), UserService.generateRandomString(),
-                UserService.generateRandomEmail(), UserService.generateRandomPassword());
+        signUpPage.fillSignUpForm(UserService.createSignUpUser());
         signUpPage.clickCreateButton();
 
         HeaderBase header = signUpPage.getHeader();

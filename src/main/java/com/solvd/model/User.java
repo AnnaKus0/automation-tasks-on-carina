@@ -1,10 +1,12 @@
 package com.solvd.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@Builder
 public class User {
 
     private String firstName;
@@ -12,6 +14,8 @@ public class User {
     private String lastName;
 
     private String email;
+
+    private String password;
 
     private String address;
 
@@ -30,20 +34,4 @@ public class User {
     private String securityCode;
 
     private String nameOnCard;
-
-    public User(String firstName, String lastName, String email, String address, int apartment, String postalCode,
-                  String city, String phone, String cardNumber, String expirationDate, String securityCode, String nameOnCard) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.apartment = apartment;
-        this.postalCode = postalCode;
-        this.city = city;
-        this.phone = phone;
-        this.cardNumber = cardNumber;
-        this.expirationDate = expirationDate;
-        this.securityCode = securityCode;
-        this.nameOnCard = nameOnCard;
-    }
 }
